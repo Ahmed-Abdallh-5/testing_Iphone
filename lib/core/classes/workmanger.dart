@@ -1,7 +1,4 @@
-import 'package:ecommerce/controller/timer.dart';
-import 'package:ecommerce/controller/tornmentcon/tournmentcon.dart';
 import 'package:ecommerce/core/classes/notfications.dart';
-import 'package:get/get.dart';
 import 'package:workmanager/workmanager.dart';
 
 class WorkMangerClass {
