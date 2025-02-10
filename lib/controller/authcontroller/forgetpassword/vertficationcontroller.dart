@@ -1,0 +1,106 @@
+import 'dart:async';
+import 'package:ecommerce/core/classes/statuerequest.dart';
+import 'package:ecommerce/core/funtions/handlingdata.dart';
+import 'package:ecommerce/data/datasource/remote/forgetpassword/resendcode.dart';
+import 'package:ecommerce/data/datasource/remote/forgetpassword/verficationcoderesetpass.dart';
+import 'package:get/get.dart';
+
+abstract class VerficationController extends GetxController {
+  void confirmCode(String verificationCode);
+}
+
+class VerficationControllerimple extends VerficationController {
+  String? vertficationcode;
+  bool enable = false;
+  String? Email;
+  late Timer _timer;
+  bool isbuttomenable = true;
+  int timersecomds = 30;
+  ForgetPasswordVertdicationCode vertifyp =
+      ForgetPasswordVertdicationCode(Get.find());
+  ResendVertficationCodeForgetpassword resendVertficationCodeForgetpassword =
+      ResendVertficationCodeForgetpassword(Get.find());
+  StatueRequest? statueRequest;
+  void confirmCode(verificationCode) async {
+    statueRequest = StatueRequest.loading;
+    update();
+    var response = await vertifyp.Sendingdata(Email!, verificationCode);
+    statueRequest = handlingdata(response);
+    if (StatueRequest.Success == statueRequest) {
+      print(response);
+
+      if (response["valid"] == true) {
+        Get.toNamed("/resetpassword",
+            arguments: {"email": Email, "vertficationcode": vertficationcode});
+      } else {
+        Get.defaultDialog(middleText: "58".tr, title: "311".tr);
+        enable = false;
+      }
+    }
+    // } else if (response["message"] == 'message') {
+    //   Get.defaultDialog(
+    //     title: "57".tr,
+    //   );
+    // }
+    update();
+  }
+
+  void ResendCode() async {
+    statueRequest = StatueRequest.loading;
+    update();
+    var response =
+        await resendVertficationCodeForgetpassword.Resenddata(Email!);
+    statueRequest = handlingdata(response);
+    if (StatueRequest.Success == statueRequest) {
+      print(response);
+
+      if (response["message"] == "We've sent a new OTP to you") {
+      } else {
+        Get.defaultDialog(middleText: response["message"], title: "311".tr);
+      }
+    }
+    // } else if (response["message"] == 'message') {
+    //   Get.defaultDialog(
+    //     title: "57".tr,
+    //   );
+    // }
+    update();
+  }
+
+  void Timerfunc() {
+    if (isbuttomenable) {
+      isbuttomenable = false; // Disable the button immediately
+      update(); // Notify UI to disable button
+
+      // Start the 30-second countdown timer
+      _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+        if (timersecomds > 0) {
+          timersecomds--; // Decrement the timer seconds
+          update();
+          print(timersecomds);
+        } else {
+          // Once the countdown reaches zero
+          _timer.cancel(); // Stop the timer
+          isbuttomenable = true; // Re-enable the button
+          timersecomds = 30; // Reset the countdown
+          print("Timer ended. Button re-enabled.");
+          update(); // Notify UI after re-enabling the button
+        }
+        update(); // Notify UI on each tick of the timer
+      });
+    }
+  }
+
+  void updateVerificationCode(String code) {
+    vertficationcode = code;
+    enable = code.length == 5; // Enable button if OTP has 5 digits
+    update(); // Notify GetBuilder to rebuild the UI
+  }
+
+  @override
+  void onInit() {
+    Email = Get.arguments['email'];
+    // vertficationcode = Get.arguments['vertficationcode'];
+    super.onInit();
+  }
+}
