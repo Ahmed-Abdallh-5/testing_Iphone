@@ -24,7 +24,6 @@ import 'package:ecommerce/view/screens/settingscreens/privacyscreen.dart';
 import 'package:ecommerce/view/screens/settingscreens/settingscreen.dart';
 import 'package:ecommerce/view/screens/settingscreens/termsandconditions.dart';
 import 'package:ecommerce/view/screens/spalshscreen/splashscreen.dart';
-import 'package:ecommerce/view/screens/timerscreen.dart';
 import 'package:ecommerce/view/screens/tournment/tournament.dart';
 import 'package:ecommerce/view/screens/viewallscreens/viewallitemscreen.dart';
 import 'package:ecommerce/view/screens/tournment/tournmentscreen.dart';
