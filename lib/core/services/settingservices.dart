@@ -2,6 +2,7 @@ import 'package:ecommerce/core/classes/workmanger.dart';
 import 'package:ecommerce/core/classes/notfications.dart';
 
 import 'package:ecommerce/firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -12,6 +13,7 @@ class Settingservices extends GetxService {
   late SharedPreferences sharedPref;
   final storage = FlutterSecureStorage();
   Future<Settingservices> intial() async {
+    // FirebaseMessaging messaging = FirebaseMessaging.instance;
     // await Notfications().IntilaizeNotfication();
     // await WorkMangerClass().intialmanger();
     sharedPref = await SharedPreferences.getInstance();
@@ -19,7 +21,8 @@ class Settingservices extends GetxService {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-
+    // await messaging.getToken().then((value) {});
+    // messaging.onTokenRefresh.listen((value) {});
     return this;
   }
 }
