@@ -39,6 +39,12 @@ class DeleteAccountimple extends DeleteAccount {
           title: "311".tr,
           middleText: "308".tr,
         );
+      } else if (statueRequest == StatueRequest.unauthenticated) {
+        Get.back();
+        Get.defaultDialog(
+          title: "311".tr,
+          middleText: "361".tr,
+        );
       } else if (statueRequest == StatueRequest.ServerFaliure) {
         Get.defaultDialog(
           title: "311".tr,

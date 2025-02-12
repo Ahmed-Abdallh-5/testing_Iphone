@@ -179,7 +179,7 @@ class MainContainerWidget extends StatelessWidget {
                                   Text(
                                     SubmTitle2!,
                                     style: TextStyleClass.getTextStyle(
-                                      "medium",
+                                      "bold",
                                       AppConstans.Width * .04,
                                     ),
                                   ),
@@ -245,7 +245,7 @@ class MainContainerWidget extends StatelessWidget {
                       "medium", AppConstans.Width * .05),
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .01,
+                  height: AppConstans.Hight * .025,
                 ),
                 CustomDatePicker(
                   locale: settingservices.sharedPref.getString("lang")!,
@@ -261,8 +261,8 @@ class MainContainerWidget extends StatelessWidget {
                         productDetailsConimble.dateOnly!,
                       );
                       Get.bottomSheet(
-                        const MaterialBottomSheet(
-                          Mainbottomsheettext: "Select time",
+                        MaterialBottomSheet(
+                          Mainbottomsheettext: "357".tr,
                         ),
                       );
                     } else {}
@@ -280,7 +280,7 @@ class MainContainerWidget extends StatelessWidget {
                           ? (productDetailsConimble.chosencourtid == null
                               ? Text("346".tr,
                                   style: TextStyleClass.getTextStyle(
-                                      "medium", AppConstans.Width * .04,
+                                      "medium", AppConstans.Width * .032,
                                       color: AppConstans.grey))
                               : Text("347".tr,
                                   style: TextStyleClass.getTextStyle(

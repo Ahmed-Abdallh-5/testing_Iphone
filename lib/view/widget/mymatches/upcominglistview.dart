@@ -12,7 +12,7 @@ class UpComingListView extends StatelessWidget {
   Widget build(BuildContext context) {
     Mymatchesimble mymatchesimble = Get.put(Mymatchesimble());
     return ListView.builder(
-      physics: const BouncingScrollPhysics(), // حركة سلسة
+      physics: const AlwaysScrollableScrollPhysics(), // حركة سلسة
       itemCount: mymatchesimble.upcoming.length,
       itemBuilder: (BuildContext context, index) {
         return MyMatchesContainer(

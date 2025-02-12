@@ -24,7 +24,7 @@ class CheckOutScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: AppConstans.PaddingHorizontal),
           child: IconButton(
               onPressed: () {
-                Get.back();
+                Get.offAllNamed("/homeScreen");
               },
               icon: Icon(Icons.arrow_back_ios)),
         ),

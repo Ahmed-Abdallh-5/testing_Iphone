@@ -11,9 +11,7 @@ import 'package:ecommerce/view/widget/home/headerwidget.dart';
 import 'package:ecommerce/view/widget/home/searchlistwideget.dart';
 import 'package:ecommerce/view/widget/home/searchtextfield.dart';
 import 'package:ecommerce/view/widget/home/titles.dart';
-import 'package:ecommerce/view/widget/home/upcominglistview.dart';
 import 'package:ecommerce/view/widget/mymatches/upcominglisthorizontal.dart';
-import 'package:ecommerce/view/widget/mymatches/upcominglistview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,7 +44,7 @@ class Home12 extends StatelessWidget {
                     ),
                     RowHomeScreen(
                       /*the function */
-                      onTap: () {},
+
                       /*the function */
 
                       text: "60".tr +
@@ -109,14 +107,8 @@ class Home12 extends StatelessWidget {
                                 height: AppConstans.Hight * .025,
                               ),
                               Titles(
-                                onTap: () {
-                                  homeimp.gotoproductdetailsviewallitems();
-                                },
+                                iconneeded: false,
                                 text1: "203".tr,
-                                text2: "64".tr,
-                              ),
-                              SizedBox(
-                                height: AppConstans.Hight * 0.02,
                               ),
                               UpComingListViewHorizontal(),
                             ],

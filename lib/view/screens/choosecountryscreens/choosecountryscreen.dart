@@ -26,6 +26,9 @@ class ChooseCounteyScreen extends StatelessWidget {
         title: Appbartext(appbartext: "70".tr),
       ),
       body: RefreshIndicator(
+        color: Get.isDarkMode
+            ? AppConstans.maincolordarktheme
+            : AppConstans.maincolorlighttheme,
         onRefresh: () async {
           await chosseCountryimple.Refreshindicatorfunc();
         },

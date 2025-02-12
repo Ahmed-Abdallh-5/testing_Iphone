@@ -1,7 +1,6 @@
 import 'package:ecommerce/controller/mymatchescon/mymatchescon.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
-import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/view/widget/mymatches/mymatcheslistview.dart';
 import 'package:ecommerce/view/widget/mymatches/upcominglistview.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/handlingview.dart';
@@ -17,10 +16,9 @@ class MyMatchesScreen extends StatelessWidget {
     Mymatchesimble mymatchesimble = Get.put(Mymatchesimble());
 
     return DefaultTabController(
-      length: 2,
+      length: 2, // تأكد أن الطول متطابق مع عدد العناصر في TabBarView
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           bottom: TabBar(
             indicatorColor: Get.isDarkMode
                 ? AppConstans.maincolordarktheme
@@ -42,43 +40,62 @@ class MyMatchesScreen extends StatelessWidget {
               }
               return TabBarView(
                 children: [
-                  // Upcoming matches tab
+                  // ✅ Upcoming Matches Tab ✅
                   RefreshIndicator(
+                    color: Get.isDarkMode
+                        ? AppConstans.maincolordarktheme
+                        : AppConstans.maincolorlighttheme,
                     onRefresh: () async {
                       await mymatchesimble.refreshdata();
                     },
-                    child: mymatchesimble.upcoming.isEmpty
-                        ? NoItemText(
-                            effectiveWidth: AppConstans.Width * 0.05,
-                            text: '341'.tr,
-                          )
-                        : SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height -
-                                  kToolbarHeight,
-                              child: UpComingListView(),
-                            ),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: AppConstans.PaddingHorizontal,
+                        right: AppConstans.PaddingHorizontal,
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: mymatchesimble.upcoming.isEmpty
+                                ? Center(
+                                    child: NoItemText(
+                                      effectiveWidth: AppConstans.Width * 0.05,
+                                      text: '341'.tr,
+                                    ),
+                                  )
+                                : UpComingListView(),
                           ),
+                        ],
+                      ),
+                    ),
                   ),
-                  // History matches tab
+
+                  // ✅ History Matches Tab ✅
                   RefreshIndicator(
+                    color: Get.isDarkMode
+                        ? AppConstans.maincolordarktheme
+                        : AppConstans.maincolorlighttheme,
                     onRefresh: () async {
                       await mymatchesimble.refreshdata();
                     },
-                    child: mymatchesimble.upcoming.isEmpty
-                        ? NoItemText(
-                            effectiveWidth: AppConstans.Width * 0.05,
-                            text: '342'.tr,
-                          )
-                        : SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height -
-                                  kToolbarHeight,
-                              child: MyMatchesListView(),
-                            ),
-                          ),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: AppConstans.PaddingHorizontal,
+                        right: AppConstans.PaddingHorizontal,
+                      ),
+                      child: Column(children: [
+                        Expanded(
+                          child: mymatchesimble.history.isEmpty
+                              ? Center(
+                                  child: NoItemText(
+                                    effectiveWidth: AppConstans.Width * 0.05,
+                                    text: '342'.tr,
+                                  ),
+                                )
+                              : MyMatchesListView(),
+                        ),
+                      ]),
+                    ),
                   ),
                 ],
               );

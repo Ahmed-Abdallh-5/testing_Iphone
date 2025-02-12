@@ -23,7 +23,7 @@ abstract class ProductDetailsController extends GetxController {
   addtofavourite(itemsid, name, pricee);
   removefromfavourie(itemsid);
   changestatefavourite(id, Value);
-  gotoreviewsscreen();
+
   // SearchForfreetimes(itemid);
 }
 
@@ -232,9 +232,5 @@ class ProductDetailsConimble extends ProductDetailsController {
       );
     }
     update();
-  }
-
-  gotoreviewsscreen() {
-    Get.toNamed("/ReviewPage", arguments: {'items': items});
   }
 }

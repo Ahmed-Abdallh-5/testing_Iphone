@@ -1,3 +1,4 @@
+import 'package:ecommerce/controller/account/accountcon.dart';
 import 'package:ecommerce/controller/settingcon/settingscreen.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/settingwidget/iconsetting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 class SettingScreeneScreen extends StatelessWidget {
   const SettingScreeneScreen({super.key, this.onPressed});
@@ -14,7 +16,7 @@ class SettingScreeneScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Settingservices settingservices = Get.find();
     Settingscreenimble settingscreenimble = Get.put(Settingscreenimble());
-
+    MyaccountConimble myaccountConimble = Get.put(MyaccountConimble());
     return GetBuilder<Settingscreenimble>(
       builder: (settingscreenimble) => Scaffold(
           appBar: AppBar(
@@ -25,6 +27,7 @@ class SettingScreeneScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: AppConstans.PaddingHorizontal),
               child: IconButton(
                   onPressed: () {
+                    Get.forceAppUpdate();
                     Get.back();
                   },
                   icon: Icon(Icons.arrow_back_ios)),
@@ -120,10 +123,10 @@ class SettingScreeneScreen extends StatelessWidget {
                           value: settingservices.sharedPref.getBool(
                               "${settingscreenimble.IsSwitchedNotfications}")!,
                           onChanged: (value) {
-                            settingscreenimble.notficationSwitcherFunction(
-                                value, "id1");
-                            print(settingservices.sharedPref.getBool(
-                                "${settingscreenimble.IsSwitchedNotfications}"));
+                            // settingscreenimble.notficationSwitcherFunction(
+                            //     value, "id1");
+                            // print(settingservices.sharedPref.getBool(
+                            //     "${settingscreenimble.IsSwitchedNotfications}"));
                           },
                           switcher: true,
                           istrashed: false,

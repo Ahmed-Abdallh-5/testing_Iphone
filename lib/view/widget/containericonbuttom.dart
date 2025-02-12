@@ -21,11 +21,11 @@ class ContainerIconButtom extends StatelessWidget {
           child: InkWell(
         onTap: onPressed,
         child: Container(
-          child: Image.asset(
-            name!,
-            color: Get.isDarkMode == true
-                ? AppConstans.Whitecolor
-                : AppConstans.blackcolor,
+          child: Center(
+            child: Icon(
+              Icons.arrow_back_ios_new_outlined,
+              size: AppConstans.Hight * .022,
+            ),
           ),
         ),
       )),

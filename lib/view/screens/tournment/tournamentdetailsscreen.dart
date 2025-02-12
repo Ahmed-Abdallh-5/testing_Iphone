@@ -1,5 +1,8 @@
+import 'package:ecommerce/controller/tornmentcon/tournamentdetails.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
+import 'package:ecommerce/core/funtions/translationdatabase.dart';
+import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/screens/tournment/badge.dart';
 import 'package:ecommerce/view/screens/tournment/titletournamentdetails.dart';
 import 'package:ecommerce/view/screens/tournment/tornamentdetailstexts.dart';
@@ -7,12 +10,16 @@ import 'package:ecommerce/view/widget/containericonbuttom.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/buttom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class TornamentDetailsScreen extends StatelessWidget {
   const TornamentDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Settingservices settingservices = Get.find();
+    TournmentDeailsconimble tournmentDeailsconimble =
+        Get.put(TournmentDeailsconimble());
     return Scaffold(
       bottomNavigationBar: Padding(
           padding: EdgeInsets.only(
@@ -23,8 +30,11 @@ class TornamentDetailsScreen extends StatelessWidget {
           child: MaterialFixedButtom(
             isrowed: true,
             isEnabled: true,
-            text: "I'm in",
-            onPressed: () async {},
+            text: "348".tr,
+            onPressed: () async {
+              await tournmentDeailsconimble
+                  .jointournament(tournmentDeailsconimble.tournmentModel!.id!);
+            },
           )),
       body: ListView(
         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,9 +50,9 @@ class TornamentDetailsScreen extends StatelessWidget {
                     border: Border.all()),
                 child: ClipRRect(
                   borderRadius: BorderRadiusDirectional.vertical(
-                      bottom: Radius.circular(16)),
+                      bottom: Radius.circular(AppConstans.Radious)),
                   child: Image.asset(
-                    "images/image.png",
+                    "images/padelOriginal.jpg",
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -57,7 +67,6 @@ class TornamentDetailsScreen extends StatelessWidget {
                   onPressed: () {
                     Get.back();
                   },
-                  name: "images/Alt Arrow Left.png",
                 ),
               ),
             ],
@@ -69,18 +78,25 @@ class TornamentDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TournamentDetailsTexts(
-                    tournamentname: "Padel playoff tournament",
-                    placename: "Padel station",
-                    date: "Friday 25 Oct. 10:00PM",
-                    Level: "Beginner Level",
+                    tournamentname:
+                        tournmentDeailsconimble.tournmentModel.title,
+                    placename: translationDataBase(
+                        tournmentDeailsconimble.tournmentModel.placeAr,
+                        tournmentDeailsconimble.tournmentModel.placeAr),
+                    date: DateFormat("d MMMM y - hh:mm a",
+                            settingservices.sharedPref.getString("lang"))
+                        .format(DateTime.parse(
+                            tournmentDeailsconimble.tournmentModel.date!)),
+                    Level: tournmentDeailsconimble.tournmentModel.level,
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: AppConstans.Hight / 30,
                   ),
                   Container(
                     height: AppConstans.Hight / 14,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius:
+                            BorderRadius.circular(AppConstans.Radious),
                         border: Border.all(
                           color: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
@@ -91,6 +107,7 @@ class TornamentDetailsScreen extends StatelessWidget {
                             : AppConstans.Whitecolor),
                     child: Row(
                       children: [
+                        Spacer(),
                         Image.asset(
                           "images/Let's go.png",
                           // height: 30,
@@ -98,33 +115,26 @@ class TornamentDetailsScreen extends StatelessWidget {
                         ),
                         Spacer(),
                         Text(
-                          "Team up for the win! only 25 spots left",
+                          "Team up for the win! only ${tournmentDeailsconimble.tournmentModel!.playersLeft} spots left",
                         ),
                         Spacer(),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.share_outlined,
-                              color: Get.isDarkMode
-                                  ? AppConstans.maincolordarktheme
-                                  : AppConstans.maincolorlighttheme,
-                            ))
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: AppConstans.Hight / 30,
                   ),
                   TournamentDetailsTitle(
-                    title: "Tournament prizes",
+                    title: "354".tr,
                   ),
-                  const SizedBox(
-                    height: 25,
+                  SizedBox(
+                    height: AppConstans.Hight / 30,
                   ),
                   Container(
                     height: AppConstans.Hight / 11,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius:
+                            BorderRadius.circular(AppConstans.Radious),
                         border: Border.all(
                           color: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
@@ -141,37 +151,45 @@ class TornamentDetailsScreen extends StatelessWidget {
                           BadgeWithText(
                             text2: "1st",
                             imagePath: "images/RANK BADGES.png",
-                            text: "1500",
+                            text: tournmentDeailsconimble
+                                .tournmentModel.prizes!.i1st
+                                .toString(),
                           ),
                           Spacer(),
                           BadgeWithText(
                             text2: "2st",
                             imagePath: "images/RANK BADGES (1).png",
-                            text: "900",
+                            text: tournmentDeailsconimble
+                                .tournmentModel!.prizes!.i2nd
+                                .toString(),
                           ),
                           Spacer(),
                           BadgeWithText(
                             text2: "3st",
                             imagePath: "images/RANK BADGES (2).png",
-                            text: "700",
+                            text: tournmentDeailsconimble
+                                .tournmentModel!.prizes!.i3rd
+                                .toString(),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: AppConstans.Hight / 30,
                   ),
                   TournamentDetailsTitle(
-                    title: "Tournament entry fee",
+                    title: "355".tr,
                   ),
-                  const SizedBox(
-                    height: 25,
+                  SizedBox(
+                    height: AppConstans.Hight / 30,
                   ),
                   Row(
                     children: [
                       Text(
-                        "300 EGP",
+                        tournmentDeailsconimble.tournmentModel.fee.toString() +
+                            " " +
+                            "364".tr,
                         style: TextStyleClass.getTextStyle(
                           "weight500",
                           AppConstans.Hight / 40,
@@ -182,7 +200,7 @@ class TornamentDetailsScreen extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        "Pay directly at the court",
+                        "356".tr,
                         style: TextStyleClass.getTextStyle(
                             "weight500", AppConstans.Hight / 55),
                       ),
@@ -190,8 +208,8 @@ class TornamentDetailsScreen extends StatelessWidget {
                   )
                 ],
               )),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: AppConstans.Hight / 30,
           ),
         ],
       ),

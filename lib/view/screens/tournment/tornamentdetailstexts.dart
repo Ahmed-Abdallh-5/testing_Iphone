@@ -16,16 +16,16 @@ class TournamentDetailsTexts extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: AppConstans.Hight * .015,
         ),
         Text(
           tournamentname!,
           style:
               TextStyleClass.getTextStyle("medium", AppConstans.Width * .055),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: AppConstans.Hight * .015,
         ),
         Column(
           children: [
@@ -42,8 +42,8 @@ class TournamentDetailsTexts extends StatelessWidget {
                 Text(
                   placename!,
                   style: TextStyleClass.getTextStyle(
-                    "weight400",
-                    AppConstans.Width * .048,
+                    "weight500",
+                    AppConstans.Width * .035,
                     color: Get.isDarkMode
                         ? AppConstans.maincolordarktheme
                         : AppConstans.maincolorlighttheme,
@@ -74,8 +74,8 @@ class TournamentDetailsTexts extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: AppConstans.Hight * .015,
                     ),
                     Row(
                       children: [
@@ -85,8 +85,8 @@ class TournamentDetailsTexts extends StatelessWidget {
                               ? AppConstans.Whitecolor
                               : AppConstans.darkgreycolor,
                         ),
-                        const SizedBox(
-                          width: 8,
+                        SizedBox(
+                          width: AppConstans.Width * .025,
                         ),
                         Text(
                           Level!,

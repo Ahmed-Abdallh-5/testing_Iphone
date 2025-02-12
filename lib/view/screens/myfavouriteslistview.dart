@@ -1,6 +1,7 @@
 import 'package:ecommerce/controller/account/accountcon.dart';
 
 import 'package:ecommerce/controller/homecon/homecon.dart';
+import 'package:ecommerce/core/constans/constansappvalues.dart';
 
 import 'package:ecommerce/data/model/itemsmodel.dart';
 
@@ -15,17 +16,16 @@ class MyFavourotelistView extends GetView<Homeimp2> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 350,
-        child: GetBuilder<MyaccountConimble>(
-          builder: (myaccountCon) => ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: myaccountCon.MyFavouriteList.length,
-              itemBuilder: (context, index) {
-                return ItemsModelClassViewall(
-                    items: ItemModelJson.fromJson(
-                        myaccountCon.MyFavouriteList[index]));
-              }),
-        ));
+      height: AppConstans.Hight * .17,
+      child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: myaccountCon.MyFavouriteList.length,
+          itemBuilder: (context, index) {
+            return ItemsModelClassViewall(
+                items: ItemModelJson.fromJson(
+                    myaccountCon.MyFavouriteList[index]));
+          }),
+    );
   }
 }
 

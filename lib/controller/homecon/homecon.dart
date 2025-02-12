@@ -3,6 +3,7 @@ import 'package:ecommerce/core/funtions/handlingdata.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/data/datasource/remote/home/favourite.dart';
 import 'package:ecommerce/data/datasource/remote/home/homeData2.dart';
+import 'package:ecommerce/data/datasource/remote/mymathes/mymtaches.dart';
 
 import 'package:ecommerce/data/model/itemsmodel.dart';
 
@@ -25,7 +26,7 @@ class Homeimp2 extends Home2 with SingleGetTickerProviderMixin {
   HomeDate2 homeDate2 = HomeDate2(Get.find());
   Favourites favourite = Favourites(Get.find());
   Settingservices settingservices = Get.find();
-  // Rating rating = Rating(Get.find());
+  GetMyMatches getMyMatches = GetMyMatches(Get.find());
   TextEditingController? searchcontroller;
   List images = ["images/🦆 icon _trophy_.png", "images/Layer 2.png"];
   List texts = ["ArenaX\nTournaments", "Special\nOffers"];
@@ -224,12 +225,6 @@ class Homeimp2 extends Home2 with SingleGetTickerProviderMixin {
   void onInit() {
     super.onInit();
     intialdata();
-
-    // Initialize the AnimationController
-    lottieController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 3),
-    )..repeat();
   }
 
   intialdata() {

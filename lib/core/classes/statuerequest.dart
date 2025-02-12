@@ -1,5 +1,6 @@
 enum StatueRequest {
   deletedsuccess,
+
   loading,
   loadingSearch,
   Success,
@@ -14,5 +15,6 @@ enum StatueRequest {
   notverficated,
   Unauthorizederror,
   notfounduser,
-  unauthenticated
+  unauthenticated,
+  joinedbefore,
 }

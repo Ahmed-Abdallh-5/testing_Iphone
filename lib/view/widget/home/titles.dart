@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Titles extends StatelessWidget {
-  const Titles({super.key, this.text1, this.text2, this.onTap});
+  const Titles(
+      {super.key, this.text1, this.text2, this.onTap, this.iconneeded = true});
   final String? text1;
   final String? text2;
   final void Function()? onTap;
+  final bool? iconneeded;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,7 +30,7 @@ class Titles extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  text2!,
+                  text2 ?? "",
                   style: TextStyleClass.getTextStyle(
                     "weight500",
                     AppConstans.Width * .04,
@@ -40,13 +42,15 @@ class Titles extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: AppConstans.Width * .045,
-                  color: Get.isDarkMode
-                      ? AppConstans.maincolordarktheme
-                      : AppConstans.maincolorlighttheme,
-                ),
+                iconneeded == true
+                    ? Icon(
+                        Icons.arrow_forward_ios,
+                        size: AppConstans.Width * .045,
+                        color: Get.isDarkMode
+                            ? AppConstans.maincolordarktheme
+                            : AppConstans.maincolorlighttheme,
+                      )
+                    : SizedBox(),
               ],
             ),
           ),

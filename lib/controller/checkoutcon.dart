@@ -8,6 +8,7 @@ class Checkoutimble extends Checkout {
   @override
   void onInit() {
     url = Get.arguments['url'];
+    print(url);
     super.onInit();
   }
 }

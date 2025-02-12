@@ -1,7 +1,6 @@
 import 'package:ecommerce/controller/viewallofferscon.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
-import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/home/searchlistwideget.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallofferslist.dart';

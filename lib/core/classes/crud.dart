@@ -119,7 +119,10 @@ class CRUD {
           return Right(responsebody);
         } else if (response.statusCode == 401) {
           print("unauthenticated");
+
           return const Left(StatueRequest.unauthenticated);
+        } else if (response.statusCode == 400) {
+          return const Left(StatueRequest.joinedbefore);
         } else {
           print("failServerr");
           return const Left(StatueRequest.ServerFaliure);

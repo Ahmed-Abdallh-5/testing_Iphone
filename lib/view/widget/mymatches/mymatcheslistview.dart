@@ -13,11 +13,11 @@ class MyMatchesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     Mymatchesimble mymatchesimble = Get.put(Mymatchesimble());
     return ListView.builder(
-      physics: const BouncingScrollPhysics(), // نفس المبدأ هنا
+      physics: const AlwaysScrollableScrollPhysics(), // نفس المبدأ هنا
       itemCount: mymatchesimble.history.length,
       itemBuilder: (BuildContext context, index) {
         return MyMatchesContainer(
-          hight: AppConstans.Hight / 4, // عرض المحتوى بشكل ديناميكي
+          hight: AppConstans.Hight / 5, // عرض المحتوى بشكل ديناميكي
           ishistrory: true,
           history: HistoryModel.fromJson(mymatchesimble.history[index]),
         );

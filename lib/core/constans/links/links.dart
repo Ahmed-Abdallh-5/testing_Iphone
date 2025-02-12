@@ -1,5 +1,5 @@
 class APPlinks {
-  static final String domain = "http://192.168.1.3/api";
+  static final String domain = "http://192.168.1.2/api";
 
   // static final String testlink = "http://10.0.2.2:80/ecommerce/test.php";
 
@@ -38,6 +38,7 @@ class APPlinks {
 
 ///////////////////////////////Tournment/////////////////////////////////////
   static final String tournament = "${domain}/tournaments";
+
 ////////////////////////setting////////////////////////////////////////
   static final String EditProfileusername = "${domain}/users";
   static final String EditProfilephoto = "${domain}/users";

@@ -132,7 +132,7 @@ class EditProfleScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: AppConstans.Hight * 0.03),
+                        Spacer(),
                         Text(
                           "21".tr,
                           style: TextStyleClass.getTextStyle(
@@ -163,7 +163,8 @@ class EditProfleScreen extends StatelessWidget {
                           textEditingController: myaccountConimble.username,
                           hinttextstring: "ArenaX",
                         ),
-                        SizedBox(height: AppConstans.Hight * 0.03),
+                        Spacer(),
+                        // SizedBox(height: AppConstans.Hight * 0.03),
                         Text(
                           "23".tr,
                           style: TextStyleClass.getTextStyle(
@@ -193,6 +194,7 @@ class EditProfleScreen extends StatelessWidget {
                           textEditingController: myaccountConimble.username,
                           hinttextstring: "ArenaX",
                         ),
+                        Spacer(),
                       ],
                     ),
                   ),

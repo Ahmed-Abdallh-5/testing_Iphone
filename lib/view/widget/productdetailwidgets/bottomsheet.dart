@@ -68,23 +68,29 @@ class MaterialBottomSheet extends StatelessWidget {
                             onTap: () {
                               if (productDetailsConimble.ChosenHoursList
                                   .contains(productDetailsConimble
-                                      .AvilableHoursList[index])) {
+                                      .AvilableHoursList[index]
+                                      .split(" - ")[0])) {
                                 // print(productDetailsConimble.ChosenHoursList);
                                 productDetailsConimble.RemoveFromBookedlist(
                                     productDetailsConimble
-                                        .AvilableHoursList[index]);
+                                        .AvilableHoursList[index]
+                                        .split(" - ")[0]);
 
                                 print("removed");
+                                print(productDetailsConimble.ChosenHoursList);
                               } else {
                                 productDetailsConimble.AddtoBookedlist(
                                     productDetailsConimble
-                                        .AvilableHoursList[index]);
+                                        .AvilableHoursList[index]
+                                        .split(" - ")[0]);
                                 print("added");
+                                print(productDetailsConimble.ChosenHoursList);
                               }
                             },
                             child: productDetailsConimble.ChosenHoursList
                                         .contains(productDetailsConimble
-                                            .AvilableHoursList[index]) ==
+                                            .AvilableHoursList[index]
+                                            .split(" - ")[0]) ==
                                     false
                                 ? Container(
                                     decoration: BoxDecoration(
@@ -112,13 +118,16 @@ class MaterialBottomSheet extends StatelessWidget {
                                 : Container(
                                     decoration: BoxDecoration(
                                       color: Get.isDarkMode == true
-                                          ? Color.fromARGB(255, 114, 133, 254)
-                                          : Color.fromARGB(255, 234, 243, 255),
+                                          ? Color.fromARGB(255, 84, 97, 55)
+                                          : const Color.fromARGB(
+                                              255, 233, 247, 203),
                                       borderRadius: BorderRadius.circular(
                                           AppConstans.Radious),
                                       border: Border.all(
-                                          color: const Color.fromARGB(
-                                              255, 46, 135, 250)),
+                                          color: Get.isDarkMode == true
+                                              ? AppConstans.maincolordarktheme
+                                              : AppConstans
+                                                  .maincolorlighttheme),
                                     ),
                                     child: Center(
                                       child: Row(

@@ -35,12 +35,10 @@ class CourtsListView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? (Get.isDarkMode
-                          ? const Color.fromARGB(255, 114, 133, 254)
-                          : const Color.fromARGB(255, 234, 243, 255))
+                          ? Color.fromARGB(255, 84, 97, 55)
+                          : const Color.fromARGB(255, 233, 247, 203))
                       : (Get.isDarkMode
-                          ? Get.isDarkMode
-                              ? AppConstans.maincolordarktheme
-                              : AppConstans.maincolorlighttheme
+                          ? AppConstans.secondblackcolor
                           : AppConstans.Whitecolor),
                   borderRadius:
                       BorderRadius.circular(Radious2!), // Rounded corners

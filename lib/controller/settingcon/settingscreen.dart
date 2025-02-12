@@ -107,21 +107,21 @@ class Settingscreenimble extends SettingscreenCon {
   }
 
   @override
-  notficationSwitcherFunction(bool newval, String uniqueName) async {
-    IsSwitchedNotfications = newval;
-    settingservices.sharedPref.setBool("$IsSwitchedNotfications", newval);
+  // notficationSwitcherFunction(bool newval, String uniqueName) async {
+  //   IsSwitchedNotfications = newval;
+  //   settingservices.sharedPref.setBool("$IsSwitchedNotfications", newval);
 
-    if (IsSwitchedNotfications == true) {
-      await registertask();
-    } else if (IsSwitchedNotfications == false) {
-      print(IsSwitchedNotfications);
+  //   if (IsSwitchedNotfications == true) {
+  //     await registertask();
+  //   } else if (IsSwitchedNotfications == false) {
+  //     print(IsSwitchedNotfications);
 
-      WorkMangerClass().cancelAll(uniqueName);
-      // Notfications().CancelNotfication();
-    }
+  //     WorkMangerClass().cancelAll(uniqueName);
+  //     // Notfications().CancelNotfication();
+  //   }
 
-    update();
-  }
+  //   update();
+  // }
 
   @override
   void onInit() {

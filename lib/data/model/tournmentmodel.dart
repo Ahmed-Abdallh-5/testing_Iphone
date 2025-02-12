@@ -8,7 +8,8 @@ class TournmentModel {
   Prizes? prizes;
   int? fee;
   int? placeId;
-  String? place;
+  String? placeAr;
+  String? placeEn;
 
   TournmentModel(
       {this.id,
@@ -20,7 +21,8 @@ class TournmentModel {
       this.prizes,
       this.fee,
       this.placeId,
-      this.place});
+      this.placeAr,
+      this.placeEn});
 
   TournmentModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -33,7 +35,8 @@ class TournmentModel {
         json['prizes'] != null ? new Prizes.fromJson(json['prizes']) : null;
     fee = json['fee'];
     placeId = json['place_id'];
-    place = json['place'];
+    placeAr = json['placeAr'];
+    placeEn = json['placeEn'];
   }
 
   Map<String, dynamic> toJson() {
@@ -49,7 +52,8 @@ class TournmentModel {
     }
     data['fee'] = this.fee;
     data['place_id'] = this.placeId;
-    data['place'] = this.place;
+    data['placeAr'] = this.placeAr;
+    data['placeEn'] = this.placeEn;
     return data;
   }
 }

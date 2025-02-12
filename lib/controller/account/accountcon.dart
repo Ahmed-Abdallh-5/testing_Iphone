@@ -118,6 +118,13 @@ class MyaccountConimble extends MyaccountCon {
     update();
   }
 
+  deletefromfavouritelist(int id) {
+    print("objeckgjhgu");
+    print(MyFavouriteList);
+    MyFavouriteList.removeWhere((element) => element['id'] == id);
+    update();
+  }
+
   gotoproductdetails(items) {
     Homeimp2 homeimp2 = Get.put(Homeimp2());
     Get.toNamed("/productsdetails",

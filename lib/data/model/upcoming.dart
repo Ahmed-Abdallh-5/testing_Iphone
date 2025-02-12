@@ -6,16 +6,17 @@ class UpcomingModel {
   final String? to;
   final String? status;
   final double? amount;
+  final String? date;
 
-  UpcomingModel({
-    this.placeName,
-    this.placeNameAr,
-    this.courtName,
-    this.from,
-    this.to,
-    this.status,
-    this.amount,
-  });
+  UpcomingModel(
+      {this.placeName,
+      this.placeNameAr,
+      this.courtName,
+      this.from,
+      this.to,
+      this.status,
+      this.amount,
+      this.date});
 
   factory UpcomingModel.fromJson(Map<String, dynamic> json) {
     return UpcomingModel(
@@ -26,6 +27,7 @@ class UpcomingModel {
       to: json['to'],
       status: json['status'],
       amount: json['amount'],
+      date: json['date'],
     );
   }
 
@@ -38,6 +40,7 @@ class UpcomingModel {
       'to': to,
       'status': status,
       'amount': amount,
+      'date': date,
     };
   }
 }

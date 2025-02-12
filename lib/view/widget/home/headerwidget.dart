@@ -12,13 +12,13 @@ class RowHomeScreen extends StatelessWidget {
     super.key,
     this.icons,
     this.text,
-    required this.onTap,
+    this.onTap,
   });
 
   final IconData? icons;
   final String? text;
 
-  final Function() onTap;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -200,6 +200,21 @@ class localizations extends Translations {
           "347": "دوس هنا علشان تختار الوقت",
           "348": "اشترك",
           "349": "التفاصيل",
+          "350": "لاعب متبقي",
+          "351": "لقد انضممت بنجاح للبطولة",
+          "352": "مبروك",
+          "353": "لقد انضممت للبطولة من قبل",
+          "354": "الجوائز",
+          "355": "رسوم الأشتراك",
+          "356": "جميع الرسوم يتم دفعها في الملعب",
+          "357": "اختار الوقت",
+          "358": "احجز الملعب",
+          "359": "!مفيش ملاعب مفضلة",
+          "360": "! ضيف الملاعب للمضلة عشان تظهر هنا ",
+          "361": "الباسورد غلط",
+          "362": "من",
+          "363": "الى",
+          "364": "جنية",
           ////////////////////////////PRODUCTDETAILS///////////////////
           ///
 
@@ -403,6 +418,21 @@ class localizations extends Translations {
           "347": "Click to select time",
           "348": "I'm in",
           "349": "Details",
+          "350": "Player left",
+          "351": "You have successfully joined the tournament",
+          "352": "Congratulation",
+          "353": "You have already joined the tournament before",
+          "354": "Tournament prizes",
+          "355": "Tournament entry fee",
+          "356": "All fees are paid at the court",
+          "357": "Select Time",
+          "358": "Reverse spot",
+          "359": "Go forth and search!",
+          "360": "once you add to favourite it will show up here!",
+          "361": "Password is wrong",
+          "362": "from",
+          "363": "to",
+          "364": "EGP",
         }
       };
 }

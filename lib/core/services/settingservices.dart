@@ -12,8 +12,8 @@ class Settingservices extends GetxService {
   late SharedPreferences sharedPref;
   final storage = FlutterSecureStorage();
   Future<Settingservices> intial() async {
-    await Notfications().IntilaizeNotfication();
-    await WorkMangerClass().intialmanger();
+    // await Notfications().IntilaizeNotfication();
+    // await WorkMangerClass().intialmanger();
     sharedPref = await SharedPreferences.getInstance();
     await initializeDateFormatting('ar', null);
     await Firebase.initializeApp(

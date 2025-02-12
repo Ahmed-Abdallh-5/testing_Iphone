@@ -3,6 +3,7 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallgeneralcontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class MyFavouriteOneContainer extends StatelessWidget {
@@ -33,12 +34,14 @@ class MyFavouriteOneContainer extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   Text(
-                    "Go forth and search!",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+                    "359".tr,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: AppConstans.Hight * .035),
                   ),
                   Text(
-                    "once you add to favourite it will show up here!",
-                    style: TextStyle(fontSize: 15),
+                    "360".tr,
+                    style: TextStyle(fontSize: AppConstans.Hight * .02),
                   )
                 ],
               ),

@@ -43,7 +43,7 @@ class ProductDetails extends StatelessWidget {
                       productDetailsConimble.chosenCourts.length == 0
                   ? false
                   : true,
-              text: "Reverse spot",
+              text: "358".tr,
               onPressed: () async {
                 // print(productDetailsConimble.ChosenHoursList);
                 // print(productDetailsConimble.chosenCourts);
