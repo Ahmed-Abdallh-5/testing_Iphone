@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         // showPerformanceOverlay: true,
 
-        // home: SplashScreen(),
+        home: SplashScreen(),
         // theme: ThemeData.dark(), // Set light theme
         darkTheme: customDarkTheme,
         themeMode: settingservices.sharedPref.getBool("IsSwitched") == true
