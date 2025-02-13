@@ -11,7 +11,7 @@ class Booking {
   BookItemfunc(court_id, date, hours) async {
     var response = await crud.postdata(
         APPlinks.bookitem, {'court_id': court_id, 'date': date, 'hours': hours},
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
 
     return response.fold((l) => l, (r) => r);
   }

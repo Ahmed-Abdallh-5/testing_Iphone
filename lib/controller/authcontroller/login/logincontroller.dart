@@ -9,9 +9,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 abstract class Logincontrolller extends GetxController {
   login();
@@ -28,7 +28,7 @@ class Logincontrollerimp extends Logincontrolller {
         '832425898824-ank3jnfr7knqonr1t5gn6iann8hkvbl0.apps.googleusercontent.com', // ضع Client ID الذي نسخته
   );
   final formKeylogin = GlobalKey<FormState>();
-  final storage = new FlutterSecureStorage();
+  // final storage = new FlutterSecureStorage();
   late TextEditingController email;
   late TextEditingController Password;
   bool obsecuretext = true;
@@ -68,8 +68,9 @@ class Logincontrollerimp extends Logincontrolller {
               .setString("phone", response['data']['phone']);
           settingservices.sharedPref.setInt("userid", response['data']['id']);
           settingservices.sharedPref.setString("version", response['version']);
-          await settingservices.storage
-              .write(key: "token", value: response['token']);
+          settingservices.sharedPref.setString("token", response['token']);
+          // await settingservices.storage
+          //     .write(key: "token", value: response['token']);
 
           Get.offAndToNamed("/choosecountryscreen");
         } else if (response["message"] ==
@@ -142,17 +143,17 @@ class Logincontrollerimp extends Logincontrolller {
     Get.offNamed("/forgetpassword");
   }
 
-  Future<UserCredential> signInWithFacebook() async {
-    // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+  // Future<UserCredential> signInWithFacebook() async {
+  //   // Trigger the sign-in flow
+  //   final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+  //   // Create a credential from the access token
+  //   final OAuthCredential facebookAuthCredential =
+  //       FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
 
-    // Once signed in, return the UserCredential
-    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-  }
+  //   // Once signed in, return the UserCredential
+  //   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  // }
 
   @override
   Future signInWithGoogle() async {

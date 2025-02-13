@@ -12,7 +12,7 @@ class EditProfile {
 
   getmyfavourite() async {
     var response = await crud.getdata(APPlinks.Home2, {},
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -21,7 +21,7 @@ class EditProfile {
   ) async {
     var response = await crud.uploadImageRequest(
         APPlinks.EditProfilephoto, imagepath,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -41,7 +41,7 @@ class EditProfile {
         {
           'phone': phone,
         },
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 ////////////////////////XXXXXXXXXXXXXXXXXXXX//////////////////////////
@@ -50,13 +50,12 @@ class EditProfile {
     String? name,
   }) async {
     var response = await crud.testPatchfunc(
-      APPlinks.EditProfilephoto,
-      {
-        'name': name,
-        /*'phone' : phone*/
-      },
-      token: await settingservices.storage.read(key: 'token'),
-    );
+        APPlinks.EditProfilephoto,
+        {
+          'name': name,
+          /*'phone' : phone*/
+        },
+        token: await settingservices.sharedPref.getString("token"));
 
     return response.fold((l) => l, (r) => r);
   }

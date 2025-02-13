@@ -9,7 +9,7 @@ class GetTournment {
   Settingservices settingservices = Get.find();
   Getmymatches() async {
     var response = await crud.getdata(APPlinks.tournament, {},
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -19,7 +19,7 @@ class GetTournment {
         {
           "tournament_id": tournament_id,
         },
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 }

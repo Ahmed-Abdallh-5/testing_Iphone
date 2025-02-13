@@ -18,7 +18,7 @@ class BookingHours {
 
     var response = await crud.getdata(
         APPlinks.getavilablehours + "/${courtid}", params,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     print(APPlinks.getavilablehours + "/${courtid}");
 
     return response.fold((l) => l, (r) => r);

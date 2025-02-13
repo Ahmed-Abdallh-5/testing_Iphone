@@ -9,7 +9,7 @@ class GetMyMatches {
   Settingservices settingservices = Get.find();
   Getmymatches() async {
     var response = await crud.getdata(APPlinks.mymatches, {},
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 }

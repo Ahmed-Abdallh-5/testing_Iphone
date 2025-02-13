@@ -7,7 +7,7 @@ import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/data/datasource/remote/auth/login/vertficationlogin.dart';
 import 'package:ecommerce/data/datasource/remote/auth/signup/resendcode.dart';
 import 'package:ecommerce/data/datasource/remote/auth/signup/vertfication.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ abstract class VerficationControllerLogin extends GetxController {
 
 class VerficationControllerLoginimple extends VerficationControllerLogin {
   late Timer _timer;
-  final storage = new FlutterSecureStorage();
+  // final storage = new FlutterSecureStorage();
   bool isbuttomenable = true;
   String errormessage = "";
   String? email;
@@ -52,7 +52,8 @@ class VerficationControllerLoginimple extends VerficationControllerLogin {
         settingservices.sharedPref.setString("version", response['version']);
         settingservices.sharedPref.setString(
             'photo', "${APPlinks.domain}" + response['data']['photo']);
-        await storage.write(key: "token", value: response['token']);
+        token:
+        await settingservices.sharedPref.getString("token");
 
         Get.offAndToNamed("/choosecountryscreen");
         update();

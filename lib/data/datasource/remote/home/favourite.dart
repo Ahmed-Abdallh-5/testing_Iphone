@@ -13,7 +13,7 @@ class Favourites {
         {
           'id': itemsid,
         },
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -22,7 +22,7 @@ class Favourites {
       'id': itemsid,
     };
     var response = await crud.deleteData(APPlinks.removwFavourite, params,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 }

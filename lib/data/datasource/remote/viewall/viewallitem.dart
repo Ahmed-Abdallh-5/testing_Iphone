@@ -12,7 +12,7 @@ class HomeDate2Viewallitems {
     Map<String, dynamic> params = {'city': catID};
 
     var response = await crud.getdata(APPlinks.Home2, params,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -20,7 +20,7 @@ class HomeDate2Viewallitems {
     Map<String, dynamic> params = {'city': catID, 'search': name};
 
     var response = await crud.getdata(APPlinks.Home2, params,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 
@@ -28,7 +28,7 @@ class HomeDate2Viewallitems {
     Map<String, dynamic> params = {'city': catID, 'price': sortway};
 
     var response = await crud.getdata(APPlinks.Home2, params,
-        token: await settingservices.storage.read(key: 'token'));
+        token: await settingservices.sharedPref.getString("token"));
     return response.fold((l) => l, (r) => r);
   }
 }

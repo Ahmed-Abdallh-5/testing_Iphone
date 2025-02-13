@@ -30,7 +30,7 @@ class DeleteAccountimple extends DeleteAccount {
       if (StatueRequest.deletedsuccess == statueRequest) {
         print("response");
 
-        await settingservices.storage.deleteAll();
+        // await settingservices.storage.deleteAll();
 
         // settingservices.sharedPref.clear();
         Get.offAndToNamed('/chooselangscreen');
