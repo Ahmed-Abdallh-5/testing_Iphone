@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:ecommerce/controller/account/accountcon.dart';
 import 'package:ecommerce/controller/favourite/favourite.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
@@ -16,7 +15,7 @@ import 'package:intl/intl.dart';
 
 abstract class ProductDetailsController extends GetxController {
   Getdata();
-  onPageChanged(int index, CarouselPageChangedReason reason);
+
   // pickdate(BuildContext context);
 
   GiveReview(itemsid, double rating) {}

@@ -1,6 +1,8 @@
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
+
 import 'package:ecommerce/view/widget/productdetailwidgets/maincontainer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ecommerce/controller/homecon/homecon.dart';
