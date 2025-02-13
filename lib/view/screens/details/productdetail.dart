@@ -1,8 +1,6 @@
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
-import 'package:ecommerce/view/widget/productdetailwidgets/carousewidget.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/maincontainer.dart';
-import 'package:ecommerce/view/widget/productdetailwidgets/sliderwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ecommerce/controller/homecon/homecon.dart';
@@ -54,26 +52,26 @@ class ProductDetails extends StatelessWidget {
           ),
           body: ListView(
             children: [
-              CasulaSliderWidget(
-                items: [
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[0].image),
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[1].image),
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[2].image),
-                ],
-                activeIndex: productDetailsConimble.activeindex,
-                iconname1: "images/Alt Arrow Left.png",
-                iconname2: "images/Routing 2.png",
-                onPageChanged: (index, reason) {
-                  productDetailsConimble.onPageChanged(index, reason);
-                },
-                onPressedIcon1: () {
-                  Get.back();
-                },
-                urilink: productDetailsConimble.items.locationLink,
-              ),
+              // CasulaSliderWidget(
+              //   items: [
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[0].image),
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[1].image),
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[2].image),
+              //   ],
+              //   activeIndex: productDetailsConimble.activeindex,
+              //   iconname1: "images/Alt Arrow Left.png",
+              //   iconname2: "images/Routing 2.png",
+              //   onPageChanged: (index, reason) {
+              //     productDetailsConimble.onPageChanged(index, reason);
+              //   },
+              //   onPressedIcon1: () {
+              //     Get.back();
+              //   },
+              //   urilink: productDetailsConimble.items.locationLink,
+              // ),
               MainContainerWidget(
                 mainhighet: AppConstans.Hight / 1.3,
                 dy: -AppConstans.Hight * .01,
