@@ -54,26 +54,26 @@ class ProductDetails extends StatelessWidget {
           ),
           body: ListView(
             children: [
-              CasulaSliderWidget(
-                items: [
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[0].image),
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[1].image),
-                  Carousewidget(
-                      imageUrl: productDetailsConimble.items.gallery?[2].image),
-                ],
-                activeIndex: productDetailsConimble.activeindex,
-                iconname1: "images/Alt Arrow Left.png",
-                iconname2: "images/Routing 2.png",
-                onPageChanged: (index, reason) {
-                  productDetailsConimble.onPageChanged(index, reason);
-                },
-                onPressedIcon1: () {
-                  Get.back();
-                },
-                urilink: productDetailsConimble.items.locationLink,
-              ),
+              // CasulaSliderWidget(
+              //   items: [
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[0].image),
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[1].image),
+              //     Carousewidget(
+              //         imageUrl: productDetailsConimble.items.gallery?[2].image),
+              //   ],
+              //   activeIndex: productDetailsConimble.activeindex,
+              //   iconname1: "images/Alt Arrow Left.png",
+              //   iconname2: "images/Routing 2.png",
+              //   onPageChanged: (index, reason) {
+              //     productDetailsConimble.onPageChanged(index, reason);
+              //   },
+              //   onPressedIcon1: () {
+              //     Get.back();
+              //   },
+              //   urilink: productDetailsConimble.items.locationLink,
+              // ),
               MainContainerWidget(
                 mainhighet: AppConstans.Hight / 1.3,
                 dy: -AppConstans.Hight * .01,
