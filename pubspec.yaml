@@ -5,12 +5,12 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.3.2 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  
+  win32: 5.2.0
   cupertino_icons: ^1.0.2
   introduction_screen: ^3.1.12
   get: ^4.6.6
@@ -76,5 +76,3 @@ flutter:
         - asset: fonts/Roboto-Medium.ttf
         - asset: fonts/Roboto-Regular.ttf
 
-dependency_overrides:
-  win32: any
