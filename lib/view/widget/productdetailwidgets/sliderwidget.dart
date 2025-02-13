@@ -1,4 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart'; // لا حاجة إلى تخصيص اسم هنا
+import 'package:carousel_slider/carousel_controller.dart'
+    as slider_controller; // تجنب التعارض مع Flutter
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/view/widget/containericonbuttom.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/animatedindicator.dart';
@@ -6,19 +8,20 @@ import 'package:ecommerce/view/widget/productdetailwidgets/urllancher.dart';
 import 'package:flutter/material.dart';
 
 class CasulaSliderWidget extends StatelessWidget {
-  const CasulaSliderWidget(
-      {super.key,
-      this.items,
-      this.onPageChanged,
-      this.activeIndex,
-      this.onPressedIcon1,
-      this.onPressedIcon2,
-      this.onPressedIcon3,
-      this.iconname1,
-      this.iconname2,
-      this.iconname3,
-      this.name,
-      this.urilink});
+  const CasulaSliderWidget({
+    super.key,
+    this.items,
+    this.onPageChanged,
+    this.activeIndex,
+    this.onPressedIcon1,
+    this.onPressedIcon2,
+    this.onPressedIcon3,
+    this.iconname1,
+    this.iconname2,
+    this.iconname3,
+    this.name,
+    this.urilink,
+  });
 
   final List<Widget>? items;
   final dynamic Function(int, CarouselPageChangedReason)? onPageChanged;
@@ -31,6 +34,7 @@ class CasulaSliderWidget extends StatelessWidget {
   final String? iconname3;
   final String? urilink;
   final String? name;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -67,18 +71,6 @@ class CasulaSliderWidget extends StatelessWidget {
                 name: iconname2,
                 urilink: urilink,
               ),
-
-              // const SizedBox(
-              //   width: 10,
-              // ),
-              // ContainerIconButtom(
-              //   onPressed: onPressedIcon2,
-              //   name: iconname3,
-              // ),
-              // ContainerIconButtom(
-              //   onPressed: onPressedIcon3,
-              //   name: iconname3,
-              // ),
             ],
           ),
         ),
