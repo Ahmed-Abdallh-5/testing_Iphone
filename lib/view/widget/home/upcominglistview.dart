@@ -18,7 +18,7 @@ class UpcomingListViewItems extends GetView<Homeimp2> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppConstans.Hight / 5,
+      height: AppConstans.Hight / 4,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: mymatchesimble.upcoming.length,

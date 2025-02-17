@@ -31,7 +31,7 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
       child: Column(
         children: [
           Container(
-            height: screenHeight * .17,
+            height: screenHeight * .2,
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppConstans.Radious),
@@ -50,7 +50,7 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                       AppConstans.Radious,
                     ),
                     child: Container(
-                      height: screenHeight * .17,
+                      height: screenHeight * .2,
                       width: screenWidth * 0.41,
                       child: CachedNetworkImage(
                         imageUrl: items!.gallery![0].image!,

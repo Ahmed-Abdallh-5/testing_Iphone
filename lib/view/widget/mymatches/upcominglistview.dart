@@ -16,7 +16,7 @@ class UpComingListView extends StatelessWidget {
       itemCount: mymatchesimble.upcoming.length,
       itemBuilder: (BuildContext context, index) {
         return MyMatchesContainer(
-          hight: AppConstans.Hight / 4, // عرض المحتوى بشكل ديناميكي
+          hight: AppConstans.Hight / 3.2, // عرض المحتوى بشكل ديناميكي
           ishistrory: false,
           upcomingModel: UpcomingModel.fromJson(mymatchesimble.upcoming[index]),
         );

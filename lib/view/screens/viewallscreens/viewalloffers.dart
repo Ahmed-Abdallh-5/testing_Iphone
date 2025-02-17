@@ -52,7 +52,7 @@ class ViewallOffersScreen extends StatelessWidget {
                     onPressed: () {
                       Get.bottomSheet(
                         Container(
-                          height: screenHeight * .15,
+                          height: screenHeight * .2,
                           width: double.infinity,
                           child: Material(
                             borderRadius: BorderRadius.only(

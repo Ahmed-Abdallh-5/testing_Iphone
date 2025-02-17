@@ -1,5 +1,5 @@
 class APPlinks {
-  static final String domain = "http://192.168.1.2/api";
+  static final String domain = "http://192.168.1.11/api";
 
   // static final String testlink = "http://10.0.2.2:80/ecommerce/test.php";
 

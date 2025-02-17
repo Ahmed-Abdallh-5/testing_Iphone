@@ -19,7 +19,7 @@ class ListViewallOffers extends GetView<Homeimp2> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
-      height: screenHeight * 0.49,
+      height: screenHeight * 0.55,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.vertical,

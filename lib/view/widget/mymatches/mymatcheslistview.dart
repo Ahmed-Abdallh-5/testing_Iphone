@@ -17,7 +17,7 @@ class MyMatchesListView extends StatelessWidget {
       itemCount: mymatchesimble.history.length,
       itemBuilder: (BuildContext context, index) {
         return MyMatchesContainer(
-          hight: AppConstans.Hight / 5, // عرض المحتوى بشكل ديناميكي
+          hight: AppConstans.Hight / 4, // عرض المحتوى بشكل ديناميكي
           ishistrory: true,
           history: HistoryModel.fromJson(mymatchesimble.history[index]),
         );

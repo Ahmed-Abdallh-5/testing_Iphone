@@ -250,7 +250,9 @@ class MainContainerWidget extends StatelessWidget {
                 CustomDatePicker(
                   locale: settingservices.sharedPref.getString("lang")!,
                 ),
-                const SizedBox(height: 24),
+                SizedBox(
+                  height: AppConstans.Hight * .025,
+                ),
                 InkWell(
                   onTap: () async {
                     print(productDetailsConimble.chosencourtid);

@@ -8,15 +8,16 @@ class Carousewidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        width: AppConstans.Width,
         child: ClipRRect(
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(AppConstans.Radious),
-        bottomRight: Radius.circular(AppConstans.Radious),
-      ),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl!,
-        fit: BoxFit.fill,
-      ),
-    ));
+          borderRadius: BorderRadius.only(
+              // bottomLeft: Radius.circular(AppConstans.Radious),
+              // bottomRight: Radius.circular(AppConstans.Radious),
+              ),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl!,
+            fit: BoxFit.fill,
+          ),
+        ));
   }
 }

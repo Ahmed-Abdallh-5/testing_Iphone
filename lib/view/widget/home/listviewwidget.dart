@@ -13,7 +13,7 @@ class ListViewItems extends GetView<Homeimp2> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppConstans.Hight * .32,
+      height: AppConstans.Hight * .35,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: homeimp.data.length,

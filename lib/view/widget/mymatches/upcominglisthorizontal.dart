@@ -22,7 +22,7 @@ class UpComingListViewHorizontal extends StatelessWidget {
                 ),
               )
             : SizedBox(
-                height: AppConstans.Hight / 3.7,
+                height: AppConstans.Hight / 3,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   // physics: const BouncingScrollPhysics(),
@@ -35,7 +35,7 @@ class UpComingListViewHorizontal extends StatelessWidget {
                               right: AppConstans.PaddingHorizontalAuth),
                           child: MyMatchesContainer(
                             width: AppConstans.Width * .70,
-                            hight: AppConstans.Hight / 4.7,
+                            hight: AppConstans.Hight / 4,
                             isprice: false,
                             ishistrory: false,
                             upcomingModel: UpcomingModel.fromJson(

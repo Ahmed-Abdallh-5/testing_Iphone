@@ -1,10 +1,7 @@
-import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/controller/viewallitemcontroller.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
-import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
-import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/home/searchlistwideget.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallitem.dart';
@@ -59,7 +56,7 @@ class ViewallItems extends StatelessWidget {
                               issortedicon: true,
                               onPressed: () {
                                 Get.bottomSheet(Container(
-                                    height: AppConstans.Hight * .15,
+                                    height: AppConstans.Hight * .2,
                                     width: double.infinity,
                                     child: Material(
                                       borderRadius: BorderRadius.only(
