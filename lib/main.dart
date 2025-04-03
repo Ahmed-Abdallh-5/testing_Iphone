@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(412, 917),
       builder: (context, child) => GetMaterialApp(
-          // home: SplashScreen(),
+          home: SplashScreen(),
           // theme: customDarkTheme,
           darkTheme: customDarkTheme,
           themeMode: settingservices.sharedPref.getBool("IsSwitched") == true

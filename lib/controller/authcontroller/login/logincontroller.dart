@@ -67,7 +67,7 @@ class Logincontrollerimp extends Logincontrolller {
           settingservices.sharedPref.setInt("userid", response['data']['id']);
           settingservices.sharedPref.setString("version", response['version']);
           settingservices.sharedPref.setString("token", response['token']);
-          // await settingservices.storage
+          // await settingservices.storagegit init
           //     .write(key: "token", value: response['token']);
 
           Get.offAndToNamed("/choosecountryscreen");
