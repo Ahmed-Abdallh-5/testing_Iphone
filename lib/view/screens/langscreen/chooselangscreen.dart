@@ -5,6 +5,7 @@ import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/widget/langbutoom.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class chooselangscreen extends StatelessWidget {
@@ -23,10 +24,10 @@ class chooselangscreen extends StatelessWidget {
             style: TextStyleClass.getTextStyle("Bold", AppConstans.Width / 15),
           ),
           SizedBox(
-            height: AppConstans.Hight * .005,
+            height: 15.h,
           ),
-          langbuttom(
-            onpresslnagchangen: () {
+          LangButton(
+            onpressLangChange: () {
               controller.changelang("ar");
               settingservices.sharedPref.setString("chosenlanguage", "2".tr);
               Get.offAllNamed("/onbordscreen");
@@ -34,10 +35,10 @@ class chooselangscreen extends StatelessWidget {
             langname: "2".tr,
           ),
           SizedBox(
-            height: AppConstans.Hight * .015,
+            height: 15.h,
           ),
-          langbuttom(
-            onpresslnagchangen: () {
+          LangButton(
+            onpressLangChange: () {
               controller.changelang("en");
               settingservices.sharedPref.setString("chosenlanguage", "3".tr);
               Get.offAllNamed("/onbordscreen");

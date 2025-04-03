@@ -7,6 +7,7 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/bodysmallauth.dart';
 import 'package:ecommerce/view/widget/authwidgets/textformfield.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -19,6 +20,12 @@ class ForgetpasswordScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: AppConstans.resizebutton,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
         elevation: 0,
         centerTitle: true,
         title: Appbartext(appbartext: "28".tr),
@@ -33,7 +40,9 @@ class ForgetpasswordScreen extends StatelessWidget {
                     child: Container(
                         width: AppConstans.IndicatorWidth,
                         height: AppConstans.IndicatorHight,
-                        child: Lottie.asset(AppConstans.loadinglottie)),
+                        child: Lottie.asset(Get.isDarkMode
+                            ? AppConstans.loadinglottiedark
+                            : AppConstans.loadinglottielight)),
                   )
                 : Padding(
                     padding: EdgeInsets.symmetric(
@@ -44,13 +53,9 @@ class ForgetpasswordScreen extends StatelessWidget {
                           height: AppConstans.distanceapppar,
                         ),
                         // AuthHeadLinesmall(authheadline: "29".tr),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: AppConstans.Width * .01),
-                          child: BodyAuth(authheadline: "30".tr),
-                        ),
+                        BodyAuth(authheadline: "30".tr),
                         SizedBox(
-                          height: AppConstans.Sizeboxsize * 1.5,
+                          height: 24.h,
                         ),
                         Textformfield(
                             iserroredtext:
@@ -62,10 +67,6 @@ class ForgetpasswordScreen extends StatelessWidget {
                                   val!, val.length, val.length, "Email");
                             },
                             hinttextstring: "ArenaX@gmail.com",
-                            icon: Icon(
-                              Icons.email_outlined,
-                              color: AppConstans.IconColor,
-                            ),
                             textEditingController: forgetpasscontroller.email),
                         SizedBox(
                           height: AppConstans.Sizeboxsize * 1.5,
@@ -73,7 +74,7 @@ class ForgetpasswordScreen extends StatelessWidget {
                         Spacer(),
                         Sharedbuttom(
                           text: "31".tr,
-                          hight: AppConstans.Hight * .06,
+                          hight: AppConstans.authbottomsize,
                           onpreesed: () {
                             forgetpasscontroller.keyow.currentState!.validate();
 
@@ -81,7 +82,7 @@ class ForgetpasswordScreen extends StatelessWidget {
                           },
                         ),
 
-                        SizedBox(height: AppConstans.Hight * 0.06),
+                        SizedBox(height: AppConstans.distancefrombottombar)
                       ],
                     ),
                   ),

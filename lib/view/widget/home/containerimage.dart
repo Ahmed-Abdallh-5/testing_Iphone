@@ -1,7 +1,7 @@
-import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ConatinerImage extends StatelessWidget {
@@ -22,34 +22,40 @@ class ConatinerImage extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: index,
         itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.only(right: AppConstans.Width * 0.05),
+          padding: EdgeInsets.only(right: 16.w),
           child: Container(
             height: hight,
             width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppConstans.Radious),
-              color: const Color.fromARGB(255, 233, 247, 203),
+              color: Get.isDarkMode
+                  ? Color.fromARGB(255, 106, 103, 106)
+                  : const Color.fromARGB(255, 233, 247, 203),
             ),
             child: Stack(
               children: [
                 Positioned(
-                    right: AppConstans.Width * 0.03,
-                    top: AppConstans.Width * 0.03,
-                    child: Image.asset(image![index])),
+                    right: 9.w,
+                    top: 15.h,
+                    child: Image.asset(
+                      image![index],
+                      width: 56.w,
+                      height: 56.h,
+                    )),
                 Positioned(
-                    top: AppConstans.Hight * 0.03, // 3% of screen height
-                    left: AppConstans.Width * 0.03, // 3% of screen width
+                    top: 5.h, // 3% of screen height
+                    left: 22.w, // 3% of screen width
                     child: Image.asset(
                       "images/Vector 13 (Stroke).png",
                     )),
                 Positioned(
-                  left: AppConstans.Width * 0.02, // 2% of screen width
-                  bottom: AppConstans.Hight * 0.02, // 2% of screen height
+                  left: 8.w, // 2% of screen width
+                  bottom: 5.h, // 2% of screen height
                   child: Text(
                     texts![index],
                     style: TextStyleClass.getTextStyle(
-                      "medium",
-                      AppConstans.Hight * 0.03,
+                      "weight600",
+                      24.sp,
                       color: Get.isDarkMode == true
                           ? AppConstans.blackcolor
                           : AppConstans.darkgreycolor,

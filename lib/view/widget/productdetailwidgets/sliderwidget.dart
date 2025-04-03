@@ -4,6 +4,7 @@ import 'package:ecommerce/view/widget/containericonbuttom.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/animatedindicator.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/urllancher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CasulaSliderWidget extends StatelessWidget {
   const CasulaSliderWidget(
@@ -36,14 +37,14 @@ class CasulaSliderWidget extends StatelessWidget {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: AppConstans.Hight * .34,
+            height: 240.h,
             viewportFraction: 1.5,
             onPageChanged: onPageChanged,
           ),
           items: items,
         ),
         Positioned(
-          bottom: 15,
+          bottom: 15.h,
           left: 0,
           right: 0,
           child: Center(

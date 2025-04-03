@@ -3,6 +3,7 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class IconButtomNav extends StatelessWidget {
@@ -24,17 +25,15 @@ class IconButtomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Settingservices settingservices = Get.find();
-    final double itemSize =
-        AppConstans.Hight * 0.04; // Common size for all items
 
     return InkWell(
       onTap: onPressed,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // Center items vertically
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: itemSize,
-            width: itemSize * 2,
+            height: 32.h,
+            width: 50.w,
             decoration: BoxDecoration(
               shape:
                   circleavater == true ? BoxShape.circle : BoxShape.rectangle,
@@ -45,12 +44,12 @@ class IconButtomNav extends StatelessWidget {
                   : Colors.transparent,
               borderRadius: circleavater == true
                   ? null
-                  : BorderRadius.circular(AppConstans.Hight * 0.04),
+                  : BorderRadius.circular(AppConstans.Radious),
             ),
             alignment: Alignment.center,
             child: circleavater == true
                 ? CircleAvatar(
-                    radius: itemSize / 2,
+                    radius: AppConstans.Radious,
                     backgroundImage: CachedNetworkImageProvider(
                         settingservices.sharedPref.getString("photo")!),
                   )
@@ -59,16 +58,16 @@ class IconButtomNav extends StatelessWidget {
                     color: isactivated == true
                         ? AppConstans.Whitecolor
                         : AppConstans.grey,
-                    height: itemSize * 0.8, // Adjust image size
-                    width: itemSize * 0.8,
+                    height: 25.h, // Adjust image size
+                    width: 25.w,
                   ),
           ),
           Text(
-            circleavater == true ? "Account" : navlabel!,
+            navlabel!,
             textAlign: TextAlign.center,
             style: TextStyleClass.getTextStyle(
               'Medium',
-              AppConstans.Hight * 0.015, // Responsive font size
+              12.sp, // Responsive font size
               color: isactivated == true
                   ? Get.isDarkMode
                       ? AppConstans.maincolordarktheme

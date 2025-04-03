@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OfferConatinerPercentage extends StatelessWidget {
@@ -17,8 +18,8 @@ class OfferConatinerPercentage extends StatelessWidget {
             topRight: Radius.circular(AppConstans.Radious),
           ),
           child: Container(
-            height: AppConstans.Hight * .03,
-            width: AppConstans.Width * .2,
+            height: 24.h,
+            width: 80.w,
             decoration: BoxDecoration(
                 color: Get.isDarkMode
                     ? AppConstans.maincolordarktheme
@@ -26,8 +27,7 @@ class OfferConatinerPercentage extends StatelessWidget {
             child: Center(
                 child: Text(
               "${discount}% Off",
-              style: TextStyleClass.getTextStyle(
-                  "weight500", AppConstans.Hight * .015,
+              style: TextStyleClass.getTextStyle("weight500", 12.sp,
                   color: AppConstans.Whitecolor),
             )),
           )),

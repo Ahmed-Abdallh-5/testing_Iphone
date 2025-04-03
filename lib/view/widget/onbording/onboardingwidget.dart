@@ -1,7 +1,7 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
-import 'package:ecommerce/view/screens/onboarding/onboardingscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OnboardingWidget extends StatelessWidget {
@@ -15,37 +15,35 @@ class OnboardingWidget extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          ClipPath(
-            clipper: BottomCurveClipper(),
-            child: Container(
-              height: AppConstans.Hight / 1.6,
-              width: double.infinity,
-              child: Image.asset(
-                photostring!,
-                fit: BoxFit.fill,
-              ),
+          SizedBox(
+            height: 525.h,
+            width: 650.w,
+            child: Image.asset(
+              photostring!,
+              fit: BoxFit.fill,
             ),
           ),
-          // SizedBox(height: 20),
+          SizedBox(height: 35.h),
           Text(
             maintext!,
             textAlign: TextAlign.center,
             style: TextStyleClass.getTextStyle(
               "medium",
-              AppConstans.Width * 0.08,
+              32.sp,
 
               // color: Get.isDarkMode == true ?
               // Colors.black,
             ),
           ),
+          SizedBox(height: 16.h),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppConstans.Width * 0.1),
+            padding: EdgeInsets.symmetric(horizontal: 64.w),
             child: Text(
               subtext!,
               textAlign: TextAlign.center,
               style: TextStyleClass.getTextStyle(
-                "weight400",
-                AppConstans.Width * 0.05,
+                "regular",
+                24.sp,
                 color: Get.isDarkMode == true
                     ? AppConstans.Whitecolor
                     : AppConstans.darkgreycolor,

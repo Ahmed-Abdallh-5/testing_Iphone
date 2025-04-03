@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
 import 'package:ecommerce/core/funtions/handlingdata.dart';
@@ -100,10 +100,9 @@ class MyaccountConimble extends MyaccountCon {
     update();
     if (statueRequest == StatueRequest.Success) {
       MyFavouriteList.clear();
-      MyFavouriteList.addAll(response['data'].where((element) {
-        print(MyFavouriteList.length);
-        return element['isFavorite'] == true;
-      }));
+      MyFavouriteList.addAll(
+          response['data'].where((e) => e['isFavorite'] == true));
+      print("ramdan");
     } else if (statueRequest == StatueRequest.offline) {
       Get.defaultDialog(
         title: "311".tr,
@@ -203,32 +202,62 @@ class MyaccountConimble extends MyaccountCon {
   }
 
   @override
-  Future PickFromCamera() async {
-    var pickedimage = await imagepicker.pickImage(source: ImageSource.camera);
-    if (pickedimage != null) {
-      image = File(pickedimage.path);
-      int imagebeforecompression = await image!.length();
-      print(image);
-      print("size : $imagebeforecompression");
-      settingservices.sharedPref.setBool("$isimagechosen", true);
-      settingservices.sharedPref.setBool("$isimagechosen", true);
-      isimagechosen = true;
-      update();
-    } else {}
+  Future<void> PickFromCamera() async {
+    var status = await Permission.camera.status;
+
+    if (status.isDenied) {
+      status = await Permission.camera.request();
+    }
+
+    if (status.isGranted) {
+      var pickedimage = await imagepicker.pickImage(source: ImageSource.camera);
+      if (pickedimage != null) {
+        image = File(pickedimage.path);
+        int imagebeforecompression = await image!.length();
+        print(image);
+        print("size : $imagebeforecompression");
+
+        settingservices.sharedPref.setBool("isimagechosen", true);
+        isimagechosen = true;
+        update();
+      }
+    } else if (status.isPermanentlyDenied) {
+      openAppSettings();
+    } else {
+      print("Camera permission denied");
+    }
   }
 
   Future<void> PickFromGallery() async {
-    var pickedimage = await imagepicker.pickImage(source: ImageSource.gallery);
-    if (pickedimage != null) {
-      image = File(pickedimage.path);
-      print(image);
-      // CompressFile();
+    PermissionStatus status;
 
-      settingservices.sharedPref.setBool("$isimagechosen", true);
-      isimagechosen = true;
-      update();
+    if (Platform.isAndroid) {
+      if (await Permission.photos.isDenied ||
+          await Permission.photos.isRestricted) {
+        status = await Permission.photos.request();
+      } else {
+        status = await Permission.photos.status;
+      }
     } else {
-      // Handle the case where pickedimage is null
+      status = await Permission.photos.request();
+    }
+
+    if (status.isGranted) {
+      var pickedimage =
+          await imagepicker.pickImage(source: ImageSource.gallery);
+      if (pickedimage != null) {
+        image = File(pickedimage.path);
+        print(image);
+
+        settingservices.sharedPref.setBool("isimagechosen", true);
+        isimagechosen = true;
+        update();
+      }
+    } else if (status.isPermanentlyDenied) {
+      print("Gallery permission permanently denied. Open settings.");
+      openAppSettings();
+    } else {
+      print("Gallery permission denied");
     }
   }
 

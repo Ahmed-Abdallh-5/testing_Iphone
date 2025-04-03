@@ -1,5 +1,5 @@
-import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircleContainerImage extends StatelessWidget {
   const CircleContainerImage({super.key, this.text, required this.image});
@@ -9,8 +9,8 @@ class CircleContainerImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: AppConstans.Width / 4,
-        width: AppConstans.Width / 4,
+        height: 100.h,
+        width: 100.w,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             // borderRadius: BorderRadius.circular(200),

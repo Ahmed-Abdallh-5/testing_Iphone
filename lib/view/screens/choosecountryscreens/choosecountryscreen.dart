@@ -7,7 +7,9 @@ import 'package:ecommerce/view/widget/sharedwidgets/Dropdownsearch.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/home/handlingviewviewall.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
+import 'package:ecommerce/view/widget/shimmer/chossecountryscreenshimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ChooseCounteyScreen extends StatelessWidget {
@@ -34,8 +36,8 @@ class ChooseCounteyScreen extends StatelessWidget {
         },
         child: GetBuilder<ChosseCountryimple>(
           builder: (chosseCountryimple) => chosseCountryimple.statueRequest ==
-                  StatueRequest.loadinghome
-              ? HandlingView()
+                  StatueRequest.loading
+              ? ShimmerChooseCountry()
               : Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: AppConstans.PaddingHorizontalAuth,
@@ -44,7 +46,7 @@ class ChooseCounteyScreen extends StatelessWidget {
                     children: [
                       Expanded(
                           child: ListView(children: [
-                        SizedBox(height: AppConstans.distanceapppar * 2),
+                        SizedBox(height: AppConstans.distanceapppar),
 
                         // Dropdown for countries
                         DropDownWidegt(
@@ -66,7 +68,7 @@ class ChooseCounteyScreen extends StatelessWidget {
                           },
                         ),
 
-                        SizedBox(height: AppConstans.Sizeboxsize * 1.5),
+                        SizedBox(height: 24.h),
 
                         // Dropdown for districts
                         DropDownWidegt(
@@ -105,7 +107,7 @@ class ChooseCounteyScreen extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(height: AppConstans.Hight * .06)
+                      SizedBox(height: AppConstans.distancefrombottombar)
                     ],
                   ),
                 ),

@@ -47,7 +47,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Colors.blue),
+              icon: Icon(Icons.arrow_back_ios,
+                  color: Get.isDarkMode
+                      ? AppConstans.maincolordarktheme
+                      : AppConstans.maincolorlighttheme),
               onPressed: isCurrentMonth
                   ? null // Disable the button if it's the current month
                   : () {
@@ -71,7 +74,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
               ),
             ),
             IconButton(
-              icon: const Icon(Icons.arrow_forward_ios, color: Colors.blue),
+              icon: Icon(Icons.arrow_forward_ios,
+                  color: Get.isDarkMode
+                      ? AppConstans.maincolordarktheme
+                      : AppConstans.maincolorlighttheme),
               onPressed: () {
                 setState(() {
                   selectedDate = DateTime(
@@ -109,6 +115,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                     selectedDate = date;
                     productDetailsConimble.formattedDate =
                         DateFormat('EEEE d MMM').format(date);
+                    productDetailsConimble.clearchosenhours();
                   });
                 },
                 child: Container(

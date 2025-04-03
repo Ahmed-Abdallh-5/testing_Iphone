@@ -6,7 +6,9 @@ valditor(String value, int min, int max, String type,
     if (value.isEmpty) {
       return "126".tr;
     }
-
+    if (value.contains(" ")) {
+      return "373".tr;
+    }
     if (!GetUtils.isUsername(value) || value is int || value is double) {
       return "127".tr;
     }
@@ -21,6 +23,9 @@ valditor(String value, int min, int max, String type,
   if (type == "Email") {
     if (value.isEmpty) {
       return "126".tr;
+    }
+    if (value.contains(" ")) {
+      return "372".tr;
     }
     if (!GetUtils.isEmail(value)) {
       return "130".tr;

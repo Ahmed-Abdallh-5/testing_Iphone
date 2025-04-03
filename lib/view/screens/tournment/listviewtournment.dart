@@ -19,9 +19,6 @@ class ListviewTournment extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                SizedBox(
-                  height: AppConstans.Hight * .018,
-                ),
                 TournmentContainer(
                   tournmentModel: TournmentModel.fromJson(
                       tournmentconimble.tournament[index]),

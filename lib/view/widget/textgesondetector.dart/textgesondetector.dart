@@ -1,6 +1,6 @@
-import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextDectecot extends StatelessWidget {
   const TextDectecot(
@@ -10,12 +10,14 @@ class TextDectecot extends StatelessWidget {
       this.color,
       this.alignment = Alignment.bottomLeft,
       this.bootomstatus = true,
-      this.smallfont = false
+      this.smallfont = false,
+      this.fontsize
 
       // Default value is assigned here
       });
 
   final String text;
+  final double? fontsize;
   final VoidCallback? ontap;
   final Color? color;
   final AlignmentGeometry alignment;
@@ -32,9 +34,7 @@ class TextDectecot extends StatelessWidget {
           text,
           style: TextStyleClass.getTextStyle(
             "Bold",
-            smallfont == false
-                ? AppConstans.Width / 24
-                : AppConstans.Width / 35,
+            16.sp,
             color: color,
           ),
         ),

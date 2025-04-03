@@ -1,9 +1,8 @@
 import 'package:ecommerce/controller/homecon/homecon.dart';
-import 'package:ecommerce/core/constans/constansappvalues.dart';
-
 import 'package:ecommerce/data/model/itemsmodel.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'generalitemclasscontainer.dart';
@@ -15,10 +14,10 @@ class ListViewOffers extends GetView<Homeimp2> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppConstans.Hight * .4,
+      height: 320.h,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: homeimp.offers.length,
+          itemCount: 3,
           itemBuilder: (context, index) {
             return ItemsModelClass(
               offercontainer: true,

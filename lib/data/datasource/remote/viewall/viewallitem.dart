@@ -13,6 +13,7 @@ class HomeDate2Viewallitems {
 
     var response = await crud.getdata(APPlinks.Home2, params,
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -21,6 +22,7 @@ class HomeDate2Viewallitems {
 
     var response = await crud.getdata(APPlinks.Home2, params,
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -29,6 +31,7 @@ class HomeDate2Viewallitems {
 
     var response = await crud.getdata(APPlinks.Home2, params,
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 }

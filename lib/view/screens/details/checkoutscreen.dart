@@ -20,7 +20,7 @@ class CheckoutScreen extends StatelessWidget {
           centerTitle: true,
           title: Appbartext(appbartext: "Payment"),
           leading: Padding(
-            padding: EdgeInsets.only(left: AppConstans.PaddingHorizontal),
+            padding: EdgeInsets.only(left: AppConstans.PaddingHorizontalAuth),
             child: IconButton(
                 onPressed: () {
                   Get.back();

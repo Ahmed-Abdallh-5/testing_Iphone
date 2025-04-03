@@ -7,6 +7,7 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/bodysmallauth.dart';
 import 'package:ecommerce/view/widget/authwidgets/textformfield.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -33,7 +34,9 @@ class ResetpasswordScreen extends StatelessWidget {
                       child: Container(
                           width: AppConstans.IndicatorWidth,
                           height: AppConstans.IndicatorHight,
-                          child: Lottie.asset(AppConstans.loadinglottie)),
+                          child: Lottie.asset(Get.isDarkMode
+                              ? AppConstans.loadinglottiedark
+                              : AppConstans.loadinglottielight)),
                     )
                   : Padding(
                       padding: EdgeInsets.symmetric(
@@ -44,15 +47,9 @@ class ResetpasswordScreen extends StatelessWidget {
                             height: AppConstans.distanceapppar,
                           ),
                           BodyAuth(authheadline: "37".tr),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(horizontal: 40),
-                          //   child: BodyAuth(
-                          //       authheadline: "Please Enter Your Email Address To send You"),
-                          // ),
                           SizedBox(
-                            height: AppConstans.Sizeboxsize * 2,
+                            height: 24.h,
                           ),
-
                           Textformfield(
                               errortext: restcontroller.passwordError,
                               iserroredtext: restcontroller.errortextpassword,
@@ -70,11 +67,9 @@ class ResetpasswordScreen extends StatelessWidget {
                                     passval2: restcontroller.repassword.text);
                               },
                               hinttextstring: "24".tr,
-                              icon: Icon(Icons.lock_outline),
                               textEditingController: restcontroller.password),
-
                           SizedBox(
-                            height: AppConstans.Sizeboxsize,
+                            height: 24.h,
                           ),
                           Textformfield(
                               errortext: restcontroller.passwordError,
@@ -95,16 +90,15 @@ class ResetpasswordScreen extends StatelessWidget {
                               hinttextstring: "24".tr,
                               icon: Icon(Icons.lock_outline),
                               textEditingController: restcontroller.repassword),
-
                           Spacer(),
                           Sharedbuttom(
                             text: "40".tr,
-                            hight: AppConstans.Hight * .06,
+                            hight: 48.h,
                             onpreesed: () {
                               restcontroller.confirmpassword();
                             },
                           ),
-                          SizedBox(height: AppConstans.Hight * 0.06),
+                          SizedBox(height: AppConstans.distancefrombottombar)
                         ],
                       ),
                     ),

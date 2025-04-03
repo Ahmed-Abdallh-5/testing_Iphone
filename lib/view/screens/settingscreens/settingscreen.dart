@@ -24,7 +24,7 @@ class SettingScreeneScreen extends StatelessWidget {
             centerTitle: true,
             title: Appbartext(appbartext: "85".tr),
             leading: Padding(
-              padding: EdgeInsets.only(left: AppConstans.PaddingHorizontal),
+              padding: EdgeInsets.only(left: AppConstans.PaddingHorizontalAuth),
               child: IconButton(
                   onPressed: () {
                     Get.forceAppUpdate();
@@ -34,8 +34,8 @@ class SettingScreeneScreen extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: AppConstans.PaddingHorizontal),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppConstans.PaddingHorizontalAuth),
             child: ListView(
               children: [
                 SizedBox(
@@ -55,7 +55,7 @@ class SettingScreeneScreen extends StatelessWidget {
                               : AppConstans.darkgreycolor)),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppConstans.PaddingHorizontal),
+                        horizontal: AppConstans.PaddingHorizontalAuth),
                     child: Column(
                       children: [
                         SizedBox(
@@ -181,13 +181,16 @@ class SettingScreeneScreen extends StatelessWidget {
                               : AppConstans.darkgreycolor)),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppConstans.PaddingHorizontal),
+                        horizontal: AppConstans.PaddingHorizontalAuth),
                     child: Column(
                       children: [
                         SizedBox(
                           height: AppConstans.Hight * .022,
                         ),
                         IconSetting(
+                          onTap: () {
+                            Get.toNamed('/aboutUsScreen');
+                          },
                           istrashed: false,
                           image: "images/Question Circle.png",
                           switcher: false,
@@ -197,6 +200,9 @@ class SettingScreeneScreen extends StatelessWidget {
                           height: AppConstans.Hight * .022,
                         ),
                         IconSetting(
+                          onTap: () {
+                            Get.toNamed('/privacyScreen');
+                          },
                           istrashed: false,
                           image: "images/Shield Warning.png",
                           switcher: false,
@@ -206,6 +212,9 @@ class SettingScreeneScreen extends StatelessWidget {
                           height: AppConstans.Hight * .022,
                         ),
                         IconSetting(
+                          onTap: () {
+                            Get.toNamed('/termsAndConditionsScreen');
+                          },
                           istrashed: false,
                           image: "images/File Text.png",
                           switcher: false,
@@ -235,7 +244,7 @@ class SettingScreeneScreen extends StatelessWidget {
                               : AppConstans.darkgreycolor)),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: AppConstans.PaddingHorizontal),
+                        horizontal: AppConstans.PaddingHorizontalAuth),
                     child: Column(
                       children: [
                         SizedBox(
@@ -272,7 +281,7 @@ class SettingScreeneScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: AppConstans.Hight * .022,
                 ),
               ],
             ),

@@ -10,6 +10,7 @@ class HomeDate {
   getdata() async {
     var response = await crud.getdata(APPlinks.ChooseCountry, {},
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -18,6 +19,7 @@ class HomeDate {
         '${APPlinks.ChooseCountry}/$id'; // Append the ID to the base URL
     var response = await crud.getdata(url, {},
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 }

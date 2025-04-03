@@ -14,6 +14,7 @@ class Favourites {
           'id': itemsid,
         },
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -23,6 +24,7 @@ class Favourites {
     };
     var response = await crud.deleteData(APPlinks.removwFavourite, params,
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -1,10 +1,10 @@
 class APPlinks {
-  static final String domain = "http://192.168.1.11/api";
+  static final String domain = "https://test.hgallerycandles.com/api";
 
   // static final String testlink = "http://10.0.2.2:80/ecommerce/test.php";
 
   ////////////////////////////////#authlinks//////////////////////////
-
+  static final String googleSignUp = "${domain}/login/google";
   static final String SignUPlink = "${domain}/register";
   static final String login = "${domain}/login";
   static final String vertifycodelink = "${domain}/email/verify";

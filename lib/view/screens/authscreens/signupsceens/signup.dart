@@ -7,6 +7,7 @@ import 'package:ecommerce/view/widget/authwidgets/textformfield.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:ecommerce/view/widget/textgesondetector.dart/textgesondetector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -32,7 +33,9 @@ class SignUpscreen extends StatelessWidget {
                   child: Container(
                     width: AppConstans.IndicatorWidth,
                     height: AppConstans.IndicatorHight,
-                    child: Lottie.asset(AppConstans.loadinglottie),
+                    child: Lottie.asset(Get.isDarkMode
+                        ? AppConstans.loadinglottiedark
+                        : AppConstans.loadinglottielight),
                   ),
                 )
               : Padding(
@@ -53,13 +56,9 @@ class SignUpscreen extends StatelessWidget {
                         textEditingController: signupcontroller.username,
                         textInputType: TextInputType.name,
                         hinttextstring: "ArenaX",
-                        icon: Icon(
-                          Icons.person_2_outlined,
-                          color: AppConstans.IconColor,
-                        ),
                       ),
                       SizedBox(
-                        height: AppConstans.Sizeboxsize,
+                        height: 24.h,
                       ),
                       Textformfield(
                         iserroredtext: signupcontroller.iserroredtextemail,
@@ -77,17 +76,11 @@ class SignUpscreen extends StatelessWidget {
                         textEditingController: signupcontroller.Email,
                         textInputType: TextInputType.emailAddress,
                         hinttextstring: "ArenaX@gmail.com",
-                        icon: Icon(
-                          Icons.email_outlined,
-                          color: AppConstans.IconColor,
-                        ),
                       ),
                       SizedBox(
-                        height: AppConstans.Sizeboxsize,
+                        height: 24.h,
                       ),
                       Textformfield(
-                        // preixtext: "+20",
-                        // isphonetext: true,
                         iserroredtext: signupcontroller.iserroredtextphone,
                         errortext: signupcontroller.errortextphone,
                         lapeltext: "23".tr,
@@ -99,22 +92,23 @@ class SignUpscreen extends StatelessWidget {
                         textEditingController: signupcontroller.phone,
                         textInputType: TextInputType.phone,
                         hinttextstring: "121212121",
-                        icon: Icon(
-                          Icons.phone_android_outlined,
-                          color: AppConstans.IconColor,
-                        ),
                       ),
-
                       SizedBox(
-                        height: AppConstans.Sizeboxsize,
+                        height: 24.h,
                       ),
                       Textformfield(
                         iserroredtext: signupcontroller.ispasswordError,
                         errortext: signupcontroller.passwordError,
                         lapeltext: "24".tr,
                         iconsuffix: signupcontroller.obsecuretext
-                            ? Icon(Icons.visibility_off_outlined)
-                            : Icon(Icons.visibility),
+                            ? Icon(Icons.visibility_off_outlined,
+                                color: Get.isDarkMode
+                                    ? AppConstans.darkgreycolordarktheme
+                                    : AppConstans.darkgreycolor)
+                            : Icon(Icons.visibility,
+                                color: Get.isDarkMode
+                                    ? AppConstans.darkgreycolordarktheme
+                                    : AppConstans.darkgreycolor),
                         obscureText: signupcontroller.obsecuretext,
                         showpassword: () {
                           signupcontroller.Obsecuretextfunction();
@@ -127,13 +121,9 @@ class SignUpscreen extends StatelessWidget {
                         },
                         textEditingController: signupcontroller.Password,
                         hinttextstring: "xxxxxxxx",
-                        icon: Icon(
-                          Icons.lock_outline,
-                          color: AppConstans.IconColor,
-                        ),
                       ),
                       SizedBox(
-                        height: AppConstans.Sizeboxsize,
+                        height: 24.h,
                       ),
                       Textformfield(
                         iserroredtext: signupcontroller.ispasswordError,
@@ -155,16 +145,7 @@ class SignUpscreen extends StatelessWidget {
                         textEditingController:
                             signupcontroller.confirmPassword!,
                         hinttextstring: "xxxxxxxx",
-                        icon: Icon(
-                          Icons.lock_outline,
-                          color: AppConstans.IconColor,
-                        ),
                       ),
-                      SizedBox(
-                        height: AppConstans.Sizeboxsize,
-                      ),
-                      // Spacer to push the button down
-
                       Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -172,7 +153,7 @@ class SignUpscreen extends StatelessWidget {
                           Text(
                             "26".tr,
                             style: TextStyle(
-                                fontSize: AppConstans.Width / 25,
+                                fontSize: 16.sp,
                                 color: Get.isDarkMode == true
                                     ? AppConstans.Whitecolor
                                     : AppConstans.darkgreycolor),
@@ -188,10 +169,10 @@ class SignUpscreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 24.h),
                       Sharedbuttom(
                         text: "200".tr,
-                        hight: AppConstans.Hight * 0.065,
+                        hight: AppConstans.authbottomsize,
                         onpreesed: () {
                           if (signupcontroller.formstatekey.currentState!
                               .validate()) {
@@ -199,7 +180,7 @@ class SignUpscreen extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(height: AppConstans.Hight * 0.06),
+                      SizedBox(height: AppConstans.distancefrombottombar)
                     ],
                   ),
                 ),

@@ -23,7 +23,9 @@ class SearchListWidget extends StatelessWidget {
                   height: AppConstans.Hight / 5,
                   width: AppConstans.Hight / 5,
                   child: LottieBuilder.asset(
-                    "lottie/noresult.json",
+                    Get.isDarkMode
+                        ? AppConstans.Searchdarktheme
+                        : AppConstans.Searchlighttheme,
                   ),
                 ),
                 Text(

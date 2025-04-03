@@ -7,6 +7,7 @@ import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallgeneralcontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ListViewallItemsSorting extends GetView<Homeimp2> {
@@ -19,13 +20,14 @@ class ListViewallItemsSorting extends GetView<Homeimp2> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
-      height: screenHeight * 0.49,
+      height: 136.h,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: viewallitemsimble!.SortedList.length,
           itemBuilder: (context, index) {
             return ItemsModelClassViewall(
+              hight: 136.h,
               items:
                   ItemModelJson.fromJson(viewallitemsimble!.SortedList[index]),
             );

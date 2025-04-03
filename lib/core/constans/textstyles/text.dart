@@ -31,6 +31,10 @@ class TextStyleClass {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle robotoWeight600 = TextStyle(
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle robotoWeight700 = TextStyle(
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w700,
@@ -68,6 +72,10 @@ class TextStyleClass {
   static const TextStyle cairoWeight500 = TextStyle(
     fontFamily: 'Cairo',
     fontWeight: FontWeight.w500,
+  );
+  static const TextStyle cairoWeight600 = TextStyle(
+    fontFamily: 'Cairo',
+    fontWeight: FontWeight.w600,
   );
   static const TextStyle cairoWeight700 = TextStyle(
     fontFamily: 'Cairo',
@@ -112,6 +120,10 @@ class TextStyleClass {
         case 'medium':
           baseStyle = cairoWeight500;
           break;
+        case 'weight600':
+          baseStyle = cairoWeight600;
+          break;
+
         case 'weight700':
         case 'bold':
           baseStyle = cairoWeight700;
@@ -138,6 +150,9 @@ class TextStyleClass {
         case 'weight500':
         case 'medium':
           baseStyle = robotoWeight500;
+          break;
+        case 'weight600':
+          baseStyle = robotoWeight600;
           break;
         case 'weight700':
         case 'bold':

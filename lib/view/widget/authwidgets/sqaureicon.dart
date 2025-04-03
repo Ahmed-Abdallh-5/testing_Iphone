@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SquareIconButton extends StatelessWidget {
@@ -11,17 +12,20 @@ class SquareIconButton extends StatelessWidget {
     return InkWell(
         onTap: onPressed,
         child: Container(
-          height: AppConstans.Hight * .06,
-          width: AppConstans.Hight * .06,
+          height: 48.h,
+          width: 48.w,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppConstans.Radious),
+              color: Get.isDarkMode
+                  ? AppConstans.secondblackcolor
+                  : AppConstans.Whitecolor,
               border: Border.all(
                 color: Get.isDarkMode
                     ? AppConstans.maincolordarktheme
                     : AppConstans.maincolorlighttheme,
               )),
-          child:
-              Container(margin: EdgeInsets.all(5), child: Image.asset(image!)),
+          child: Container(
+              margin: EdgeInsets.all(10.r), child: Image.asset(image!)),
         ));
   }
 }

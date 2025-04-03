@@ -59,9 +59,9 @@ class TornamentDetailsScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  right: AppConstans.PaddingHorizontal,
-                  left: AppConstans.PaddingHorizontal,
-                  top: AppConstans.PaddingHorizontal,
+                  right: AppConstans.PaddingHorizontalAuth,
+                  left: AppConstans.PaddingHorizontalAuth,
+                  top: AppConstans.PaddingHorizontalAuth,
                 ),
                 child: ContainerIconButtom(
                   onPressed: () {

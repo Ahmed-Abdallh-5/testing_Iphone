@@ -1,9 +1,6 @@
 import 'package:ecommerce/view/screens/account/accountscreennew.dart';
-import 'package:ecommerce/view/screens/favouritescreen.dart';
 import 'package:ecommerce/view/screens/homescreens/home2.dart';
 import 'package:ecommerce/view/screens/mymatches/mymatchesscreen.dart';
-
-import 'package:ecommerce/view/screens/settingscreens/settingscreen.dart';
 import 'package:ecommerce/view/screens/tournment/tournmentscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,5 +1,4 @@
 import 'package:ecommerce/controller/authcontroller/login/loginvertficioncon.dart';
-import 'package:ecommerce/controller/authcontroller/signupcontroller/vertfiycodesignup.dart';
 
 import 'package:ecommerce/core/classes/statuerequest.dart';
 
@@ -8,10 +7,10 @@ import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/bodysmallauth.dart';
-import 'package:ecommerce/view/widget/authwidgets/authtexts/haedline2.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:ecommerce/view/widget/textgesondetector.dart/textgesondetector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:lottie/lottie.dart';
@@ -45,32 +44,26 @@ class VertficationscreenLogin extends StatelessWidget {
                   child: Container(
                       width: AppConstans.IndicatorWidth,
                       height: AppConstans.Width * .15,
-                      child: Lottie.asset(AppConstans.loadinglottie)),
+                      child: Lottie.asset(Get.isDarkMode
+                          ? AppConstans.loadinglottiedark
+                          : AppConstans.loadinglottielight)),
                 )
               : Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: AppConstans.PaddingHorizontalAuth),
                   child: Column(
                     children: [
-                      // SizedBox(
-                      //   height: AppConstans.Hight * .06,
-                      // ),
-
                       SizedBox(
-                        height: AppConstans.Hight * .03,
+                        height: AppConstans.distanceapppar,
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: AppConstans.PaddingHorizontalAuth),
-                        child: BodyAuth(authheadline: "35".tr),
-                      ),
+                      BodyAuth(authheadline: "35".tr),
                       SizedBox(
-                        height: AppConstans.Hight * .065,
+                        height: 24.h,
                       ),
                       OtpTextField(
                         textStyle: TextStyleClass.getTextStyle(
-                          "bold",
-                          16,
+                          "medium",
+                          24.sp,
                           color: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
                               : AppConstans.maincolorlighttheme,
@@ -82,7 +75,8 @@ class VertficationscreenLogin extends StatelessWidget {
                         borderWidth: 1.2,
                         fieldHeight: 64,
                         fieldWidth: 64,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius:
+                            BorderRadius.circular(AppConstans.Radious),
                         numberOfFields: 5,
                         // borderColor: AppConstans.themecolor,
                         focusedBorderColor: Get.isDarkMode
@@ -118,7 +112,7 @@ class VertficationscreenLogin extends StatelessWidget {
                         },
                       ),
                       SizedBox(
-                        height: AppConstans.Hight / 30,
+                        height: 24.h,
                       ),
                       TextDectecot(
                           alignment: Alignment.center,
@@ -136,7 +130,6 @@ class VertficationscreenLogin extends StatelessWidget {
                                   ? AppConstans.maincolordarktheme
                                   : AppConstans.maincolorlighttheme)
                               : AppConstans.nonenabledbuttomcolor),
-
                       Spacer(),
                       Sharedbuttom(
                         isEnabled: vertfiycontrollerr.enable,
@@ -153,7 +146,7 @@ class VertficationscreenLogin extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(height: AppConstans.Hight * 0.06),
+                      SizedBox(height: 24.h),
                     ],
                   ),
                 ),

@@ -29,7 +29,7 @@ class Homeimp2 extends Home2 with SingleGetTickerProviderMixin {
   GetMyMatches getMyMatches = GetMyMatches(Get.find());
   TextEditingController? searchcontroller;
   List images = ["images/🦆 icon _trophy_.png", "images/Layer 2.png"];
-  List texts = ["ArenaX\nTournaments", "Special\nOffers"];
+  List texts = ["374".tr, "375".tr];
   String? Districtid;
   bool? isfavouritevalue;
   bool? isshaerching = false;

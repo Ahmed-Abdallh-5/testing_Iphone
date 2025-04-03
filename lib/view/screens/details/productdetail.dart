@@ -1,11 +1,10 @@
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/carousewidget.dart';
-
 import 'package:ecommerce/view/widget/productdetailwidgets/maincontainer.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/sliderwidget.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/controller/productdetails.dart';
@@ -30,13 +29,13 @@ class ProductDetails extends StatelessWidget {
             padding: EdgeInsets.only(
               left: AppConstans.PaddingHorizontalAuth,
               right: AppConstans.PaddingHorizontalAuth,
-              bottom: AppConstans.Hight * .015,
+              bottom: AppConstans.commonsizeboxhiggt,
             ),
             child: MaterialFixedButtom(
               price: (productDetailsConimble.items.price! *
                       (productDetailsConimble.ChosenHoursList.length) *
                       .25)
-                  .toInt(),
+                  .ceil(),
               isrowed: productDetailsConimble.ChosenHoursList.length == 0 ||
                       productDetailsConimble.chosenCourts.length == 0
                   ? true
@@ -66,7 +65,7 @@ class ProductDetails extends StatelessWidget {
                       imageUrl: productDetailsConimble.items.gallery?[2].image),
                 ],
                 activeIndex: productDetailsConimble.activeindex,
-                iconname1: "images/Alt Arrow Left.png",
+                // iconname1: "images/Alt Arrow Left.png",
                 iconname2: "images/Routing 2.png",
                 onPageChanged: (index, reason) {
                   productDetailsConimble.onPageChanged(index, reason);
@@ -77,7 +76,7 @@ class ProductDetails extends StatelessWidget {
                 urilink: productDetailsConimble.items.locationLink,
               ),
               MainContainerWidget(
-                mainhighet: AppConstans.Hight,
+                mainhighet: AppConstans.Hight / 1.15,
                 dy: -AppConstans.Hight * .01,
                 color: Get.isDarkMode == true
                     ? const Color.fromARGB(255, 21, 21, 21)
@@ -99,7 +98,7 @@ class ProductDetails extends StatelessWidget {
 
                 sizedhight2: AppConstans.Hight * .05,
 
-                minWidth: AppConstans.Width / 4,
+                // minWidth: 32.w,
 
                 Radious: AppConstans.Radious / 2,
                 Radious2: AppConstans.Radious,

@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class MaterialFixedButtom extends StatelessWidget {
@@ -21,8 +22,8 @@ class MaterialFixedButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppConstans.Hight * .06,
-      width: AppConstans.Width,
+      height: 48.h,
+      width: double.infinity,
       decoration: BoxDecoration(
         color: isEnabled
             ? Get.isDarkMode
@@ -37,8 +38,8 @@ class MaterialFixedButtom extends StatelessWidget {
               ? Text(
                   text,
                   style: TextStyleClass.getTextStyle(
-                    "Bold",
-                    AppConstans.Width / 20,
+                    "medium",
+                    16.sp,
                     color: isEnabled
                         ? AppConstans.Whitecolor
                         : AppConstans.darkgreycolordarktheme,
@@ -53,8 +54,8 @@ class MaterialFixedButtom extends StatelessWidget {
                     Text(
                       "$price EGP",
                       style: TextStyleClass.getTextStyle(
-                        "weight500",
-                        AppConstans.Width / 24,
+                        "medium",
+                        16.sp,
                         color: AppConstans.Whitecolor,
                       ),
                     ),
@@ -68,8 +69,8 @@ class MaterialFixedButtom extends StatelessWidget {
                     Text(
                       text,
                       style: TextStyleClass.getTextStyle(
-                        "Bold",
-                        AppConstans.Width / 24,
+                        "medium",
+                        16.sp,
                         color: AppConstans.Whitecolor,
                       ),
                     ),

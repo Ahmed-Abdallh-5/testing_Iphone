@@ -2,6 +2,7 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class Titles extends StatelessWidget {
@@ -18,8 +19,7 @@ class Titles extends StatelessWidget {
       children: [
         Text(
           text1!,
-          style: TextStyleClass.getTextStyle(
-              "weight500", AppConstans.Width * .047),
+          style: TextStyleClass.getTextStyle("weight500", 24.sp),
           textAlign: TextAlign.left,
         ),
         Spacer(),
@@ -33,19 +33,19 @@ class Titles extends StatelessWidget {
                   text2 ?? "",
                   style: TextStyleClass.getTextStyle(
                     "weight500",
-                    AppConstans.Width * .04,
+                    14.sp,
                     color: Get.isDarkMode
                         ? AppConstans.maincolordarktheme
                         : AppConstans.maincolorlighttheme,
                   ),
                 ),
-                const SizedBox(
-                  width: 5,
+                SizedBox(
+                  width: 5.w,
                 ),
                 iconneeded == true
                     ? Icon(
                         Icons.arrow_forward_ios,
-                        size: AppConstans.Width * .045,
+                        size: 24.r,
                         color: Get.isDarkMode
                             ? AppConstans.maincolordarktheme
                             : AppConstans.maincolorlighttheme,

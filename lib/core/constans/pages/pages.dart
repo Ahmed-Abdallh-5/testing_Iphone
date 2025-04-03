@@ -2,7 +2,7 @@ import 'package:ecommerce/core/middlware/mymiddlware.dart';
 import 'package:ecommerce/view/screens/account/allfavouritescreen.dart';
 import 'package:ecommerce/view/screens/account/editprofile.dart';
 import 'package:ecommerce/view/screens/checkout/checkout.dart';
-import 'package:ecommerce/view/screens/chooselangscreen.dart';
+import 'package:ecommerce/view/screens/langscreen/chooselangscreen.dart';
 import 'package:ecommerce/view/screens/onboarding/onboardingscreen.dart';
 import 'package:ecommerce/view/screens/settingscreens/aboutus.dart';
 import 'package:ecommerce/view/screens/authscreens/forgetpasswordscreens/forgetpassword.dart';

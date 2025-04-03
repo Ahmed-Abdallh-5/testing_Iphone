@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TextOfferWidget extends StatelessWidget {
@@ -15,15 +16,17 @@ class TextOfferWidget extends StatelessWidget {
           color: Get.isDarkMode
               ? AppConstans.maincolordarktheme
               : AppConstans.maincolorlighttheme,
+          width: 14.w,
+          height: 14.h,
         ),
         SizedBox(
-          width: AppConstans.Width * .01,
+          width: 4.w,
         ),
         Text(
           "Offer limited for ${textoffer}",
           style: TextStyleClass.getTextStyle(
             "medium",
-            AppConstans.Width * .04,
+            14.sp,
             color: Get.isDarkMode
                 ? AppConstans.maincolordarktheme
                 : AppConstans.maincolorlighttheme,

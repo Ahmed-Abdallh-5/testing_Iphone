@@ -1,11 +1,12 @@
 import 'package:ecommerce/controller/onboarding/onboardingcon.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
-import 'package:ecommerce/view/screens/onboarding/customindicator.dart';
-import 'package:ecommerce/view/screens/onboarding/onboardingwidget.dart';
+import 'package:ecommerce/view/widget/onbording/customindicator.dart';
+import 'package:ecommerce/view/widget/onbording/onboardingwidget.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:ecommerce/view/widget/textgesondetector.dart/textgesondetector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -18,9 +19,9 @@ class OnboardingScreen extends StatelessWidget {
 
     return Scaffold(
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
+            // Ensures full use of available space
             child: PageView(
               onPageChanged: (value) {
                 onboardingConimble.changeindex(value);
@@ -42,98 +43,67 @@ class OnboardingScreen extends StatelessWidget {
                   maintext: "8".tr,
                   subtext: "9".tr,
                 ),
-
-                // Add more screens as needed
               ],
             ),
           ),
-          // const SizedBox(height: 10), // Space between PageView and indicators
-          // Indicators Row
 
+          // SizedBox(height: 52.h),
           GetBuilder<OnboardingConimble>(
             builder: (onboardingConimble) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomeContainer(
-                  isactive: onboardingConimble.index == 0 ? true : false,
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                CustomeContainer(
-                  isactive: onboardingConimble.index == 1 ? true : false,
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                CustomeContainer(
-                  isactive: onboardingConimble.index == 2 ? true : false,
-                ),
+                CustomeContainer(isactive: onboardingConimble.index == 0),
+                SizedBox(width: 4.w),
+                CustomeContainer(isactive: onboardingConimble.index == 1),
+                SizedBox(width: 4.w),
+                CustomeContainer(isactive: onboardingConimble.index == 2),
               ],
             ),
           ),
-          SizedBox(
-            height: AppConstans.Hight / 22,
-          ),
-          // Space between indicators and button
-          // // Shared Button
-          // const SizedBox(height: 20),
+
+          // Remove this unnecessary space
+          SizedBox(height: 40.h),
+
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppConstans.PaddingHorizontalAuth),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Sharedbuttom(
               text: "10".tr,
-              hight: AppConstans.Hight * 0.065,
+              hight: 48.h,
               onpreesed: () {
                 onboardingConimble.gotosignup();
               },
             ),
           ),
-          SizedBox(height: AppConstans.Hight / 45),
+          SizedBox(height: 16.h),
+
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "142".tr,
                 style: TextStyleClass.getTextStyle(
                   "weight400",
-                  AppConstans.Width / 25,
-                  color: Get.isDarkMode == true
-                      ? AppConstans.Whitecolor
+                  16.sp,
+                  color: Get.isDarkMode
+                      ? const Color.fromARGB(255, 227, 227, 227)
                       : AppConstans.darkgreycolor,
                 ),
               ),
               TextDectecot(
-                  text: "11".tr,
-                  color: Get.isDarkMode
-                      ? AppConstans.maincolordarktheme
-                      : AppConstans.maincolorlighttheme,
-                  ontap: () {
-                    onboardingConimble.gotologinscreen();
-                  })
+                text: "11".tr,
+                fontsize: 16.sp,
+                color: Get.isDarkMode
+                    ? AppConstans.maincolordarktheme
+                    : AppConstans.maincolorlighttheme,
+                ontap: () {
+                  onboardingConimble.gotologinscreen();
+                },
+              ),
             ],
           ),
-
-          SizedBox(height: AppConstans.Hight / 25),
+          SizedBox(height: 24.h),
         ],
       ),
     );
   }
-}
-
-class BottomCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height - 100); // Adjust starting point of the curve
-    path.quadraticBezierTo(size.width / 2, size.height + 50, size.width,
-        size.height - 100); // Deeper curve
-    path.lineTo(size.width, 0); // Top-right
-    path.close(); // Connect to the start
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

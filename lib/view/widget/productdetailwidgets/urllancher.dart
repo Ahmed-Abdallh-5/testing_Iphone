@@ -22,8 +22,8 @@ class URLluncher extends StatelessWidget {
         builder: (context, openlink) => InkWell(
             onTap: openlink,
             child: Container(
-              height: AppConstans.Hight * .045,
-              width: AppConstans.Hight * .045,
+              height: AppConstans.Hight * .048,
+              width: AppConstans.Hight * .048,
               decoration: BoxDecoration(
                   color: Get.isDarkMode == false
                       ? AppConstans.Whitecolor
@@ -38,6 +38,8 @@ class URLluncher extends StatelessWidget {
                     color: Get.isDarkMode == true
                         ? AppConstans.Whitecolor
                         : AppConstans.blackcolor,
+                    height: AppConstans.Hight * .025,
+                    width: AppConstans.Hight * .025,
                   ),
                 ),
               )),

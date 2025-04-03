@@ -7,9 +7,10 @@ import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/view/screens/myfavouritecontainer.dart';
 import 'package:ecommerce/view/widget/home/titles.dart';
 import 'package:ecommerce/view/widget/settingwidget/conatinerphoto.dart';
-import 'package:ecommerce/view/widget/sharedwidgets/handlingview.dart';
+import 'package:ecommerce/view/widget/settingwidget/shimmermyaccountscreen.dart';
 import 'package:ecommerce/view/widget/textgesondetector.dart/textgesondetector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class MyAccountScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class MyAccountScreen extends StatelessWidget {
         builder: (myaccountConimble) => Scaffold(
               body: GetBuilder<MyaccountConimble>(builder: (myaccountConimble) {
                 if (myaccountConimble.statueRequest == StatueRequest.loading) {
-                  return HandlingViewallitems();
+                  return HandlingViewMyAccount();
                 }
                 return Padding(
                   padding: EdgeInsets.symmetric(
@@ -39,7 +40,7 @@ class MyAccountScreen extends StatelessWidget {
                               image: CachedNetworkImageProvider(settingservices
                                   .sharedPref
                                   .getString("photo")!)),
-                          SizedBox(width: AppConstans.Width * .028),
+                          SizedBox(width: 10.w),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +52,7 @@ class MyAccountScreen extends StatelessWidget {
                                         settingservices.sharedPref
                                             .getString("username")!,
                                         style: TextStyleClass.getTextStyle(
-                                            "medium", AppConstans.Hight * .028),
+                                            "medium", 24.sp),
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -60,13 +61,14 @@ class MyAccountScreen extends StatelessWidget {
                                         myaccountConimble.gotosettingpage();
                                       },
                                       icon: Icon(Icons.settings_outlined),
+                                      padding: EdgeInsets.all(0),
                                     ),
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     TextDectecot(
-                                        smallfont: true,
+                                        fontsize: 16.sp,
                                         text: "104".tr,
                                         ontap: () {
                                           myaccountConimble.Gotoedtoscreen();
@@ -81,7 +83,7 @@ class MyAccountScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: AppConstans.Hight * 0.03),
+                      SizedBox(height: 25.h),
                       Titles(
                         onTap: () {
                           myaccountConimble.gotofavouritescreen();

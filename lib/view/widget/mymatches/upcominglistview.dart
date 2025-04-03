@@ -1,8 +1,8 @@
 import 'package:ecommerce/controller/mymatchescon/mymatchescon.dart';
-import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/data/model/upcoming.dart';
 import 'package:ecommerce/view/widget/mymatches/mymatchescontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class UpComingListView extends StatelessWidget {
@@ -16,8 +16,8 @@ class UpComingListView extends StatelessWidget {
       itemCount: mymatchesimble.upcoming.length,
       itemBuilder: (BuildContext context, index) {
         return MyMatchesContainer(
-          hight: AppConstans.Hight / 3.2, // عرض المحتوى بشكل ديناميكي
           ishistrory: false,
+          // ishorizonal: true,
           upcomingModel: UpcomingModel.fromJson(mymatchesimble.upcoming[index]),
         );
       },

@@ -61,12 +61,17 @@ class VerficationControllerLoginimple extends VerficationControllerLogin {
         Get.defaultDialog(middleText: response["message"], title: "311".tr);
         enable = false;
       }
+    } else if (statueRequest == StatueRequest.offline) {
+      Get.defaultDialog(
+        title: "311".tr,
+        middleText: "308".tr,
+      );
+    } else if (statueRequest == StatueRequest.ServerFaliure) {
+      Get.defaultDialog(
+        title: "311".tr,
+        middleText: "307".tr,
+      );
     }
-    // } else if (response["message"] == 'message') {
-    //   Get.defaultDialog(
-    //     title: "57".tr,
-    //   );
-    // }
     update();
   }
 

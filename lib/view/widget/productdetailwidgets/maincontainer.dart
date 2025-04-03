@@ -8,6 +8,7 @@ import 'package:ecommerce/view/widget/productdetailwidgets/bottomsheet.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/courts.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/datewidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -75,7 +76,7 @@ class MainContainerWidget extends StatelessWidget {
         offset: Offset(0, dy!),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(MainRadious!),
+            borderRadius: BorderRadius.circular(AppConstans.Radious),
             color: color,
           ),
           width: double.infinity,
@@ -87,14 +88,14 @@ class MainContainerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: AppConstans.distanceapppar,
+                  height: 16.h,
                 ),
                 Row(
                   children: [
                     Text(maintext!,
                         style: TextStyleClass.getTextStyle(
-                          "bold",
-                          AppConstans.Width * .06,
+                          "weight600",
+                          20.sp,
                         )),
                     Spacer(),
                     GetBuilder<Homeimp2>(
@@ -126,7 +127,7 @@ class MainContainerWidget extends StatelessWidget {
                           color: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
                               : AppConstans.maincolorlighttheme,
-                          size: AppConstans.Width * .07,
+                          size: 28.r,
                         ),
                         padding: EdgeInsets.zero,
                       ),
@@ -135,123 +136,100 @@ class MainContainerWidget extends StatelessWidget {
                 ),
                 Text(
                   Submaintext!,
-                  style: TextStyleClass.getTextStyle(
-                      "medium", AppConstans.Width * .045,
+                  style: TextStyleClass.getTextStyle("weight400", 14.sp,
                       color: AppConstans.darkgreycolor),
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
+                  height: AppConstans.commonsizeboxhiggt,
                 ),
-                Column(
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          Title2!,
-                          style: TextStyleClass.getTextStyle(
-                              "medium", AppConstans.Width * .05),
-                        ),
-                        Spacer(),
-                        Column(
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                final Uri phoneUri =
-                                    Uri(scheme: 'tel', path: SubmTitle2);
+                    Text(
+                      Title2!,
+                      style: TextStyleClass.getTextStyle("medium", 18.sp),
+                    ),
+                    Spacer(),
+                    InkWell(
+                      onTap: () async {
+                        final Uri phoneUri =
+                            Uri(scheme: 'tel', path: SubmTitle2);
 
-                                try {
-                                  if (await canLaunchUrl(phoneUri)) {
-                                    await launchUrl(
-                                      phoneUri,
-                                      mode: LaunchMode
-                                          .externalApplication, // Explicitly use external apps
-                                    );
-                                  } else {
-                                    throw 'Could not launch $phoneUri';
-                                  }
-                                } catch (e) {
-                                  print(e); // Log the error for debugging
-                                }
-                              },
-                              child: Row(
-                                children: [
-                                  Text(
-                                    SubmTitle2!,
-                                    style: TextStyleClass.getTextStyle(
-                                      "bold",
-                                      AppConstans.Width * .04,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                        try {
+                          if (await canLaunchUrl(phoneUri)) {
+                            await launchUrl(
+                              phoneUri,
+                              mode: LaunchMode
+                                  .externalApplication, // Explicitly use external apps
+                            );
+                          } else {
+                            throw 'Could not launch $phoneUri';
+                          }
+                        } catch (e) {
+                          print(e); // Log the error for debugging
+                        }
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            SubmTitle2!,
+                            style: TextStyleClass.getTextStyle(
+                              "bold",
+                              14.sp,
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
+                  height: AppConstans.commonsizeboxhiggt,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      Title4!,
-                      style: TextStyleClass.getTextStyle(
-                          "medium", AppConstans.Width * .05),
-                    ),
-                    SizedBox(
-                      height: AppConstans.Hight * .01,
-                    ),
-                    SizedBox(
-                        height: sizedhight,
-                        child: AmenitiesListView(
-                          // text: text!,
-                          minWidth: minWidth!,
-                          Radious: Radious,
-                        )),
-                  ],
+                Text(
+                  Title4!,
+                  style: TextStyleClass.getTextStyle("medium", 20.sp),
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      Title5!,
-                      style: TextStyleClass.getTextStyle(
-                          "medium", AppConstans.Width * .05),
-                    ),
-                    SizedBox(
-                      height: AppConstans.Hight * .01,
-                    ),
-                    SizedBox(
-                        height: sizedhight2,
-                        child: CourtsListView(
-                          Radious2: Radious2,
-                        ))
-                  ],
+                  height: 16.h,
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
+                    height: sizedhight,
+                    child: AmenitiesListView(
+                      // text: text!,
+                      // minWidth: minWidth!,
+                      Radious: Radious,
+                    )),
+                SizedBox(
+                  height: AppConstans.commonsizeboxhiggt,
+                ),
+                Text(
+                  Title5!,
+                  style: TextStyleClass.getTextStyle("medium", 20.sp),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                SizedBox(
+                    height: sizedhight2,
+                    child: CourtsListView(
+                      Radious2: Radious2,
+                    )),
+                SizedBox(
+                  height: AppConstans.commonsizeboxhiggt,
                 ),
                 Text(
                   finaltext!,
-                  style: TextStyleClass.getTextStyle(
-                      "medium", AppConstans.Width * .05),
+                  style: TextStyleClass.getTextStyle("medium", 20.sp),
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
+                  height: 16.sp,
                 ),
                 CustomDatePicker(
                   locale: settingservices.sharedPref.getString("lang")!,
                 ),
                 SizedBox(
-                  height: AppConstans.Hight * .025,
+                  height: 16.sp,
                 ),
                 InkWell(
                   onTap: () async {
@@ -274,20 +252,19 @@ class MainContainerWidget extends StatelessWidget {
                     children: [
                       Text(
                         finaltitle!,
-                        style: TextStyleClass.getTextStyle(
-                            "medium", AppConstans.Width * .05),
+                        style: TextStyleClass.getTextStyle("medium", 18.sp),
                       ),
                       Spacer(),
                       productDetailsConimble.ChosenHoursList.length == 0
                           ? (productDetailsConimble.chosencourtid == null
                               ? Text("346".tr,
                                   style: TextStyleClass.getTextStyle(
-                                      "medium", AppConstans.Width * .032,
+                                      "weight400", 12.sp,
                                       color: AppConstans.grey))
                               : Text("347".tr,
                                   style: TextStyleClass.getTextStyle(
                                     "medium",
-                                    AppConstans.Width * .05,
+                                    18.sp,
                                     color: Get.isDarkMode
                                         ? AppConstans.maincolordarktheme
                                         : AppConstans.maincolorlighttheme,
@@ -297,12 +274,12 @@ class MainContainerWidget extends StatelessWidget {
                                   ? productDetailsConimble.ChosenHoursList[0]
                                       .toString()
                                       .substring(
-                                        1,
+                                        0,
                                       )
                                   : productDetailsConimble.ChosenHoursList[0]
                                           .toString()
                                           .substring(
-                                            1,
+                                            0,
                                           ) +
                                       "...",
                               overflow: TextOverflow.ellipsis,

@@ -6,6 +6,7 @@ import 'package:ecommerce/view/screens/myfavouriteslistview.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/handlingview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class AllFavouriteScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class AllFavouriteScreen extends StatelessWidget {
         centerTitle: true,
         title: Appbartext(appbartext: "85".tr),
         leading: Padding(
-          padding: EdgeInsets.only(left: AppConstans.PaddingHorizontal),
+          padding: EdgeInsets.only(left: AppConstans.PaddingHorizontalAuth),
           child: IconButton(
             onPressed: () {
               Get.back();
@@ -49,7 +50,7 @@ class AllFavouriteScreen extends StatelessWidget {
                         SizedBox(height: AppConstans.Hight * .25),
                         Icon(
                           Icons.favorite,
-                          size: 100,
+                          size: 100.sp,
                           color: Colors.grey,
                         ),
                         Text(
@@ -68,9 +69,14 @@ class AllFavouriteScreen extends StatelessWidget {
                 else
                   Expanded(
                     // ✅ تم تصحيح مكان Expanded داخل Column
-                    child: MyFavourotelistView(
-                      myaccountCon:
-                          myaccountConimble, // ✅ استخدام نفس الكونترولر
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: AppConstans.commonsizeboxhiggt,
+                      ),
+                      child: MyFavourotelistView(
+                        myaccountCon:
+                            myaccountConimble, // ✅ استخدام نفس الكونترولر
+                      ),
                     ),
                   ),
               ],

@@ -91,7 +91,9 @@ class DeleteAccountScreen extends StatelessWidget {
                   child: SizedBox(
                     width: width * 0.15,
                     height: height * 0.15,
-                    child: Lottie.asset(AppConstans.loadinglottie),
+                    child: Lottie.asset(Get.isDarkMode
+                        ? AppConstans.loadinglottiedark
+                        : AppConstans.loadinglottielight),
                   ),
                 )
               : Padding(

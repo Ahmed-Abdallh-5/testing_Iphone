@@ -10,6 +10,7 @@ class GetMyMatches {
   Getmymatches() async {
     var response = await crud.getdata(APPlinks.mymatches, {},
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 }

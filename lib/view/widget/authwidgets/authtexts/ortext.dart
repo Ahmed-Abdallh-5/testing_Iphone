@@ -2,13 +2,14 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OrText extends StatelessWidget {
   final EdgeInsetsGeometry padding;
 
-  const OrText(
-      {super.key, this.padding = const EdgeInsets.symmetric(horizontal: 16)});
+  OrText({super.key, EdgeInsetsGeometry? padding})
+      : padding = padding ?? EdgeInsets.symmetric(horizontal: 16.w);
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +20,14 @@ class OrText extends StatelessWidget {
           // Flexible divider line
           Flexible(
             child: Container(
-              height: AppConstans.Hight / 500,
-              color: const Color.fromARGB(135, 144, 144, 144),
-            ),
+                height: 1.h,
+                width: 114.w,
+                color: Get.isDarkMode
+                    ? AppConstans.darkgreycolordarktheme
+                    : AppConstans.darkgreycolor),
           ),
           SizedBox(
-            width: AppConstans.Width / 20,
+            width: 16.w,
           ),
           // "OR" text
           Text(
@@ -36,14 +39,16 @@ class OrText extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: AppConstans.Width / 20,
+            width: 16.w,
           ),
           // Flexible divider line
           Flexible(
             child: Container(
-              height: AppConstans.Hight / 500,
-              color: const Color.fromARGB(135, 144, 144, 144),
-            ),
+                height: 1.h,
+                width: 114.w,
+                color: Get.isDarkMode
+                    ? AppConstans.darkgreycolordarktheme
+                    : AppConstans.darkgreycolor),
           ),
         ],
       ),

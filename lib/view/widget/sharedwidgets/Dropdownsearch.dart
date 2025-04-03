@@ -1,7 +1,9 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
+import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/view/widget/productdetailwidgets/dropdownprodutdetails.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DropDownWidegt extends StatelessWidget {
@@ -34,12 +36,6 @@ class DropDownWidegt extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(AppConstans.Radious / 2);
 
-    // Responsiveness
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double scaledPadding = screenWidth * 0.03;
-    double fontSize = screenHeight * 0.018;
-
     return DropdownSearch<String>(
       enabled: isenabled,
       items: items,
@@ -59,9 +55,9 @@ class DropDownWidegt extends StatelessWidget {
               ? Text(
                   labelText!,
                   style: TextStyle(
-                    color: AppConstans.darkgreycolor,
+                    color: const Color.fromARGB(255, 59, 17, 59),
                     fontWeight: FontWeight.w400,
-                    fontSize: fontSize,
+                    fontSize: 16.sp,
                   ),
                 )
               : null,
@@ -96,15 +92,13 @@ class DropDownWidegt extends StatelessWidget {
             borderRadius: borderRadius,
           ),
           hintText: hintText,
-          hintStyle: TextStyle(
-            fontSize: fontSize,
-            color: Get.isDarkMode
-                ? const Color.fromARGB(255, 37, 0, 0)
-                : const Color.fromARGB(255, 230, 64, 64),
-          ),
+          hintStyle: TextStyleClass.getTextStyle('weight400', 16.sp,
+              color: Get.isDarkMode
+                  ? AppConstans.darkgreycolor
+                  : AppConstans.Bordercolor),
           contentPadding: EdgeInsets.symmetric(
-            vertical: scaledPadding,
-            horizontal: scaledPadding,
+            vertical: 8.sp,
+            horizontal: 12.sp,
           ),
         ),
       ),
@@ -112,14 +106,15 @@ class DropDownWidegt extends StatelessWidget {
         return Text(
           selectedItem ?? hintText,
           style: TextStyle(
-            fontSize: fontSize,
-            color: selectedItem != null
+            fontSize: 16.sp,
+            color: isenabled == true
                 ? (Get.isDarkMode
-                    ? Colors.white
-                    : Colors.black) // Color based on mode
+                    ? AppConstans.Whitecolor
+                    : AppConstans.darkgreycolor) // Selected item color
                 : (Get.isDarkMode
-                    ? Colors.white
-                    : Colors.black), // Hint text color
+                    ? AppConstans.grey
+                    : AppConstans.darkgreycolordarktheme),
+            fontWeight: FontWeight.w400,
           ),
         );
       },
@@ -134,21 +129,20 @@ class DropDownWidegt extends StatelessWidget {
         itemBuilder: (context, item, isSelected) {
           return Container(
             padding: EdgeInsets.symmetric(
-              vertical: scaledPadding,
-              horizontal: scaledPadding,
+              vertical: 8.sp,
+              horizontal: 12.sp,
             ),
             child: Text(
               item,
               style: TextStyle(
-                fontSize: fontSize,
+                fontSize: 16.sp,
                 color: isSelected
                     ? Get.isDarkMode
                         ? AppConstans.maincolordarktheme
                         : AppConstans.maincolorlighttheme // Selected item color
                     : (Get.isDarkMode
                         ? AppConstans.Whitecolor
-                        : AppConstans
-                            .blackcolor), // Unselected item color based on mode
+                        : Colors.black), // Unselected item color
               ),
             ),
           );

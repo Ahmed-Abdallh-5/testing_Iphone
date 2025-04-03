@@ -5,6 +5,7 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/bodysmallauth.dart';
 import 'package:ecommerce/view/widget/authwidgets/authtexts/haedline2.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SuccesResetPassWord extends StatelessWidget {
@@ -31,34 +32,31 @@ class SuccesResetPassWord extends StatelessWidget {
               ),
               Center(
                 child: Icon(Icons.check_circle_outline,
-                    size: AppConstans.Hight * .3,
+                    size: 300.h,
                     color: Get.isDarkMode
                         ? AppConstans.maincolordarktheme
                         : AppConstans.maincolorlighttheme),
               ),
               SizedBox(
-                height: AppConstans.Hight * .05,
+                height: 24.h,
               ),
               AuthHeadLinesmall(authheadline: "46".tr),
               SizedBox(
-                height: AppConstans.Hight * .03,
+                height: 24.h,
               ),
               Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: AppConstans.Width * 0.01),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: BodyAuth(authheadline: "47".tr),
               ),
               Spacer(),
               Sharedbuttom(
                 text: "48".tr,
-                hight: AppConstans.Hight * .06,
+                hight: AppConstans.authbottomsize,
                 onpreesed: () {
                   controller.GoTOLogin();
                 },
               ),
-              SizedBox(
-                height: AppConstans.Hight * .06,
-              ),
+              SizedBox(height: AppConstans.distancefrombottombar)
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/classes/pushnotfication.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:get/get.dart';
 
@@ -29,6 +30,7 @@ class OnboardingConimble extends OnboardingCon {
 
   @override
   void onInit() {
+    PushNotificationsService.init();
     super.onInit();
   }
 }

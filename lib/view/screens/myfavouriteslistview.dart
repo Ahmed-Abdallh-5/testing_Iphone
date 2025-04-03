@@ -7,6 +7,7 @@ import 'package:ecommerce/data/model/itemsmodel.dart';
 
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallgeneralcontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class MyFavourotelistView extends GetView<Homeimp2> {
@@ -16,12 +17,13 @@ class MyFavourotelistView extends GetView<Homeimp2> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppConstans.Hight * .17,
+      height: 136.h,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: myaccountCon.MyFavouriteList.length,
           itemBuilder: (context, index) {
             return ItemsModelClassViewall(
+                hight: 136.h,
                 items: ItemModelJson.fromJson(
                     myaccountCon.MyFavouriteList[index]));
           }),

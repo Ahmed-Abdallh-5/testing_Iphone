@@ -1,9 +1,9 @@
 import 'package:ecommerce/controller/mymatchescon/mymatchescon.dart';
-import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/data/model/upcoming.dart';
 import 'package:ecommerce/view/widget/mymatches/mymatchescontainer.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/noitemtext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class UpComingListViewHorizontal extends StatelessWidget {
@@ -15,14 +15,14 @@ class UpComingListViewHorizontal extends StatelessWidget {
     return GetBuilder<Mymatchesimble>(
         builder: (mymatchesimble) => mymatchesimble.upcoming.isEmpty
             ? Container(
-                height: AppConstans.Hight / 4,
+                height: 144.h,
                 child: NoItemText(
-                  effectiveWidth: AppConstans.Width * 0.035,
+                  effectiveWidth: 24.sp,
                   text: '342'.tr,
                 ),
               )
             : SizedBox(
-                height: AppConstans.Hight / 3,
+                height: 200.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   // physics: const BouncingScrollPhysics(),
@@ -31,12 +31,11 @@ class UpComingListViewHorizontal extends StatelessWidget {
                     return Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
-                              right: AppConstans.PaddingHorizontalAuth),
+                          padding: EdgeInsets.only(right: 16.w),
                           child: MyMatchesContainer(
-                            width: AppConstans.Width * .70,
-                            hight: AppConstans.Hight / 4,
+                            width: 280.w,
                             isprice: false,
+                            ishorizonal: true,
                             ishistrory: false,
                             upcomingModel: UpcomingModel.fromJson(
                                 mymatchesimble.upcoming[index]),

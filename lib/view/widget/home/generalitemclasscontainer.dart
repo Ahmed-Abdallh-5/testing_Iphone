@@ -7,172 +7,144 @@ import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/home/offertextwidget.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/offerpercentagecontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ItemsModelClass extends GetView<Homeimp2> {
-  const ItemsModelClass(
-      {super.key, this.items, this.homeimp2, this.offercontainer = false});
+  const ItemsModelClass({
+    super.key,
+    this.items,
+    this.offercontainer = false,
+  });
+
   final ItemModelJson? items;
-  final Homeimp2? homeimp2;
   final bool offercontainer;
+
   @override
   Widget build(BuildContext context) {
-    Homeimp2 homeimp2 = Get.put(Homeimp2());
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: EdgeInsets.only(right: AppConstans.PaddingHorizontalAuth),
+      padding: EdgeInsets.only(right: 16.w),
       child: Container(
-        width: AppConstans.Width * .70,
+        width: 264.w,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppConstans.Radious),
-            color: Get.isDarkMode == true
-                ? AppConstans.secondblackcolor
-                : AppConstans.Whitecolor,
-            border: Border.all(
-              color: Get.isDarkMode == true
-                  ? AppConstans.darkgreycolor
-                  : AppConstans.Bordercolor,
-            )),
+          borderRadius: BorderRadius.circular(AppConstans.Radious),
+          color: Get.isDarkMode
+              ? AppConstans.secondblackcolor
+              : AppConstans.Whitecolor,
+          border: Border.all(
+            color: Get.isDarkMode
+                ? AppConstans.darkgreycolor
+                : AppConstans.Bordercolor,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             InkWell(
               onTap: () {
-                homeimp2.gotoproductdetails(items);
+                Get.find<Homeimp2>().gotoproductdetails(items);
               },
-              child: Stack(children: [
-                Container(
-                  height: AppConstans.Hight / 5.5,
-                  width: AppConstans.Width * .70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppConstans.Radious),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(AppConstans.Radious),
-                    child: CachedNetworkImage(
-                      imageUrl: items!.gallery![0].image!,
-                      fit: BoxFit.fill,
+              child: Stack(
+                children: [
+                  Container(
+                    height: 145.h,
+                    width: 264.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(AppConstans.Radious),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(AppConstans.Radious),
+                      child: CachedNetworkImage(
+                        imageUrl: items!.gallery![0].image!,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
-                offercontainer == true
-                    ? OfferConatinerPercentage(
-                        discount: items!.discount!.value!.toInt(),
-                      )
-                    : SizedBox()
-              ]),
+                  if (offercontainer)
+                    OfferConatinerPercentage(
+                      discount: items!.discount!.value!.toInt(),
+                    ),
+                ],
+              ),
             ),
-            SizedBox(
-              height: AppConstans.Hight / 120,
-            ),
+            SizedBox(height: 8.h),
             Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: AppConstans.Width * .012),
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       Expanded(
                         child: Text(
                           translationDataBase(items!.nameAr, items!.name),
-                          style: TextStyleClass.getTextStyle(
-                            "Bold",
-                            AppConstans.Width * .055,
-                          ),
+                          style:
+                              TextStyleClass.getTextStyle("weight600", 20.sp),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
                       ),
                       GetBuilder<Homeimp2>(
-                        builder: (homeimp2) => Container(
-                          height: AppConstans.Hight / 30,
-                          width: AppConstans.Hight / 30,
-                          child: IconButton(
-                            onPressed: () {
-                              if (homeimp2.favoriteMap[items!.id] == true) {
-                                homeimp2.removefromfavourie(items!.id);
-                                homeimp2.changestatefavourite(items!.id, false);
-                              } else {
-                                homeimp2.addtofavourite(
-                                    items!.id, items!.name, items!.price);
-                                homeimp2.changestatefavourite(items!.id, true);
-                              }
-                            },
-                            icon: homeimp2.favoriteMap[items!.id] == true
-                                ? Icon(
-                                    Icons.favorite_outlined,
-                                    color: Get.isDarkMode
-                                        ? AppConstans.maincolordarktheme
-                                        : AppConstans.maincolorlighttheme,
-                                    size: AppConstans.Hight / 30,
-                                  ) // Set the size of the icon
-                                : Icon(
-                                    Icons.favorite_border,
-                                    color: Get.isDarkMode
-                                        ? AppConstans.maincolordarktheme
-                                        : AppConstans.maincolorlighttheme,
-                                    size: AppConstans.Hight / 30,
-                                  ),
-                            constraints: BoxConstraints(
-                              minWidth: AppConstans.Hight / 30,
-                              minHeight: AppConstans.Hight / 30,
-                            ),
-                            padding: EdgeInsets.zero,
+                        builder: (homeimp2) => IconButton(
+                          onPressed: () {
+                            if (homeimp2.favoriteMap[items!.id] == true) {
+                              homeimp2.removefromfavourie(items!.id);
+                              homeimp2.changestatefavourite(items!.id, false);
+                            } else {
+                              homeimp2.addtofavourite(
+                                  items!.id, items!.name, items!.price);
+                              homeimp2.changestatefavourite(items!.id, true);
+                            }
+                          },
+                          icon: Icon(
+                            homeimp2.favoriteMap[items!.id] == true
+                                ? Icons.favorite_outlined
+                                : Icons.favorite_border,
+                            color: Get.isDarkMode
+                                ? AppConstans.maincolordarktheme
+                                : AppConstans.maincolorlighttheme,
+                            size: 24.sp,
                           ),
                         ),
                       )
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        items!.location!,
-                        style: TextStyleClass.getTextStyle(
-                            "weight500", AppConstans.Hight * .02,
-                            color: Get.isDarkMode == true
-                                ? AppConstans.Whitecolor
-                                : AppConstans.grey),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                    ],
+                  // SizedBox(height: 4.h),
+                  Text(
+                    items!.location!,
+                    style: TextStyleClass.getTextStyle("weight500", 12.sp,
+                        color: Get.isDarkMode
+                            ? AppConstans.Whitecolor
+                            : AppConstans.grey),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
-                  SizedBox(
-                    height: AppConstans.Hight / 120,
-                  ),
+                  SizedBox(height: 4.h),
                   Row(
                     children: [
                       Text(
                         "${items!.price!}",
-                        style: TextStyleClass.getTextStyle(
-                          "weight500",
-                          AppConstans.Width * .045,
-                          color: Get.isDarkMode
-                              ? AppConstans.maincolordarktheme
-                              : AppConstans.maincolorlighttheme,
-                        ),
-                        textAlign: TextAlign.right,
+                        style: TextStyleClass.getTextStyle("weight500", 15.sp,
+                            color: Get.isDarkMode
+                                ? AppConstans.maincolordarktheme
+                                : AppConstans.maincolorlighttheme),
                       ),
+                      SizedBox(width: screenWidth * 0.02),
                       Text(
                         "76".tr,
-                        style: TextStyleClass.getTextStyle(
-                          "weight500",
-                          AppConstans.Width * .045,
-                          color: Get.isDarkMode
-                              ? AppConstans.maincolordarktheme
-                              : AppConstans.maincolorlighttheme,
-                        ),
-                        textAlign: TextAlign.right,
+                        style: TextStyleClass.getTextStyle("weight500", 15.sp,
+                            color: Get.isDarkMode
+                                ? AppConstans.maincolordarktheme
+                                : AppConstans.maincolorlighttheme),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: AppConstans.Hight / 150,
-                  ),
-                  offercontainer == true
-                      ? TextOfferWidget(
-                          textoffer: "today",
-                        )
-                      : SizedBox()
+                  SizedBox(height: 8.h),
+                  if (offercontainer) TextOfferWidget(textoffer: "today"),
                 ],
               ),
             ),

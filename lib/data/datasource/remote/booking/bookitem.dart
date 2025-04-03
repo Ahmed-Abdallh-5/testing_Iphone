@@ -13,6 +13,7 @@ class Booking {
         APPlinks.bookitem, {'court_id': court_id, 'date': date, 'hours': hours},
         token: await settingservices.sharedPref.getString("token"));
 
+    // await settingservices.storage.read(key: 'token'));
     return response.fold((l) => l, (r) => r);
   }
 }

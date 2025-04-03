@@ -67,7 +67,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "The Padel Sport app, including but not limited to its design, text, graphics, images, and software, is owned by [Your Company Name] and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works of any part of the app without our prior written consent.",
+              "The Padel Sport app, including but not limited to its design, text, graphics, images, and software, is owned by ArenaX and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works of any part of the app without our prior written consent.",
             ),
             SizedBox(height: 16.0),
             Text(
@@ -122,7 +122,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "Any dispute arising out of or in connection with these Terms and Conditions shall be governed by and construed in accordance with the laws of [Jurisdiction]. Any legal action or proceeding arising out of or in connection with these Terms and Conditions shall be brought exclusively in the courts located in [City, State/Province].",
+              "Any dispute arising out of or in connection with these Terms and Conditions shall be governed by and construed in accordance with the laws . Any legal action or proceeding arising out of or in connection with these Terms and Conditions shall be brought exclusively in the courts",
             ),
             SizedBox(height: 16.0),
             Text(
@@ -133,7 +133,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "If any provision of these Terms and Conditions is found to be invalid, illegal, or unenforceable, such provision shall be deemed   severed from these Terms and Conditions and shall not affect the validity and enforceability of the remaining   provisions.",
+              "If any provision of these Terms and Conditions is found to be invalid, illegal, or unenforceable, such provision shall be deemed severed from these Terms and Conditions and shall not affect the validity and enforceability of the remaining   provisions.",
             ),
             SizedBox(height: 16.0),
           ],

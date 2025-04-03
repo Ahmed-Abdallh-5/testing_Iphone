@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class AppConstans {
   //////////logos////////////////////////
@@ -8,23 +8,31 @@ class AppConstans {
   static const String logolight = "images/logo + name 1.png";
 
   ///////////////////lottie//////////////
-  static const String loadinglottie = "lottie/loading.json";
-  static const String Search = "lottie/Animation - 1725188536955.json";
+  static const String loadinglottiedark = "lottie/loadingdarktheme.json";
+  static const String loadinglottielight = "lottie/loadinglighttheme.json";
+
+  static const String Searchdarktheme = "lottie/noresultdarktheme.json";
+  static const String Searchlighttheme = "lottie/noreultlighttheme.json";
 
   /////////////////padding////////////////////
 
   static final double Hight = Get.height;
   static final double Width = Get.width;
-  static final double PaddingHorizontal = Width * .02;
-  static final double PaddingHorizontalAuth = Width * .04;
-  static final double distanceapppar = Hight * .03;
+
+  static final double commonsizeboxhiggt = 24.h;
+  static final double PaddingHorizontalAuth = 16.w;
+  static final double distanceapppar = 32.h;
+  static final double distancebetweentextfield = 28.h;
+  static final double authbottomsize = 48.h;
+  static final double distancefrombottombar = 24.h;
+
   static final double Sizeboxsize = Hight * .03;
-  static final double Radious = 16;
+  static final double Radious = 16.r;
 
   //////////////////Loading Indicator////////////////////////////
 
-  static final double IndicatorWidth = Width * .03;
-  static final double IndicatorHight = Hight * .03;
+  static final double IndicatorWidth = Width / 2;
+  static final double IndicatorHight = Hight / 2;
 
   ///////////////////////////////////////Colors//////////////////////
   // static const Color MainColor = Color.fromARGB(255, 94, 141, 0);
@@ -45,6 +53,7 @@ class AppConstans {
   static const Color IconColor = Colors.black;
   static const Color Bordercolor = Color.fromARGB(255, 227, 227, 227);
   static const Color ButtomColor = Color.fromARGB(255, 41, 71, 253);
+
 //////////////////////////////////theme mode////////////////////
 
 ////////////////////////BACKEND///////////////////////////

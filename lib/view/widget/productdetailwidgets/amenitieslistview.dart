@@ -3,6 +3,7 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class AmenitiesListView extends StatelessWidget {
@@ -20,9 +21,9 @@ class AmenitiesListView extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: productDetailsConimble.items.amenities!.length,
       itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(right: 10),
+        padding: EdgeInsets.only(right: 8.w),
         child: Container(
-          constraints: BoxConstraints(minWidth: minWidth!),
+          // constraints: BoxConstraints(minWidth: minWidth!),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Radious!),
             border: Border.all(
@@ -36,16 +37,20 @@ class AmenitiesListView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  translationDataBase(
-                      productDetailsConimble.items.amenities?[index],
-                      productDetailsConimble.items.amenities?[index]),
-                  style: TextStyleClass.getTextStyle(
-                    "medium",
-                    AppConstans.Width * .04,
-                    color: Get.isDarkMode == true
-                        ? AppConstans.darkgreycolordarktheme
-                        : AppConstans.darkgreycolor,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 5.h, horizontal: 16.w),
+                  child: Text(
+                    translationDataBase(
+                        productDetailsConimble.items.amenities?[index],
+                        productDetailsConimble.items.amenities?[index]),
+                    style: TextStyleClass.getTextStyle(
+                      "medium",
+                      14.sp,
+                      color: Get.isDarkMode == true
+                          ? AppConstans.darkgreycolordarktheme
+                          : AppConstans.darkgreycolor,
+                    ),
                   ),
                 ),
               ],

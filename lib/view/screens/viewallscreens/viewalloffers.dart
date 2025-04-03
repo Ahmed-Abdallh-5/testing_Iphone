@@ -9,15 +9,13 @@ import 'package:ecommerce/view/widget/home/searchtextfield.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewalloffersortinglist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ViewallOffersScreen extends StatelessWidget {
   const ViewallOffersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     ViewallOffersimble viewallOffersimble = Get.put(ViewallOffersimble());
 
     return Scaffold(
@@ -27,12 +25,15 @@ class ViewallOffersScreen extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.arrow_back_ios, size: 20.sp),
         ),
         centerTitle: true,
         title: Appbartext(appbartext: "81".tr),
       ),
       body: RefreshIndicator(
+        color: Get.isDarkMode
+            ? AppConstans.maincolordarktheme
+            : AppConstans.maincolorlighttheme,
         onRefresh: () async {
           viewallOffersimble.Refreshfunc(viewallOffersimble.Catid);
         },
@@ -42,22 +43,22 @@ class ViewallOffersScreen extends StatelessWidget {
               return HandlingViewallitems();
             }
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * .03),
+              padding: EdgeInsets.symmetric(horizontal: 12.w),
               child: Column(
                 children: [
-                  SizedBox(height: screenHeight * .005),
+                  SizedBox(height: AppConstans.commonsizeboxhiggt.h),
                   // Search TextField
                   SearchTextField(
                     issortedicon: true,
                     onPressed: () {
                       Get.bottomSheet(
                         Container(
-                          height: screenHeight * .2,
+                          height: 160.h,
                           width: double.infinity,
                           child: Material(
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(AppConstans.Radious),
-                              topRight: Radius.circular(AppConstans.Radious),
+                              topLeft: Radius.circular(AppConstans.Radious.r),
+                              topRight: Radius.circular(AppConstans.Radious.r),
                             ),
                             child: GetBuilder<ViewallOffersimble>(
                               builder: (viewallOffersimble) => Column(
@@ -65,20 +66,19 @@ class ViewallOffersScreen extends StatelessWidget {
                                 children: [
                                   Center(
                                     child: Container(
-                                      margin: EdgeInsets.only(
-                                          top: screenHeight * .002),
-                                      height: screenHeight * .005,
-                                      width: AppConstans.Width * .3,
+                                      margin: EdgeInsets.only(top: 2.h),
+                                      height: 5.h,
+                                      width: 90.w,
                                       color: Colors.grey,
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(8),
+                                    padding: EdgeInsets.all(8.w),
                                     child: Text(
                                       "78".tr,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 25,
+                                        fontSize: 25.sp,
                                       ),
                                     ),
                                   ),
@@ -119,23 +119,20 @@ class ViewallOffersScreen extends StatelessWidget {
                     },
                     hinttext: "65".tr,
                   ),
-                  SizedBox(height: screenHeight * .015),
+                  SizedBox(height: 15.h),
                   // Ensure scrollability for dynamic lists
                   Expanded(
                     child: viewallOffersimble.isshaerching == false
                         ? viewallOffersimble.SortedList.isEmpty
                             ? ListViewallOffers(
-                                viewallOffersimble: viewallOffersimble,
-                              )
+                                viewallOffersimble: viewallOffersimble)
                             : ListViewallOffersSorting(
-                                viewallOffersimble: viewallOffersimble,
-                              )
+                                viewallOffersimble: viewallOffersimble)
                         : SingleChildScrollView(
                             child: Column(
                               children: [
                                 SearchListWidget(
-                                  SearchList: viewallOffersimble.Searchlist,
-                                ),
+                                    SearchList: viewallOffersimble.Searchlist),
                               ],
                             ),
                           ),

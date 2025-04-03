@@ -9,18 +9,18 @@ import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/home/offertextwidget.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/offerpercentagecontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ItemsModelClassViewall extends GetView<Homeimp2> {
   const ItemsModelClassViewall(
-      {super.key, this.items, this.offeredcontainer = false});
+      {super.key, this.items, this.hight, this.offeredcontainer = false});
   final ItemModelJson? items;
   final bool offeredcontainer;
+  final double? hight;
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     ViewallItemsimble viewallItemsimble = Get.put(ViewallItemsimble());
     Homeimp2 homeimp2 = Get.put(Homeimp2());
 
@@ -31,10 +31,10 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
       child: Column(
         children: [
           Container(
-            height: screenHeight * .2,
+            height: hight,
             width: double.infinity,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppConstans.Radious),
+                borderRadius: BorderRadius.circular(AppConstans.Radious.r),
                 color: Get.isDarkMode == true
                     ? AppConstans.secondblackcolor
                     : AppConstans.Whitecolor,
@@ -50,8 +50,8 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                       AppConstans.Radious,
                     ),
                     child: Container(
-                      height: screenHeight * .2,
-                      width: screenWidth * 0.41,
+                      height: hight,
+                      width: 160.w,
                       child: CachedNetworkImage(
                         imageUrl: items!.gallery![0].image!,
                         fit: BoxFit.fill,
@@ -65,7 +65,7 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                       : SizedBox()
                 ]),
                 SizedBox(
-                  width: AppConstans.Width * .02,
+                  width: 16.w,
                 ),
                 Expanded(
                   child: Column(
@@ -78,7 +78,7 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                               translationDataBase(items!.nameAr!, items!.name!),
                               style: TextStyleClass.getTextStyle(
                                 "medium",
-                                screenWidth * 0.05,
+                                20.sp,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -125,7 +125,7 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                             child: Text(
                               items!.location!,
                               style: TextStyleClass.getTextStyle(
-                                  "weight500", screenWidth * 0.038,
+                                  "weight500", 12.sp,
                                   color: AppConstans.darkgreycolor),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -141,14 +141,10 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                               textoffer: "today",
                             )
                           : SizedBox(),
-                      SizedBox(
-                        height: AppConstans.Hight * .01,
-                      ),
                       Spacer(),
                       Text(
                         "${items!.price!} " + "76".tr,
-                        style: TextStyleClass.getTextStyle(
-                            "weight500", AppConstans.Width * .04,
+                        style: TextStyleClass.getTextStyle("weight500", 15.sp,
                             color: Get.isDarkMode
                                 ? AppConstans.maincolordarktheme
                                 : AppConstans.maincolorlighttheme),

@@ -27,13 +27,9 @@ class Sharedbuttom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: hight,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppConstans.Radious),
-        // border: Border.all(color: boredercolor)
-      ),
       child: MaterialButton(
         onPressed: isEnabled ? onpreesed : null, // Disable functionality
         shape: RoundedRectangleBorder(

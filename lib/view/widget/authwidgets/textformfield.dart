@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class Textformfield extends StatelessWidget {
@@ -40,7 +41,7 @@ class Textformfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(16);
+    final borderRadius = BorderRadius.circular(AppConstans.Radious);
 
     return TextFormField(
       onChanged: onChanged,
@@ -54,24 +55,28 @@ class Textformfield extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
         // prefixText: isphonetext == true ? preixtext ?? "+20" : null,
-        prefixStyle: TextStyle(
-          color:
-              Get.isDarkMode ? AppConstans.Whitecolor : AppConstans.blackcolor,
-          fontSize: 16,
-        ),
+        // prefixStyle: TextStyle(
+        //   color:
+        //       Get.isDarkMode ? AppConstans.Whitecolor : AppConstans.blackcolor,
+        //   fontSize: 16.sp,
+        // ),
         errorText: iserroredtext == true ? errortext : null,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         label: Text(
           lapeltext ?? "",
           style: TextStyleClass.getTextStyle(
             "weight400",
-            16,
-            color: AppConstans.darkgreycolor,
+            12.sp,
+            color: Get.isDarkMode
+                ? AppConstans.darkgreycolordarktheme
+                : AppConstans.darkgreycolor,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: AppConstans.Bordercolor,
+            color: Get.isDarkMode
+                ? AppConstans.darkgreycolordarktheme
+                : AppConstans.Bordercolor,
           ),
           borderRadius: borderRadius,
         ),
@@ -80,18 +85,28 @@ class Textformfield extends StatelessWidget {
           borderRadius: borderRadius,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppConstans.Bordercolor),
+          borderSide: BorderSide(
+            color: Get.isDarkMode
+                ? AppConstans.darkgreycolordarktheme
+                : AppConstans.Bordercolor,
+          ),
           borderRadius: borderRadius,
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppConstans.Bordercolor),
+          borderSide: BorderSide(
+            color: Get.isDarkMode
+                ? AppConstans.darkgreycolordarktheme
+                : AppConstans.Bordercolor,
+          ),
           borderRadius: borderRadius,
         ),
         hintText: hinttextstring,
         hintStyle: TextStyleClass.getTextStyle(
           "weight400",
-          14,
-          color: AppConstans.darkgreycolor,
+          16.sp,
+          color: Get.isDarkMode
+              ? AppConstans.darkgreycolordarktheme
+              : AppConstans.darkgreycolor,
         ),
         suffixIcon: iconsuffix != null
             ? InkWell(
@@ -99,7 +114,8 @@ class Textformfield extends StatelessWidget {
                 onTap: showpassword,
               )
             : null,
-        contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+        contentPadding:
+            EdgeInsets.symmetric(vertical: 11.0.h, horizontal: 16.0.w),
       ),
     );
   }

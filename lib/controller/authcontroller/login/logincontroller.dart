@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:ecommerce/core/classes/statuerequest.dart';
 import 'package:ecommerce/core/funtions/checkinternet.dart';
 import 'package:ecommerce/core/funtions/handlingdata.dart';
@@ -140,7 +138,7 @@ class Logincontrollerimp extends Logincontrolller {
   }
 
   GOTOForgetpassword() {
-    Get.offNamed("/forgetpassword");
+    Get.toNamed("/forgetpassword");
   }
 
   // Future<UserCredential> signInWithFacebook() async {

@@ -16,7 +16,7 @@ class MyMatchesScreen extends StatelessWidget {
     Mymatchesimble mymatchesimble = Get.put(Mymatchesimble());
 
     return DefaultTabController(
-      length: 2, // تأكد أن الطول متطابق مع عدد العناصر في TabBarView
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           bottom: TabBar(
@@ -32,75 +32,71 @@ class MyMatchesScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: SafeArea(
-          child: GetBuilder<Mymatchesimble>(
-            builder: (mymatchesimble) {
-              if (mymatchesimble.statueRequest == StatueRequest.loadinghome) {
-                return HandlingViewallitems();
-              }
-              return TabBarView(
-                children: [
-                  // ✅ Upcoming Matches Tab ✅
-                  RefreshIndicator(
-                    color: Get.isDarkMode
-                        ? AppConstans.maincolordarktheme
-                        : AppConstans.maincolorlighttheme,
-                    onRefresh: () async {
-                      await mymatchesimble.refreshdata();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: AppConstans.PaddingHorizontal,
-                        right: AppConstans.PaddingHorizontal,
+        body: GetBuilder<Mymatchesimble>(
+          builder: (mymatchesimble) {
+            if (mymatchesimble.statueRequest == StatueRequest.loadinghome) {
+              return HandlingViewallitems();
+            }
+            return TabBarView(
+              children: [
+                // ✅ Upcoming Matches Tab ✅
+                RefreshIndicator(
+                  color: Get.isDarkMode
+                      ? AppConstans.maincolordarktheme
+                      : AppConstans.maincolorlighttheme,
+                  onRefresh: () async {
+                    await mymatchesimble.refreshdata();
+                  },
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: mymatchesimble.upcoming.isEmpty
+                            ? Center(
+                                child: NoItemText(
+                                  effectiveWidth: AppConstans.Width * 0.05,
+                                  text: '341'.tr,
+                                ),
+                              )
+                            : Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        AppConstans.PaddingHorizontalAuth),
+                                child: UpComingListView(),
+                              ),
                       ),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: mymatchesimble.upcoming.isEmpty
-                                ? Center(
-                                    child: NoItemText(
-                                      effectiveWidth: AppConstans.Width * 0.05,
-                                      text: '341'.tr,
-                                    ),
-                                  )
-                                : UpComingListView(),
-                          ),
-                        ],
-                      ),
-                    ),
+                    ],
                   ),
+                ),
 
-                  // ✅ History Matches Tab ✅
-                  RefreshIndicator(
-                    color: Get.isDarkMode
-                        ? AppConstans.maincolordarktheme
-                        : AppConstans.maincolorlighttheme,
-                    onRefresh: () async {
-                      await mymatchesimble.refreshdata();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: AppConstans.PaddingHorizontal,
-                        right: AppConstans.PaddingHorizontal,
-                      ),
-                      child: Column(children: [
-                        Expanded(
-                          child: mymatchesimble.history.isEmpty
-                              ? Center(
-                                  child: NoItemText(
-                                    effectiveWidth: AppConstans.Width * 0.05,
-                                    text: '342'.tr,
-                                  ),
-                                )
-                              : MyMatchesListView(),
-                        ),
-                      ]),
+                // ✅ History Matches Tab ✅
+                RefreshIndicator(
+                  color: Get.isDarkMode
+                      ? AppConstans.maincolordarktheme
+                      : AppConstans.maincolorlighttheme,
+                  onRefresh: () async {
+                    await mymatchesimble.refreshdata();
+                  },
+                  child: Column(children: [
+                    Expanded(
+                      child: mymatchesimble.history.isEmpty
+                          ? Center(
+                              child: NoItemText(
+                                effectiveWidth: AppConstans.Width * 0.05,
+                                text: '342'.tr,
+                              ),
+                            )
+                          : Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      AppConstans.PaddingHorizontalAuth),
+                              child: MyMatchesListView(),
+                            ),
                     ),
-                  ),
-                ],
-              );
-            },
-          ),
+                  ]),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

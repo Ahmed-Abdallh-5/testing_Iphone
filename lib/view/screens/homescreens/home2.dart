@@ -13,6 +13,7 @@ import 'package:ecommerce/view/widget/home/searchtextfield.dart';
 import 'package:ecommerce/view/widget/home/titles.dart';
 import 'package:ecommerce/view/widget/mymatches/upcominglisthorizontal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class Home12 extends StatelessWidget {
@@ -40,19 +41,19 @@ class Home12 extends StatelessWidget {
                 child: ListView(
                   children: [
                     SizedBox(
-                      height: AppConstans.distanceapppar,
+                      height: 16.h,
                     ),
                     RowHomeScreen(
                       /*the function */
-
+                      text3: "pts",
                       /*the function */
-
+                      text2: "20 ",
                       text: "60".tr +
                           "${settingservices.sharedPref.getString("username")}" +
                           "!",
                     ),
                     SizedBox(
-                      height: AppConstans.Hight * .015,
+                      height: AppConstans.commonsizeboxhiggt,
                     ),
                     SearchTextField(
                       issortedicon: false,
@@ -62,7 +63,7 @@ class Home12 extends StatelessWidget {
                       hinttext: "65".tr,
                     ),
                     SizedBox(
-                      height: AppConstans.Hight * .030,
+                      height: AppConstans.commonsizeboxhiggt,
                     ),
                     homeimp.isshaerching == false
                         ? Column(
@@ -76,21 +77,21 @@ class Home12 extends StatelessWidget {
                                 text2: "64".tr,
                               ),
                               SizedBox(
-                                height: AppConstans.Hight * 0.02,
+                                height: 15.h,
                               ),
                               ListViewItems(homeimp: homeimp),
                               SizedBox(
-                                height: AppConstans.Hight * .035,
+                                height: AppConstans.commonsizeboxhiggt,
                               ),
                               ConatinerImage(
-                                hight: AppConstans.Hight / 5.5,
-                                width: AppConstans.Width / 2,
+                                hight: 120.h,
+                                width: 182.w,
                                 image: homeimp.images,
                                 texts: homeimp.texts,
                                 index: homeimp.images.length,
                               ),
                               SizedBox(
-                                height: AppConstans.Hight * .035,
+                                height: AppConstans.commonsizeboxhiggt,
                               ),
                               Titles(
                                 onTap: () {
@@ -104,13 +105,19 @@ class Home12 extends StatelessWidget {
                               ),
                               ListViewOffers(homeimp: homeimp),
                               SizedBox(
-                                height: AppConstans.Hight * .025,
+                                height: AppConstans.commonsizeboxhiggt,
                               ),
                               Titles(
                                 iconneeded: false,
                                 text1: "203".tr,
                               ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
                               UpComingListViewHorizontal(),
+                              SizedBox(
+                                height: 25.h,
+                              ),
                             ],
                           )
                         : SearchListWidget(

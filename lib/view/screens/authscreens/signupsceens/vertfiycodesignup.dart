@@ -11,6 +11,7 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/bodysmallauth.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:ecommerce/view/widget/textgesondetector.dart/textgesondetector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:lottie/lottie.dart';
@@ -37,28 +38,26 @@ class VertficationscreenSignUp extends StatelessWidget {
                   child: Container(
                       width: AppConstans.IndicatorWidth,
                       height: AppConstans.IndicatorWidth,
-                      child: Lottie.asset(AppConstans.loadinglottie)),
+                      child: Lottie.asset(Get.isDarkMode
+                          ? AppConstans.loadinglottiedark
+                          : AppConstans.loadinglottielight)),
                 )
               : Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: AppConstans.PaddingHorizontalAuth),
                   child: Column(
                     children: [
-                      // SizedBox(
-                      //   height: AppConstans.Hight * .06,
-                      // ),
-
                       SizedBox(
                         height: AppConstans.distanceapppar,
                       ),
                       BodyAuth(authheadline: "35".tr),
                       SizedBox(
-                        height: AppConstans.Sizeboxsize * 2,
+                        height: 24.h,
                       ),
                       OtpTextField(
                         textStyle: TextStyleClass.getTextStyle(
-                          "bold",
-                          16,
+                          "medium",
+                          24.sp,
                           color: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
                               : AppConstans.maincolorlighttheme,
@@ -105,7 +104,7 @@ class VertficationscreenSignUp extends StatelessWidget {
                         },
                       ),
                       SizedBox(
-                        height: AppConstans.Hight / 30,
+                        height: 24.h,
                       ),
                       TextDectecot(
                           alignment: Alignment.center,
@@ -123,12 +122,11 @@ class VertficationscreenSignUp extends StatelessWidget {
                                   ? AppConstans.maincolordarktheme
                                   : AppConstans.maincolorlighttheme)
                               : AppConstans.nonenabledbuttomcolor),
-
                       Spacer(),
                       Sharedbuttom(
                         isEnabled: vertfiycontrollerr.enable,
                         text: "201".tr,
-                        hight: AppConstans.Hight * 0.065,
+                        hight: AppConstans.authbottomsize,
                         onpreesed: () {
                           if (settingservices.sharedPref.getString("lang") ==
                               "ar") {
@@ -140,7 +138,7 @@ class VertficationscreenSignUp extends StatelessWidget {
                           }
                         },
                       ),
-                      SizedBox(height: AppConstans.Hight * 0.06),
+                      SizedBox(height: AppConstans.distancefrombottombar)
                     ],
                   ),
                 ),

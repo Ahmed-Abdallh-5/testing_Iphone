@@ -3,6 +3,7 @@ import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/constans/textstyles/text.dart';
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CourtsListView extends StatelessWidget {
@@ -68,8 +69,8 @@ class CourtsListView extends StatelessWidget {
                               productDetailsConimble.items.courts?[index].name,
                             ),
                             style: TextStyleClass.getTextStyle(
-                              "weight500",
-                              AppConstans.Width * .04,
+                              "weight400",
+                              16.sp,
                               color: Get.isDarkMode
                                   ? AppConstans.Whitecolor
                                   : AppConstans.blackcolor,

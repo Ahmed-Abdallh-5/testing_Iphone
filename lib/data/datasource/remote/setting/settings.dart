@@ -11,6 +11,7 @@ class SettingFunction {
   Logout() async {
     var response = await crud.postdata(APPlinks.logout, {},
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -23,6 +24,7 @@ class SettingFunction {
           "password": password,
         },
         token: await settingservices.sharedPref.getString("token"));
+
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:ecommerce/controller/account/accountcon.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
+import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/core/funtions/handlingdata.dart';
 import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
@@ -107,6 +108,11 @@ class ProductDetailsConimble extends ProductDetailsController {
     });
   }
 
+  clearchosenhours() {
+    ChosenHoursList.clear();
+    update();
+  }
+
   void initializeList() {
     isClickedList = List.generate(items.courts!.length, (index) => false);
   }
@@ -139,10 +145,22 @@ class ProductDetailsConimble extends ProductDetailsController {
   }
 
   void AddtoBookedlist(String value) {
-    if (ChosenHoursList.contains(value)) {
-    } else {
-      ChosenHoursList.add(value);
+    if (ChosenHoursList.contains(value)) {}
+    if (ChosenHoursList.length >= 2) {
+      Get.snackbar(
+        "377".tr,
+        "378".tr,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Get.isDarkMode
+            ? AppConstans.maincolorlighttheme
+            : AppConstans.maincolorlighttheme,
+        colorText: Colors.white,
+        duration: Duration(seconds: 3),
+      );
+      return;
     }
+
+    ChosenHoursList.add(value);
     update();
   }
 
@@ -161,7 +179,9 @@ class ProductDetailsConimble extends ProductDetailsController {
   @override
   void onInit() {
     dateOnly = DateFormat('yyyy-MM-dd').format(DateTime.now());
-    formattedDate = DateFormat('MMM dd, yyyy').format(DateTime.now());
+    formattedDate =
+        DateFormat('MMM dd, yyyy', settingservices.sharedPref.getString("lang"))
+            .format(DateTime.now());
 
     print(dateOnly);
     Getdata();

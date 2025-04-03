@@ -1,4 +1,3 @@
-import 'package:ecommerce/controller/settingcon/editprofilecontroller.dart';
 import 'package:ecommerce/core/constans/constansappvalues.dart';
 import 'package:ecommerce/view/widget/sharedwidgets/sharedbuttom.dart';
 import 'package:flutter/material.dart';
@@ -81,15 +80,15 @@ class ShowBottomBar extends StatelessWidget {
                     SizedBox(
                       height: AppConstans.Hight * .02,
                     ),
-                    Sharedbuttom(
-                        textrcolor: Colors.red,
-                        boredercolor: Colors.red,
-                        color: Get.isDarkMode == true
-                            ? AppConstans.secondblackcolor
-                            : AppConstans.Whitecolor,
-                        text: "Delete",
-                        hight: AppConstans.Hight * 0.055,
-                        onpreesed: camera!),
+                    // Sharedbuttom(
+                    //     textrcolor: Colors.red,
+                    //     boredercolor: Colors.red,
+                    //     color: Get.isDarkMode == true
+                    //         ? AppConstans.secondblackcolor
+                    //         : AppConstans.Whitecolor,
+                    //     text: "Delete",
+                    //     hight: AppConstans.Hight * 0.055,
+                    //     onpreesed: camera!),
                   ],
                 ),
               ),

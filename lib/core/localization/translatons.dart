@@ -12,7 +12,7 @@ class localizations extends Translations {
           "4": "احجز في ثواني",
           "5": "اختار ملعب البادل، التاريخ، والساعة",
           "6": "ادخل اللعبة",
-          "7": "انضم للمباريات ولعب بطريقتك",
+          "7": "انضم للمباريات والعب بطريقتك",
           "8": "حافظ على المنافسة",
           "9": "دور على بطولات بادل قريبة منك",
           "10": "انشئ حساب",
@@ -82,7 +82,7 @@ class localizations extends Translations {
           //////////////////////////////////////////HOME///////////////////////////////////
           "60": "أهلاً بيك",
           "61": "خلينا نساعدك تلاقي الملعب المناسب",
-          "62": "أفضل ملاعب البادل",
+          "62": "الملاعب القريبة",
           "63": "العروض",
           "64": "شوف الكل",
           "65": "دور على ملعب بادل",
@@ -110,7 +110,7 @@ class localizations extends Translations {
           "84": "اكبر نسبة خصم",
           /////////////////////////////SETTINGS////////////////////////////
 
-          "85": "الإعدادات",
+          "85": "المفضلة",
           "86": "الحساب",
           "87": "الإعدادات",
           "88": "اللغة",
@@ -215,6 +215,21 @@ class localizations extends Translations {
           "362": "من",
           "363": "الى",
           "364": "جنية",
+          "365": "ادفع",
+          "366": "الدفع",
+          "367": "دقيقة",
+          "368": "الرئيسية",
+          "369": "البطولات",
+          "370": "الماتشات",
+          "371": "الحساب",
+          "372": "الإيميل مينفعش يكون فيه مسافات،",
+          "373": "الأسم مينفعش يكون فيه مسافات",
+          "374": "بطولات \nارينا اكس",
+          "375": "عروض \nخاصة",
+          "376": "لأسف مفيش اي مواعيد فاضية النهاردة دور علي يوم تاني!",
+          "377": "الحد الأقصى للحجز",
+          "378":
+              "مش هينفع تحجز أكتر من ساعتين في المرة، لو عايز تضيف وقت تاني، لازم تلغي اختيار موجود الأول.",
           ////////////////////////////PRODUCTDETAILS///////////////////
           ///
 
@@ -296,7 +311,7 @@ class localizations extends Translations {
 
           "60": "Hey,",
           "61": "Let's help you find the right playground",
-          "62": "Top Padel Spots",
+          "62": "Nearby courts",
           "63": "Offers",
           "64": "View all",
           "65": "Where would you like to play ?",
@@ -325,7 +340,7 @@ class localizations extends Translations {
           "83": "Lowest Price",
           "84": "Biggest Offers",
           /////////////////////////////SETTINGS////////////////////////////
-          "85": "Settings",
+          "85": "My favourites",
           "86": "Account",
           "87": "Settings",
           "88": "Langauge",
@@ -433,6 +448,22 @@ class localizations extends Translations {
           "362": "from",
           "363": "to",
           "364": "EGP",
+          "365": "Pay",
+          "366": "Checkout",
+          "367": "min",
+          ///////////////////////////////////////////////////////////
+          "368": "Home",
+          "369": "Tournaments",
+          "370": "My matches",
+          "371": "Account",
+          "372": "Email can't have spaces",
+          "373": "username can't have spaces",
+          "374": "ArenaX\nTournaments",
+          "375": "Special\nOffers",
+          "376": "Oops!All booked up.Check other days",
+          "377": "Booking Limit Reached",
+          "378":
+              "You can't book more than 2 hours at a time. Please remove a selection before adding another.",
         }
       };
 }
