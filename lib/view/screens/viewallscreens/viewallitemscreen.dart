@@ -37,7 +37,10 @@ class ViewallItems extends StatelessWidget {
             ? AppConstans.maincolordarktheme
             : AppConstans.maincolorlighttheme,
         onRefresh: () async {
-          await viewallItemsimble.Refreshdata(viewallItemsimble.Catid);
+          await viewallItemsimble.Refreshdata(
+            viewallItemsimble.Catid,
+          );
+          ;
         },
         child: GetBuilder<ViewallItemsimble>(
           builder: (viewallItemsimble) => viewallItemsimble.statueRequest ==
@@ -91,7 +94,8 @@ class ViewallItems extends StatelessWidget {
                                         value: viewallItemsimble.IsSortByPrice,
                                         onChanged: (value) {
                                           if (value == true) {
-                                            viewallItemsimble.Sort("asc");
+                                            viewallItemsimble.PaginationSorting(
+                                                'asc');
                                           } else {
                                             viewallItemsimble.Clearsorting();
                                           }

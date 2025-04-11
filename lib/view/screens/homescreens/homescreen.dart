@@ -5,7 +5,7 @@ import 'package:ecommerce/view/widget/home/navigarorbuttombar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:upgrader/upgrader.dart';
+
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
@@ -16,8 +16,7 @@ class Homescreen extends StatelessWidget {
     ButtomNavBarControllerime buttomNavBarControllerime =
         Get.put(ButtomNavBarControllerime());
     return GetBuilder<ButtomNavBarControllerime>(
-      builder: (buttomNavBarControllerime) => UpgradeAlert(
-        child: Scaffold(
+      builder: (buttomNavBarControllerime) =>  Scaffold(
           bottomNavigationBar: BottomAppBar(
             height: 100.h,
             elevation: .1,
@@ -69,7 +68,7 @@ class Homescreen extends StatelessWidget {
           body: buttomNavBarControllerime.pages
               .elementAt(buttomNavBarControllerime.pagenumber),
         ),
-      ),
+     
     );
   }
 }

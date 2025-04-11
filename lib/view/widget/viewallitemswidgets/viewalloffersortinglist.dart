@@ -17,15 +17,30 @@ class ListViewallOffersSorting extends GetView<Homeimp2> {
       height: 136.h,
       width: double.infinity,
       child: ListView.builder(
+          controller: viewallOffersimble!.scrollController,
           scrollDirection: Axis.vertical,
-          itemCount: viewallOffersimble!.SortedList.length,
+          itemCount: viewallOffersimble!.IsLoadingmore!
+              ? viewallOffersimble!.SortedList.length + 1
+              : viewallOffersimble!.SortedList.length,
           itemBuilder: (context, index) {
-            return ItemsModelClassViewall(
-              hight: 136.h,
-              offeredcontainer: true,
-              items:
-                  ItemModelJson.fromJson(viewallOffersimble!.SortedList[index]),
-            );
+            if (index >= viewallOffersimble!.SortedList.length) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ItemsModelClassViewall(
+                hight: 136.h,
+                items: ItemModelJson.fromJson(
+                    viewallOffersimble!.SortedList[index]),
+              );
+            }
+
+            // return
+
+            //  ItemsModelClassViewall(
+            //   hight: 136.h,
+            //   offeredcontainer: true,
+            //   items:
+            //       ItemModelJson.fromJson(viewallOffersimble!.SortedList[index]),
+            // );
           }),
     );
   }

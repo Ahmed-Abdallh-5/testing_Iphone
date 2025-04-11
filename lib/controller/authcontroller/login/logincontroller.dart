@@ -62,8 +62,9 @@ class Logincontrollerimp extends Logincontrolller {
           settingservices.sharedPref.setString("photo", correctedPhotoLink);
           settingservices.sharedPref
               .setString("useremail", response['data']['email']);
-          settingservices.sharedPref
-              .setString("phone", response['data']['phone']);
+          // da
+          // settingservices.sharedPref
+          //     .setString("phone", response['data']['phone']);
           settingservices.sharedPref.setInt("userid", response['data']['id']);
           settingservices.sharedPref.setString("version", response['version']);
           settingservices.sharedPref.setString("token", response['token']);
@@ -154,6 +155,16 @@ class Logincontrollerimp extends Logincontrolller {
   // }
 
   @override
+  Future logout() async {
+    try {
+      await _googleSignIn.signOut();
+      await _auth.signOut();
+      print("User successfully logged out.");
+    } catch (e) {
+      print("Error during logout: $e");
+    }
+  }
+
   Future signInWithGoogle() async {
     // Ensure checkinternet is awaited
     if (await checkinternet()) {
@@ -180,12 +191,62 @@ class Logincontrollerimp extends Logincontrolller {
         // Store the access token
         settingservices.sharedPref
             .setString("accessToken", googleAuth.accessToken!);
-        print("Access Token: ${googleAuth.accessToken}");
-        print("ID Token: ${googleAuth.idToken}");
 
         // Sign in with Firebase
         UserCredential userCredential =
             await _auth.signInWithCredential(credential);
+
+        String? idToken =
+            await _auth.currentUser!.getIdToken(); // Retrieve the ID token
+        var response = await loginfun.SendingdataGoogle(idToken);
+        statueRequest = handlingdata(response);
+
+        if (StatueRequest.Success == statueRequest) {
+          if (response["message"] == 'User authenticated successfully') {
+            String rawPhotoLink = response['data']['photo'];
+            String correctedPhotoLink =
+                rawPhotoLink.replaceFirst('http://192.168.1.2/api', '');
+
+            settingservices.sharedPref
+                .setString("username", response['data']['name']);
+            settingservices.sharedPref.setString("photo", correctedPhotoLink);
+            settingservices.sharedPref
+                .setString("useremail", response['data']['email']);
+            // da
+            // settingservices.sharedPref
+            //     .setString("phone", response['data']['phone']);
+            settingservices.sharedPref.setInt("userid", response['data']['id']);
+            settingservices.sharedPref
+                .setString("version", response['version']);
+            settingservices.sharedPref.setString("token", response['token']);
+            // await settingservices.storagegit init
+            //     .write(key: "token", value: response['token']);
+
+            Get.offAndToNamed("/choosecountryscreen");
+          } else if (response["message"] ==
+              "This Email is not verified yet, We've sent a OTP to you") {
+            Get.toNamed("/vertficationscreenLogin",
+                arguments: {"email": email.text});
+          } else {
+            handleErrorResponse(response);
+          }
+        } else if (statueRequest == StatueRequest.offline) {
+          Get.defaultDialog(
+            title: "311".tr,
+            middleText: "308".tr,
+          );
+        } else if (statueRequest == StatueRequest.ServerFaliure) {
+          Get.defaultDialog(
+            title: "311".tr,
+            middleText: "307".tr,
+          );
+        }
+
+        update();
+
+        print("object");
+        print(response);
+        debugPrint(response);
 
         // Print user details
         User? user = userCredential.user;
@@ -193,6 +254,8 @@ class Logincontrollerimp extends Logincontrolller {
           print("Username: ${user.displayName}");
           print("Email: ${user.email}");
           print("Phone Number: ${user.phoneNumber ?? "No phone number"}");
+        } else {
+          print("test");
         }
 
         return userCredential;
@@ -207,15 +270,15 @@ class Logincontrollerimp extends Logincontrolller {
     }
   }
 
-  Future<void> logout() async {
-    try {
-      await _googleSignIn.signOut();
-      await _auth.signOut();
-      print("User successfully logged out.");
-    } catch (e) {
-      print("Error during logout: $e");
-    }
-  }
+  // Future<void> logout() async {
+  //   try {
+  //     await _googleSignIn.signOut();
+  //     await _auth.signOut();
+  //     print("User successfully logged out.");
+  //   } catch (e) {
+  //     print("Error during logout: $e");
+  //   }
+  // }
 
   Future<void> deleteAccount() async {
     try {

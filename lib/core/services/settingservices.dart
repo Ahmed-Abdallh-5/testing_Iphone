@@ -1,3 +1,5 @@
+import 'package:ecommerce/core/classes/securityservice.dart';
+import 'package:ecommerce/core/classes/workmanger.dart';
 import 'package:ecommerce/firebase_options.dart';
 import 'package:flutter/services.dart';
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -11,9 +13,12 @@ class Settingservices extends GetxService {
   // final storage = FlutterSecureStorage();
   Future<Settingservices> intial() async {
     sharedPref = await SharedPreferences.getInstance();
+
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     // await SecurityService.initSecurityService();
+    await WorkMangerClass().intialmanger();
     await initializeDateFormatting('ar', null);
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

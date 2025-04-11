@@ -45,10 +45,10 @@ class Homeimp2 extends Home2 with SingleGetTickerProviderMixin {
   // ItemModelJson? itemModelJson;
 
   List upcoming = [];
-  Getdata(id) async {
+  Getdata(id, {String? page}) async {
     statueRequest = StatueRequest.loadinghome;
     update();
-    var response = await homeDate2.getdata(id);
+    var response = await homeDate2.getdata(id, page: page ?? "1");
     statueRequest = handlingdata(response);
     if (StatueRequest.Success == statueRequest) {
       print(response);

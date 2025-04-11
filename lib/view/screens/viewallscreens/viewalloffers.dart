@@ -35,7 +35,7 @@ class ViewallOffersScreen extends StatelessWidget {
             ? AppConstans.maincolordarktheme
             : AppConstans.maincolorlighttheme,
         onRefresh: () async {
-          viewallOffersimble.Refreshfunc(viewallOffersimble.Catid);
+          viewallOffersimble.Refreshdata(viewallOffersimble.Catid);
         },
         child: GetBuilder<ViewallOffersimble>(
           builder: (viewallOffersimble) {
@@ -94,7 +94,8 @@ class ViewallOffersScreen extends StatelessWidget {
                                     value: viewallOffersimble.IsSortByPrice,
                                     onChanged: (value) {
                                       if (value == true) {
-                                        viewallOffersimble.Sort("asc");
+                                        viewallOffersimble.PaginationSorting(
+                                            "asc");
                                       } else {
                                         viewallOffersimble.Clearsorting();
                                       }

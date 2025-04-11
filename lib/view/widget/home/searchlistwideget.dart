@@ -74,15 +74,21 @@ class SearchListWidget extends StatelessWidget {
                                       AppConstans.Radious,
                                     ),
                                     child: Container(
-                                      height: AppConstans.Hight * .16,
-                                      width: AppConstans.Width * 0.41,
-                                      child: CachedNetworkImage(
-                                        imageUrl: SearchList[index]
-                                            .gallery![0]
-                                            .image!,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
+                                        height: AppConstans.Hight * .16,
+                                        width: AppConstans.Width * 0.41,
+                                        child:
+                                            SearchList[index].gallery != null &&
+                                                    SearchList[index]
+                                                        .gallery!
+                                                        .isNotEmpty
+                                                ? CachedNetworkImage(
+                                                    imageUrl: SearchList[index]
+                                                            .gallery![0]
+                                                            .image ??
+                                                        '',
+                                                    fit: BoxFit.fill,
+                                                  )
+                                                : const Placeholder()),
                                   ),
                                 ]),
                                 SizedBox(

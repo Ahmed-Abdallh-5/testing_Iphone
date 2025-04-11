@@ -8,10 +8,10 @@ class HomeDate2Viewallitems {
   Settingservices settingservices = Get.find();
   HomeDate2Viewallitems(this.crud);
 
-  getdata(String catID) async {
-    Map<String, dynamic> params = {'city': catID};
+  getdata(String catID, {String? page}) async {
+    Map<String, dynamic> params = {'city': catID, 'page': page};
 
-    var response = await crud.getdata(APPlinks.Home2, params,
+    var response = await crud.getdata("${APPlinks.Home2}", params,
         token: await settingservices.sharedPref.getString("token"));
 
     return response.fold((l) => l, (r) => r);
@@ -26,8 +26,12 @@ class HomeDate2Viewallitems {
     return response.fold((l) => l, (r) => r);
   }
 
-  sortdata(String catID, sortway) async {
-    Map<String, dynamic> params = {'city': catID, 'price': sortway};
+  sortdata(String catID, sortway, {String? page}) async {
+    Map<String, dynamic> params = {
+      'city': catID,
+      'price': sortway,
+      'page': page
+    };
 
     var response = await crud.getdata(APPlinks.Home2, params,
         token: await settingservices.sharedPref.getString("token"));

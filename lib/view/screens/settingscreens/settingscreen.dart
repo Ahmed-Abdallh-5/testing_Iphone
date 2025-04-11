@@ -6,7 +6,6 @@ import 'package:ecommerce/view/widget/authwidgets/authtexts/appbartext.dart';
 import 'package:ecommerce/view/widget/settingwidget/iconsetting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 
 class SettingScreeneScreen extends StatelessWidget {
   const SettingScreeneScreen({super.key, this.onPressed});
@@ -123,10 +122,10 @@ class SettingScreeneScreen extends StatelessWidget {
                           value: settingservices.sharedPref.getBool(
                               "${settingscreenimble.IsSwitchedNotfications}")!,
                           onChanged: (value) {
-                            // settingscreenimble.notficationSwitcherFunction(
-                            //     value, "id1");
-                            // print(settingservices.sharedPref.getBool(
-                            //     "${settingscreenimble.IsSwitchedNotfications}"));
+                            settingscreenimble.notficationSwitcherFunction(
+                                value, "id1");
+                            print(settingservices.sharedPref.getBool(
+                                "${settingscreenimble.IsSwitchedNotfications}"));
                           },
                           switcher: true,
                           istrashed: false,

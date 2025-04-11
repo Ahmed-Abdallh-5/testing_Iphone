@@ -1,10 +1,13 @@
+import 'package:ecommerce/controller/onboarding/onboardingcon.dart';
 import 'package:ecommerce/controller/settingcon/changelanguagesettingpage.dart';
 import 'package:ecommerce/core/classes/statuerequest.dart';
+import 'package:ecommerce/core/classes/workmanger.dart';
 import 'package:ecommerce/core/funtions/handlingdata.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/data/datasource/remote/setting/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 abstract class SettingscreenCon extends GetxController {
   bool ChangeSwitcherButtonDarkLight(bool IsSwitched);
@@ -20,7 +23,7 @@ class Settingscreenimble extends SettingscreenCon {
   SettingFunction setting = SettingFunction(Get.find());
   StatueRequest? statueRequest;
   bool IsSwitched = false;
-  bool IsSwitchedNotfications = true;
+  bool? IsSwitchedNotfications;
   List<String> langlist = ["English", "Arabic"];
   List<String> langlistarabic = ["العربية", "الأنجليزية"];
   Settingservices settingservices = Get.find();
@@ -94,7 +97,7 @@ class Settingscreenimble extends SettingscreenCon {
     settingservices.sharedPref
         .setBool("IsSwitchedNotficationss", newSwitchedNotiyValue);
     update();
-    return IsSwitchedNotfications;
+    return IsSwitchedNotfications!;
   }
 
   @override
@@ -106,25 +109,31 @@ class Settingscreenimble extends SettingscreenCon {
   }
 
   @override
-  // notficationSwitcherFunction(bool newval, String uniqueName) async {
-  //   IsSwitchedNotfications = newval;
-  //   settingservices.sharedPref.setBool("$IsSwitchedNotfications", newval);
+  notficationSwitcherFunction(bool newval, String uniqueName) async {
+    IsSwitchedNotfications = newval;
+    settingservices.sharedPref.setBool("$IsSwitchedNotfications", newval);
 
-  //   if (IsSwitchedNotfications == true) {
-  //     await registertask();
-  //   } else if (IsSwitchedNotfications == false) {
-  //     print(IsSwitchedNotfications);
+    if (IsSwitchedNotfications == true) {
+      OnboardingConimble onboardingConimble = Get.put(OnboardingConimble());
+      if (onboardingConimble.status ==
+          Permission.notification.status.isGranted) {
+        await registertask();
+      }
+    } else if (IsSwitchedNotfications == false) {
+      print(IsSwitchedNotfications);
 
-  //     WorkMangerClass().cancelAll(uniqueName);
-  //     // Notfications().CancelNotfication();
-  //   }
+      WorkMangerClass().cancelAll(uniqueName);
+      // Notfications().CancelNotfication();
+    }
 
-  //   update();
-  // }
+    update();
+  }
 
   @override
   void onInit() {
-    settingservices.sharedPref.setBool("$IsSwitchedNotfications", true);
+    IsSwitchedNotfications =
+        settingservices.sharedPref.getBool("IsSwitchedNotficationss");
+    print(IsSwitchedNotfications);
     super.onInit();
   }
 }

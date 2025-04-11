@@ -13,20 +13,26 @@ class ListViewallOffers extends GetView<Homeimp2> {
   final ItemModelJson? items;
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return SizedBox(
       height: 160.h,
       width: double.infinity,
       child: ListView.builder(
+          controller: viewallOffersimble!.scrollController,
           scrollDirection: Axis.vertical,
-          itemCount: viewallOffersimble!.offers.length,
+          itemCount: viewallOffersimble!.IsLoadingmore!
+              ? viewallOffersimble!.offers.length + 1
+              : viewallOffersimble!.offers.length,
           itemBuilder: (context, index) {
-            return ItemsModelClassViewall(
-              hight: 160.h,
-              offeredcontainer: true,
-              items: ItemModelJson.fromJson(viewallOffersimble!.offers[index]),
-            );
+            if (index >= viewallOffersimble!.offers.length) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ItemsModelClassViewall(
+                hight: 160.h,
+                offeredcontainer: true,
+                items:
+                    ItemModelJson.fromJson(viewallOffersimble!.offers[index]),
+              );
+            }
           }),
     );
   }

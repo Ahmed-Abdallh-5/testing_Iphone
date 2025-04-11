@@ -8,10 +8,10 @@ class HomeDate2 {
   Settingservices settingservices = Get.find();
   HomeDate2(this.crud);
 
-  getdata(String catID, {int? limit, int? skip}) async {
-    Map<String, dynamic> params = {'city': catID};
+  getdata(String catID, {String? page}) async {
+    Map<String, dynamic> params = {'city': catID, 'page': page};
 
-    var response = await crud.getdata(APPlinks.Home2, params,
+    var response = await crud.getdata("${APPlinks.Home2}", params,
         token: await settingservices.sharedPref.getString("token"));
 
     return response.fold((l) => l, (r) => r);

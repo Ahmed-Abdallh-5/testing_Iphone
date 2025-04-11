@@ -11,6 +11,7 @@ enum StatueRequest {
   Validationerror,
   Authorizationerror,
   loadinghome,
+  loadingindicator,
   loadingprofile,
   notverficated,
   Unauthorizederror,

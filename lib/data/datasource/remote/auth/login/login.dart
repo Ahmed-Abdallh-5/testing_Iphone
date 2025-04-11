@@ -5,10 +5,10 @@ class Login {
   CRUD crud;
   Login(this.crud);
   SendingdataGoogle(
-    String Idtoken,
+    Idtoken,
   ) async {
     var response = await crud.postdataAuthhandelingresponse(
-        "https://test.hgallerycandles.com/api/login/google", {},
+        APPlinks.googleSignUp, {},
         token: Idtoken);
     return response.fold((l) => l, (r) => r);
   }

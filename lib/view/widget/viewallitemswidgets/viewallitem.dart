@@ -1,7 +1,5 @@
 import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/controller/viewallitemcontroller.dart';
-import 'package:ecommerce/core/funtions/responivefunc.dart';
-
 import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallgeneralcontainer.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +17,20 @@ class ListViewallItems extends GetView<Homeimp2> {
       height: 136.h,
       width: double.infinity,
       child: ListView.builder(
+          controller: viewallItemsimble!.scrollController,
           scrollDirection: Axis.vertical,
-          itemCount: viewallItemsimble!.data.length,
+          itemCount: viewallItemsimble!.IsLoadingmore!
+              ? viewallItemsimble!.data.length + 1
+              : viewallItemsimble!.data.length,
           itemBuilder: (context, index) {
-            return ItemsModelClassViewall(
-              hight: 136.h,
-              items: ItemModelJson.fromJson(viewallItemsimble!.data[index]),
-            );
+            if (index >= viewallItemsimble!.data.length) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ItemsModelClassViewall(
+                hight: 136.h,
+                items: ItemModelJson.fromJson(viewallItemsimble!.data[index]),
+              );
+            }
           }),
     );
   }

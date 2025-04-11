@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 
 class ChangeLangcon extends GetxController {
   late Settingservices settingservices;
+
   Locale? langauge;
 
   @override
-  void onInit() {
+  void onInit() async {
     settingservices = Get.find<Settingservices>();
   }
 

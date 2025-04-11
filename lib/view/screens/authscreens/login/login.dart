@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:upgrader/upgrader.dart';
+
 
 class Loginscreen extends StatelessWidget {
   const Loginscreen({super.key});
@@ -22,8 +22,8 @@ class Loginscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Logincontrollerimp logcontroller = Get.put(Logincontrollerimp());
 
-    return UpgradeAlert(
-      child: Scaffold(
+    return 
+       Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
@@ -107,6 +107,7 @@ class Loginscreen extends StatelessWidget {
                             image: "images/pngwing.com.png",
                             onPressed: () {
                               logcontroller.signInWithGoogle();
+                              // logcontroller.logout();
                             },
                           ),
                         ),
@@ -161,7 +162,7 @@ class Loginscreen extends StatelessWidget {
                   ),
           ),
         ),
-      ),
+      
     );
   }
 }

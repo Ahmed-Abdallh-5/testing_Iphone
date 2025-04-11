@@ -1,9 +1,5 @@
 import 'package:ecommerce/controller/homecon/homecon.dart';
 import 'package:ecommerce/controller/viewallitemcontroller.dart';
-
-import 'package:ecommerce/core/constans/constansappvalues.dart';
-import 'package:ecommerce/core/constans/textstyles/text.dart';
-import 'package:ecommerce/core/funtions/translationdatabase.dart';
 import 'package:ecommerce/data/model/itemsmodel.dart';
 import 'package:ecommerce/view/widget/viewallitemswidgets/viewallgeneralcontainer.dart';
 import 'package:flutter/material.dart';
@@ -17,20 +13,27 @@ class ListViewallItemsSorting extends GetView<Homeimp2> {
   final ItemModelJson? items;
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox(
       height: 136.h,
       width: double.infinity,
       child: ListView.builder(
+          controller: viewallitemsimble!.scrollController,
           scrollDirection: Axis.vertical,
-          itemCount: viewallitemsimble!.SortedList.length,
+          itemCount: viewallitemsimble!.IsLoadingmore!
+              ? viewallitemsimble!.SortedList.length + 1
+              : viewallitemsimble!.SortedList.length,
           itemBuilder: (context, index) {
-            return ItemsModelClassViewall(
-              hight: 136.h,
-              items:
-                  ItemModelJson.fromJson(viewallitemsimble!.SortedList[index]),
-            );
+            if (index >= viewallitemsimble!.SortedList.length) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ItemsModelClassViewall(
+                hight: 136.h,
+                items: ItemModelJson.fromJson(
+                    viewallitemsimble!.SortedList[index]),
+              );
+            }
           }),
     );
   }

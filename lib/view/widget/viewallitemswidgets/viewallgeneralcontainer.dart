@@ -52,10 +52,13 @@ class ItemsModelClassViewall extends GetView<Homeimp2> {
                     child: Container(
                       height: hight,
                       width: 160.w,
-                      child: CachedNetworkImage(
-                        imageUrl: items!.gallery![0].image!,
-                        fit: BoxFit.fill,
-                      ),
+                      child: (items?.gallery != null &&
+                              items!.gallery!.isNotEmpty)
+                          ? CachedNetworkImage(
+                              imageUrl: items!.gallery![0].image ?? '',
+                              fit: BoxFit.fill,
+                            )
+                          : Placeholder(), // أو Container() أو أي widget بديل مناسب
                     ),
                   ),
                   offeredcontainer == true

@@ -1,3 +1,4 @@
+import 'package:ecommerce/controller/notfication/notficationsfirebasecon.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,7 @@ class langcontroller extends GetxController {
   Locale? langauge;
 
   @override
-  void onInit() {
+  void onInit() async {
     settingservices = Get.find<Settingservices>();
     if (settingservices.sharedPref.getString("lang") == "ar") {
       langauge = const Locale("ar");
@@ -18,6 +19,7 @@ class langcontroller extends GetxController {
       settingservices.sharedPref
           .setString("lang", Get.deviceLocale!.languageCode);
     }
+
     super.onInit();
   }
 

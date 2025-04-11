@@ -3,6 +3,7 @@ import 'package:ecommerce/core/funtions/handlingdata.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
 import 'package:ecommerce/data/datasource/remote/viewall/viewallitem.dart';
 import 'package:ecommerce/data/model/itemsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class ViewallOffers extends GetxController {
@@ -10,7 +11,7 @@ abstract class ViewallOffers extends GetxController {
   // onChangedIsSortByRating(value);
   onChangedIsSortOffers(value);
   Getdata(id);
-  Refreshfunc(id);
+  // Refreshfunc(id);
   gotoproductdetails(items);
 }
 
@@ -22,24 +23,31 @@ class ViewallOffersimble extends ViewallOffers {
   // List SortedByPrice = [];
   List Searchlistmodel = [];
   List<ItemModelJson> Searchlist = [];
+  bool? IsLoadingmore = false;
   bool? isshaerching = false;
   ItemModelJson? item;
   String? Catid;
   String? Districtid;
   bool? IsSortByPrice = false;
+  String? page = "1";
   bool? IsSortByRating = false;
   bool? IsSortHightsDiscount = false;
+  ScrollController scrollController = ScrollController();
   StatueRequest? statueRequest;
   HomeDate2Viewallitems homeDate2Viewallitems =
       HomeDate2Viewallitems(Get.find());
-  List data = [];
+  // List data = [];
   List offers = [];
   Map favoriteMap = {};
   Settingservices settingservices = Get.find();
-  Getdata(id) async {
-    statueRequest = StatueRequest.loadinghome;
+  Getdata(id, {String? page}) async {
+    if (page == null) {
+      statueRequest = StatueRequest.loadinghome;
+    } else {
+      statueRequest = StatueRequest.loadingindicator;
+    }
     update();
-    var response = await homeDate2Viewallitems.getdata(id);
+    var response = await homeDate2Viewallitems.getdata(id, page: page ?? "1");
     statueRequest = handlingdata(response);
     if (StatueRequest.Success == statueRequest) {
       print(response);
@@ -48,6 +56,7 @@ class ViewallOffersimble extends ViewallOffers {
           response['data'].where((element) => element['discount'] != 0));
       for (var item in offers) {
         favoriteMap[item['id']] = item['favorite'];
+        IsLoadingmore = false;
         print(favoriteMap);
       }
     } else if (statueRequest == StatueRequest.offline) {
@@ -64,19 +73,23 @@ class ViewallOffersimble extends ViewallOffers {
     update();
   }
 
-  Refreshfunc(id) async {
+  Refreshdata(id) async {
     statueRequest = StatueRequest.loadinghome;
     update();
-    var response = await homeDate2Viewallitems.getdata(id);
+
+    page = "1";
+
+    var response = await homeDate2Viewallitems.getdata(id, page: page);
     statueRequest = handlingdata(response);
     if (StatueRequest.Success == statueRequest) {
-      print(response);
       offers.clear();
-      offers.addAll(response['data']);
+      offers.addAll(response['data'].where(
+          (element) => element['active'] == true && element['discount'] != 0));
+
       for (var item in offers) {
         favoriteMap[item['id']] = item['favorite'];
-        print(favoriteMap);
       }
+      update();
     } else if (statueRequest == StatueRequest.offline) {
       Get.defaultDialog(
         title: "311".tr,
@@ -123,19 +136,30 @@ class ViewallOffersimble extends ViewallOffers {
     SortedList.clear();
   }
 
-  Sort(sortedby) async {
-    statueRequest = StatueRequest.loadingSearch;
+  Sort(sortedby, {String? Sortedpage}) async {
+    if (Sortedpage == null) {
+      statueRequest = StatueRequest.loadinghome;
+    } else {
+      statueRequest = StatueRequest.loadingindicator;
+    }
+    // statueRequest = StatueRequest.loadingSearch;
     update();
-    var response = await homeDate2Viewallitems.sortdata(Catid!, sortedby);
+
+    var response = await homeDate2Viewallitems.sortdata(Catid!, sortedby,
+        page: Sortedpage ?? '1');
     statueRequest = handlingdata(response);
     if (StatueRequest.Success == statueRequest) {
-      print(response);
-      SortedList.clear();
-      //////////////must be offers //////////////////
-      SortedList.addAll(response['data']);
+      print("object");
+      // print(response);
+      // SortedList.clear();
 
+      SortedList.addAll(
+          response['data'].where((element) => element['active'] == true));
+      // print(SortedList[0]['gallery']);
       // Searchlist.addAll(Searchlistmodel.map((e) => ItemModelJson.fromJson(e)));
 
+      Sortedpage = "1";
+      IsLoadingmore = false;
       update();
     } else if (statueRequest == StatueRequest.offline) {
       Get.defaultDialog(
@@ -149,6 +173,24 @@ class ViewallOffersimble extends ViewallOffers {
       );
     }
     update();
+  }
+
+  PaginationSorting(String sortedby) async {
+    String? Sortedpage;
+    Sort(sortedby);
+    Sortedpage = '1';
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        IsLoadingmore = true;
+
+        Sortedpage = (int.parse(Sortedpage ?? "1") + 1).toString();
+        Sort(sortedby, Sortedpage: Sortedpage);
+        // Refreshdata(Catid, page: page);
+
+        update();
+      }
+    });
   }
 
   CheckboxStatuesOffers(bool val) {
@@ -213,7 +255,19 @@ class ViewallOffersimble extends ViewallOffers {
   void onInit() {
     Catid = settingservices.sharedPref.getString("selectedCat")!;
     Districtid = settingservices.sharedPref.getString("selecteddisc");
-    print(favoriteMap);
+    Getdata(Catid);
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        IsLoadingmore = true;
+        print(page);
+        page = (int.parse(page ?? "1") + 1).toString();
+        Getdata(Catid, page: page);
+        // Refreshdata(Catid, page: page);
+        // IsLoadingmore = false;
+        update();
+      }
+    });
 
     // item = Get.arguments['itemmodel'];
     // data = Get.arguments['data'];
