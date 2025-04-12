@@ -4,6 +4,7 @@ import 'package:ecommerce/core/constans/pages/pages.dart';
 import 'package:ecommerce/core/constans/themedata.dart';
 import 'package:ecommerce/core/localization/translatons.dart';
 import 'package:ecommerce/core/services/settingservices.dart';
+import 'package:ecommerce/view/screens/authscreens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(412, 917),
       builder: (context, child) => GetMaterialApp(
-          // home: SplashScreen(),
+          // home: Loginscreen(),
           // theme: customDarkTheme,
           darkTheme: customDarkTheme,
           themeMode: settingservices.sharedPref.getBool("IsSwitched") == true

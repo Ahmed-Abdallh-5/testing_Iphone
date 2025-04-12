@@ -45,6 +45,7 @@ class OnboardingConimble extends OnboardingCon {
     // }
     else {
       settingservices.sharedPref.setBool("IsSwitchedNotficationss", false);
+      Permission.notification.status.isDenied;
     }
     print(settingservices.sharedPref.getBool("IsSwitchedNotficationss"));
     // else if (status.isPermanentlyDenied) {

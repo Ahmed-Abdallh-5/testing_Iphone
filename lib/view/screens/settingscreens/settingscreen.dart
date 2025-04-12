@@ -119,13 +119,11 @@ class SettingScreeneScreen extends StatelessWidget {
                           activeColor: Get.isDarkMode
                               ? AppConstans.maincolordarktheme
                               : AppConstans.maincolorlighttheme,
-                          value: settingservices.sharedPref.getBool(
-                              "${settingscreenimble.IsSwitchedNotfications}")!,
+                          value: settingservices.sharedPref
+                              .getBool("IsSwitchedNotficationss")!,
                           onChanged: (value) {
                             settingscreenimble.notficationSwitcherFunction(
                                 value, "id1");
-                            print(settingservices.sharedPref.getBool(
-                                "${settingscreenimble.IsSwitchedNotfications}"));
                           },
                           switcher: true,
                           istrashed: false,

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:permission_handler/permission_handler.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 abstract class Logincontrolller extends GetxController {
@@ -27,6 +28,7 @@ class Logincontrollerimp extends Logincontrolller {
   );
   final formKeylogin = GlobalKey<FormState>();
   // final storage = new FlutterSecureStorage();
+  var status;
   late TextEditingController email;
   late TextEditingController Password;
   bool obsecuretext = true;
@@ -295,6 +297,16 @@ class Logincontrollerimp extends Logincontrolller {
       print("Error during account deletion: $e");
     }
   }
+
+  // requesthandler() async {
+  //   await Permission.notification.request();
+  //   status = await Permission.notification.status;
+  //   if (status == Permission.notification.status.isGranted) {
+  //     settingservices.sharedPref.setBool("IsSwitchedNotficationss", true);
+  //   } else {
+  //     settingservices.sharedPref.setBool("IsSwitchedNotficationss", false);
+  //   }
+  // }
 
   @override
   void onInit() {

@@ -54,6 +54,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   workmanager: ^0.5.2
   flutter_local_notifications: ^17.0.0
+  upgrader: ^10.2.0
+
   
 
 dev_dependencies:
